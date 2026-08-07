@@ -16,7 +16,16 @@
 <!-- ============ TOP BAR ============ -->
 <header class="topbar">
   <a href="#top" class="topbar-brand">Body Muse</a>
-  <a href="#signup" class="btn btn-pill btn-sm btn-primary">Start Trial</a>
+  <nav class="topbar-nav">
+    <a href="#about" class="topbar-link">About</a>
+    <a href="#program" class="topbar-link">Program</a>
+    <a href="#pricing" class="topbar-link">Pricing</a>
+    <a href="#faq" class="topbar-link">FAQ</a>
+  </nav>
+  <div class="topbar-actions">
+    <button type="button" class="btn btn-pill btn-sm btn-outline" id="accountBtn">My Account</button>
+    <a href="#signup" class="btn btn-pill btn-sm btn-primary">Start Trial</a>
+  </div>
 </header>
 
 <main id="top">
@@ -25,6 +34,7 @@
   <section class="hero">
     <div class="blob blob-sage hero-blob-1"></div>
     <div class="blob blob-rose hero-blob-2"></div>
+    <div class="blob blob-rose hero-blob-3"></div>
 
     <div class="hero-inner">
       <div class="eyebrow">Body Muse</div>
@@ -52,7 +62,8 @@
   </section>
 
   <!-- ============ ABOUT ============ -->
-  <section class="section section-panel">
+  <section class="section section-panel" id="about">
+    <div class="blob blob-sage about-blob"></div>
     <div class="eyebrow">Your coach</div>
     <h2 class="h2">Meet Maria</h2>
     <div class="about-row">
@@ -66,7 +77,8 @@
   </section>
 
   <!-- ============ PROGRAM ============ -->
-  <section class="section">
+  <section class="section" id="program">
+    <div class="blob blob-rose program-blob"></div>
     <div class="eyebrow">The program</div>
     <h2 class="h2">More than workouts — a complete transformation system</h2>
     <p class="section-lead">Effective workout programs, nutrition plans for healthy weight loss, delicious recipes, posture correction, stretching and mobility — with step-by-step guidance designed to help you lose weight, tone your body, flatten your stomach, and build habits that last. Suitable for beginners and advanced levels, with short 20–30 minute sessions that fit into any schedule.</p>
@@ -86,6 +98,8 @@
 
   <!-- ============ BENEFITS ============ -->
   <section class="section section-panel">
+    <div class="blob blob-sage benefits-blob-1"></div>
+    <div class="blob blob-rose benefits-blob-2"></div>
     <div class="eyebrow">Why it works</div>
     <h2 class="h2">Why women love this program</h2>
 
@@ -146,6 +160,7 @@
 
   <!-- ============ PRICING ============ -->
   <section class="section" id="pricing">
+    <div class="blob blob-rose pricing-blob"></div>
     <div class="eyebrow">Membership</div>
     <h2 class="h2">Choose your plan</h2>
 
@@ -201,6 +216,7 @@
 
   <!-- ============ TESTIMONIALS ============ -->
   <section class="section section-panel">
+    <div class="blob blob-sage testimonial-blob"></div>
     <div class="eyebrow">Results</div>
     <h2 class="h2">What members say</h2>
     <div class="testimonial-grid">
@@ -223,7 +239,8 @@
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section class="section">
+  <section class="section" id="faq">
+    <div class="blob blob-rose faq-blob"></div>
     <div class="eyebrow">Questions</div>
     <h2 class="h2">Frequently asked questions</h2>
     <div class="faq-list" id="faqList"></div>
@@ -244,6 +261,7 @@
 
   <!-- ============ PROMO / TRIAL ============ -->
   <section class="section promo-section">
+    <div class="blob blob-sage promo-blob"></div>
     <div class="glass-card promo-card">
       <div class="eyebrow">Limited-time offer</div>
       <h2 class="h2">Start your transformation today</h2>
@@ -270,6 +288,7 @@
 
   <!-- ============ SIGNUP ============ -->
   <section class="section" id="signup">
+    <div class="blob blob-rose signup-blob"></div>
     <div class="eyebrow">Get started</div>
     <h2 class="h2">Start your 10-day trial</h2>
     <div class="glass-card signup-card">
@@ -310,6 +329,16 @@
     <div class="eyebrow">Don't wait</div>
     <div class="popup-title">Start your transformation and see results in 10 days</div>
     <a href="#signup" class="btn btn-pill btn-primary btn-block" id="popupCta">Start My 10-Day Trial for €2.99</a>
+  </div>
+</div>
+
+<!-- ============ ACCOUNT POPUP ============ -->
+<div class="popup-overlay" id="accountPopupOverlay">
+  <div class="glass-card popup-card">
+    <button class="popup-close" id="accountPopupClose" aria-label="Close">✕</button>
+    <div class="eyebrow">My Account</div>
+    <div class="popup-title">Coming soon</div>
+    <p class="popup-text">We're building your personal member dashboard. It'll be ready soon — for now, start your trial to get access to the program.</p>
   </div>
 </div>
 

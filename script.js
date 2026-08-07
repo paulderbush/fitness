@@ -98,6 +98,21 @@ function setupPopup(){
   cta.addEventListener('click', hide);
 }
 
+// ============ ACCOUNT POPUP (My Account — coming soon) ============
+function setupAccountPopup(){
+  const btn = document.getElementById('accountBtn');
+  const overlay = document.getElementById('accountPopupOverlay');
+  const closeBtn = document.getElementById('accountPopupClose');
+  if(!btn || !overlay) return;
+
+  function show(){ overlay.classList.add('visible'); }
+  function hide(){ overlay.classList.remove('visible'); }
+
+  btn.addEventListener('click', show);
+  closeBtn.addEventListener('click', hide);
+  overlay.addEventListener('click', (e) => { if(e.target === overlay) hide(); });
+}
+
 // ============ SIGNUP BUTTON (placeholder — wire to Stripe Checkout later) ============
 function setupSignup(){
   const btn = document.getElementById('signupBtn');
@@ -121,5 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
   setupStickyBar();
   setupPopup();
+  setupAccountPopup();
   setupSignup();
 });

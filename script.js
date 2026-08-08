@@ -98,6 +98,33 @@ function setupPopup(){
   cta.addEventListener('click', hide);
 }
 
+// ============ MOBILE FULL-SCREEN MENU ============
+function setupMobileMenu(){
+  const menuBtn = document.getElementById('menuBtn');
+  const overlay = document.getElementById('mobileMenuOverlay');
+  const closeBtn = document.getElementById('mobileMenuClose');
+  if(!menuBtn || !overlay) return;
+
+  function open(){
+    overlay.classList.add('visible');
+    menuBtn.classList.add('open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    overlay.classList.remove('visible');
+    menuBtn.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  menuBtn.addEventListener('click', () => {
+    if(overlay.classList.contains('visible')) close(); else open();
+  });
+  closeBtn.addEventListener('click', close);
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+}
+
 // ============ ACCOUNT POPUP (My Account — coming soon) ============
 function setupAccountPopup(){
   const btn = document.getElementById('accountBtn');
@@ -137,5 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setupStickyBar();
   setupPopup();
   setupAccountPopup();
+  setupMobileMenu();
   setupSignup();
 });

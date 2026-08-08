@@ -359,11 +359,21 @@ ul{ margin:0; padding:0; list-style:none; }
   backdrop-filter:blur(22px) saturate(160%);
   -webkit-backdrop-filter:blur(22px) saturate(160%);
   box-shadow:var(--shadow);
+  transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+.price-card:has(.btn:hover){
+  transform:scale(1.03);
+  box-shadow:var(--shadow-lg);
+  border-color:var(--rose);
+  background:rgba(255,255,255,0.68);
 }
 .price-featured{
   border-color:var(--rose);
   box-shadow:var(--shadow-lg);
   transform:scale(1.02);
+}
+.price-featured:has(.btn:hover){
+  transform:scale(1.05);
 }
 .price-badge{
   display:inline-block;

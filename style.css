@@ -363,10 +363,16 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .trust-row.center{ text-align:center; }
 
-.hero-about-card{ margin-top:32px; }
-.hero-about-card p{ margin:0; font-size:14.5px; line-height:1.65; color:var(--ink-soft); font-weight:500; }
-
 /* ============ video ============ */
+.trailer-layout{ display:flex; flex-direction:column; gap:28px; }
+.trailer-text .eyebrow, .trailer-text .h2{ text-align:center; }
+.trailer-copy{
+  font-size:15.5px;
+  line-height:1.65;
+  color:var(--ink-soft);
+  font-weight:500;
+  text-align:center;
+}
 .video-placeholder{
   display:flex;
   flex-direction:column;
@@ -375,6 +381,7 @@ ul{ margin:0; padding:0; list-style:none; }
   height:220px;
   background:linear-gradient(135deg, var(--sage-pale), var(--rose-pale));
   gap:14px;
+  flex-shrink:0;
 }
 .play-btn{
   width:64px; height:64px;
@@ -860,7 +867,6 @@ ul{ margin:0; padding:0; list-style:none; }
     background-position:right center;
   }
   .hero-media{ display:none; }
-  .hero-about-card{ display:none; }
   .hero .eyebrow{ color:var(--hero-gold); font-size:14px; }
   .hero-title{ color:#fff; font-size:clamp(46px,5vw,68px); }
   .hero-title em{ color:var(--hero-gold); }
@@ -874,6 +880,11 @@ ul{ margin:0; padding:0; list-style:none; }
   }
   .hero-inner{ margin:0; padding:0; max-width:600px; }
   .hero-inner .btn-lg{ padding:20px 38px; font-size:17px; }
+  .trailer-layout{ flex-direction:row; align-items:center; gap:64px; }
+  .video-placeholder{ flex:1; height:460px; }
+  .trailer-text{ flex:1; }
+  .trailer-text .eyebrow, .trailer-text .h2{ text-align:left; }
+  .trailer-copy{ text-align:left; font-size:17px; margin-top:22px; }
   .program-grid{ grid-template-columns:1fr 1fr 1fr 1fr; }
   .benefit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px 32px; }
   .benefits-photo{ max-width:240px; }

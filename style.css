@@ -295,7 +295,6 @@ ul{ margin:0; padding:0; list-style:none; }
 .hero{
   position:relative;
   padding:0 0 48px 0;
-  overflow:hidden;
   background:linear-gradient(180deg, #FDF9F0 0%, var(--cream) 100%);
 }
 .hero-blob-1{ width:540px; height:540px; top:-200px; right:-180px; opacity:0.65; }

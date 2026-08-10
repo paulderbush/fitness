@@ -446,12 +446,9 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 
 /* ============ program ============ */
-.section-program{
-  background:linear-gradient(160deg, var(--program-blue) 0%, var(--program-blue-deep) 100%);
-}
-.section-program .eyebrow{ color:#fff; }
-.section-program .h2{ color:#fff; }
-.program-lead{ color:rgba(255,255,255,0.92); margin-left:auto; margin-right:auto; text-align:center; }
+.program-bg-photo{ display:none; }
+.program-text .eyebrow, .program-text .h2{ text-align:center; }
+.program-lead{ color:var(--ink-soft); margin-left:auto; margin-right:auto; text-align:center; }
 
 .program-photo{
   display:block;
@@ -478,6 +475,7 @@ ul{ margin:0; padding:0; list-style:none; }
   font-weight:700;
   color:var(--sage-deep);
   line-height:1.4;
+  box-shadow:var(--shadow);
   backdrop-filter:blur(16px) saturate(160%);
   -webkit-backdrop-filter:blur(16px) saturate(160%);
 }
@@ -914,7 +912,21 @@ ul{ margin:0; padding:0; list-style:none; }
     background:rgba(20,14,17,0.44);
   }
   .coach-caption p{ font-size:17px; }
-  .program-grid{ grid-template-columns:1fr 1fr 1fr 1fr; }
+  .program-bg-photo{
+    display:block;
+    position:absolute;
+    inset:0;
+    background-image:url(images/wide2.webp);
+    background-size:cover;
+    background-position:left center;
+  }
+  .program-blob{ display:none; }
+  .program-photo{ display:none; }
+  .program-layout{ display:flex; justify-content:flex-end; }
+  .program-text{ max-width:620px; }
+  .program-text .eyebrow, .program-text .h2{ text-align:left; }
+  .program-lead{ text-align:left; margin-left:0; margin-right:0; }
+  .program-grid{ grid-template-columns:1fr 1fr; }
   .benefit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px 32px; }
   .benefits-photo{ max-width:240px; }
   .pricing-grid{ flex-direction:row; align-items:stretch; gap:28px; }

@@ -22,9 +22,9 @@
   --hero-gold:#E3C285;
   --tan-deep:#A9835A;
   --tan-pale:#E8D9C2;
-  --coach-pink:#FF6FAE;
-  --coach-pink-deep:#E8479A;
-  --coach-pink-light:#FFB3D9;
+  --coach-pink:#CA93A4;
+  --coach-pink-deep:#B67D90;
+  --coach-pink-light:#E3BEC8;
   --program-blue:#2FA9E6;
   --program-blue-deep:#1D8BC7;
   --program-blue-light:#8AD2F5;
@@ -402,29 +402,48 @@ ul{ margin:0; padding:0; list-style:none; }
 
 /* ============ about / coach ============ */
 .section-coach{
-  background:linear-gradient(160deg, var(--coach-pink) 0%, var(--coach-pink-deep) 100%) !important;
+  background:var(--coach-pink) !important;
 }
 .section-coach .eyebrow{ color:#fff; }
 .section-coach .h2{ color:#fff; }
 
 .coach-photos{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-bottom:24px;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+.coach-card{
+  position:relative;
+  aspect-ratio:3/4;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
 }
 .coach-photo{
   width:100%;
-  height:auto;
+  height:100%;
   min-width:0;
-  aspect-ratio:3/4;
   object-fit:cover;
-  border-radius:18px;
-  box-shadow:var(--shadow-lg);
+  display:block;
+  transition:transform 0.4s ease;
 }
-.about-card{ max-width:640px; margin:0 auto; }
-.about-card p{ margin:0 0 12px 0; font-size:15px; line-height:1.65; color:var(--ink-soft); font-weight:500; }
-.about-card p:last-child{ margin-bottom:0; }
+.coach-card:hover .coach-photo{ transform:scale(1.08); }
+.coach-caption{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  padding:16px 12px 18px 12px;
+  background:rgba(20,14,17,0.55);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+}
+.coach-caption p{
+  margin:0;
+  color:#fff;
+  font-size:13px;
+  font-weight:600;
+  line-height:1.5;
+  text-align:center;
+}
 
 /* ============ program ============ */
 .section-program{
@@ -839,6 +858,7 @@ ul{ margin:0; padding:0; list-style:none; }
 
 /* ============ desktop ============ */
 @media (min-width:760px){
+  .coach-photos{ grid-template-columns:repeat(3,1fr); gap:10px; }
   .program-grid{ grid-template-columns:1fr 1fr 1fr; }
   .testimonial-grid{ flex-direction:row; }
   .testimonial-card{ flex:1; }

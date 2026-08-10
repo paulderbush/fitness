@@ -33,7 +33,7 @@
 html{ scroll-behavior:smooth; }
 html,body{ margin:0; padding:0; }
 body{
-  font-family:'Manrope', sans-serif;
+  font-family:'Jost', sans-serif;
   background:var(--cream);
   color:var(--ink);
   -webkit-font-smoothing:antialiased;
@@ -45,7 +45,7 @@ a{ color:inherit; text-decoration:none; }
 ul{ margin:0; padding:0; list-style:none; }
 
 .eyebrow{
-  font-family:'Manrope',sans-serif;
+  font-family:'Jost',sans-serif;
   font-size:12px;
   font-weight:800;
   letter-spacing:0.14em;
@@ -216,7 +216,7 @@ ul{ margin:0; padding:0; list-style:none; }
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  font-family:'Manrope',sans-serif;
+  font-family:'Jost',sans-serif;
   font-weight:700;
   font-size:15px;
   padding:15px 26px;
@@ -300,6 +300,8 @@ ul{ margin:0; padding:0; list-style:none; }
 .hero-blob-1{ width:540px; height:540px; top:-200px; right:-180px; opacity:0.65; }
 .hero-blob-2{ width:320px; height:320px; bottom:-90px; left:-100px; }
 .hero-blob-3{ width:220px; height:220px; top:40%; left:-120px; opacity:0.4; }
+
+.hero-bg-photo, .hero-bg-fade{ display:none; }
 
 .hero-layout{ position:relative; z-index:1; display:flex; flex-direction:column; }
 .hero-media{ position:relative; }
@@ -659,7 +661,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .countdown{ margin-bottom:22px; }
 .countdown-label{ font-size:12px; font-weight:700; color:var(--rose-deep); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px; }
 .countdown-timer{
-  font-family:'Manrope',sans-serif;
+  font-family:'Jost',sans-serif;
   font-weight:800;
   font-size:32px;
   color:var(--sage-deep);
@@ -683,7 +685,7 @@ ul{ margin:0; padding:0; list-style:none; }
   border:1.5px solid rgba(75,98,69,0.2);
   border-radius:12px;
   padding:14px 16px;
-  font-family:'Manrope',sans-serif;
+  font-family:'Jost',sans-serif;
   font-size:15px;
   color:var(--ink);
   background:#fff;
@@ -846,19 +848,31 @@ ul{ margin:0; padding:0; list-style:none; }
   }
   .section{ padding:80px 40px; }
   .section-panel{ padding-left:40px; padding-right:40px; }
-  .hero{ padding:0; }
+  .hero{ padding:0; min-height:700px; display:flex; align-items:center; }
+  .hero-blob-1, .hero-blob-2, .hero-blob-3{ display:none; }
+  .hero-bg-photo{
+    display:block;
+    position:absolute;
+    inset:0;
+    background-image:url(images/wide.webp);
+    background-size:cover;
+    background-position:right center;
+  }
+  .hero-bg-fade{
+    display:block;
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to right, var(--cream) 0%, var(--cream) 32%, rgba(251,247,238,0.7) 46%, rgba(251,247,238,0) 66%);
+  }
+  .hero-media{ display:none; }
   .hero-layout{
-    flex-direction:row-reverse;
-    align-items:center;
-    gap:64px;
+    display:block;
+    width:100%;
     max-width:var(--hero-w);
     margin:0 auto;
-    padding:80px 40px 72px 40px;
+    padding:60px 40px;
   }
-  .hero-media{ flex:0 0 42%; }
-  .hero-photo{ height:auto; max-height:640px; border-radius:28px; }
-  .hero-media-fade{ display:none; }
-  .hero-inner{ flex:1; margin:0; padding:0; max-width:none; }
+  .hero-inner{ margin:0; padding:0; max-width:560px; }
   .program-grid{ grid-template-columns:1fr 1fr 1fr 1fr; }
   .benefit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px 32px; }
   .benefits-photo{ max-width:240px; }

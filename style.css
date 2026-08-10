@@ -632,9 +632,10 @@ ul{ margin:0; padding:0; list-style:none; }
   font-size:13.5px;
   font-weight:700;
   border:1.5px solid transparent;
-  background:rgba(255,255,255,0.5);
+  background:transparent;
   transition:transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease, background 0.15s ease;
 }
+.social-btn:hover{ background:rgba(128,128,128,0.22); }
 .social-btn:active{ transform:scale(0.97); }
 .social-icon{ width:18px; height:18px; flex-shrink:0; }
 
@@ -642,13 +643,8 @@ ul{ margin:0; padding:0; list-style:none; }
   border-color:#29A9EA;
   color:#1487C9;
 }
-.social-btn-telegram:hover{ background:#fff; }
 
-.social-btn-instagram{
-  position:relative;
-  background:transparent;
-  border-color:transparent;
-}
+.social-btn-instagram{ position:relative; border-color:transparent; }
 .social-btn-instagram::before{
   content:"";
   position:absolute;
@@ -660,9 +656,7 @@ ul{ margin:0; padding:0; list-style:none; }
   -webkit-mask-composite:xor;
   mask-composite:exclude;
   pointer-events:none;
-  transition:opacity 0.15s ease;
 }
-.social-btn-instagram:hover::before{ opacity:0.8; }
 .ig-text{
   background-image:linear-gradient(45deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5);
   -webkit-background-clip:text;

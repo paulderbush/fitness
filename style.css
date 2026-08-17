@@ -481,6 +481,8 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 
 /* ============ benefits ============ */
+.benefits-bg-photo{ display:none; }
+.benefits-text .eyebrow, .benefits-text .h2{ text-align:center; }
 .benefits-photo{
   max-width:200px;
   margin:0 auto 28px auto;
@@ -929,8 +931,24 @@ ul{ margin:0; padding:0; list-style:none; }
   .program-text .eyebrow, .program-text .h2{ text-align:left; }
   .program-lead{ text-align:left; margin-left:0; margin-right:0; }
   .program-grid{ grid-template-columns:1fr 1fr; }
+  .section-benefits{ min-height:clamp(700px, 55vw, 1100px); display:flex; align-items:center; }
+  .section-benefits > .section-inner{ width:100%; }
+  .benefits-bg-photo{
+    display:block;
+    position:absolute;
+    inset:0;
+    background-image:url(images/wide3.webp);
+    background-size:cover;
+    background-position:right center;
+  }
+  .benefits-blob-1, .benefits-blob-2{ display:none; }
+  .benefits-photo{ display:none; }
+  .benefits-text{ max-width:640px; }
+  .benefits-text .eyebrow{ color:var(--hero-gold); text-align:left; }
+  .benefits-text .h2{ color:#fff; text-align:left; }
+  .benefit-item b{ color:#fff; }
+  .benefit-item p{ color:rgba(255,255,255,0.75); }
   .benefit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px 32px; }
-  .benefits-photo{ max-width:240px; }
   .pricing-grid{ flex-direction:row; align-items:stretch; gap:28px; }
   .price-card{ flex:1; padding:34px 30px; }
 }

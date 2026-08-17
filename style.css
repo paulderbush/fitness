@@ -912,6 +912,8 @@ ul{ margin:0; padding:0; list-style:none; }
     background:rgba(20,14,17,0.44);
   }
   .coach-caption p{ font-size:17px; }
+  .section-program{ min-height:clamp(700px, 58vw, 1100px); display:flex; align-items:center; }
+  .section-program > .section-inner{ width:100%; }
   .program-bg-photo{
     display:block;
     position:absolute;
@@ -922,7 +924,7 @@ ul{ margin:0; padding:0; list-style:none; }
   }
   .program-blob{ display:none; }
   .program-photo{ display:none; }
-  .program-layout{ display:flex; justify-content:flex-end; }
+  .program-layout{ display:flex; justify-content:flex-end; width:100%; }
   .program-text{ max-width:620px; }
   .program-text .eyebrow, .program-text .h2{ text-align:left; }
   .program-lead{ text-align:left; margin-left:0; margin-right:0; }

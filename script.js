@@ -114,7 +114,6 @@ function setupPopup(){
 function setupMobileMenu(){
   const menuBtn = document.getElementById('menuBtn');
   const overlay = document.getElementById('mobileMenuOverlay');
-  const closeBtn = document.getElementById('mobileMenuClose');
   if(!menuBtn || !overlay) return;
 
   function open(){
@@ -133,7 +132,6 @@ function setupMobileMenu(){
   menuBtn.addEventListener('click', () => {
     if(overlay.classList.contains('visible')) close(); else open();
   });
-  closeBtn.addEventListener('click', close);
   overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
 }
 

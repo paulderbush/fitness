@@ -81,6 +81,7 @@ ul{ margin:0; padding:0; list-style:none; }
   padding:56px 22px;
   position:relative;
   overflow:hidden;
+  scroll-margin-top:75px;
 }
 .section-inner{
   max-width:var(--content-w);
@@ -1007,7 +1008,7 @@ body:has(#mobileMenuOverlay.visible) .topbar.at-hero .topbar-link{ color:var(--i
     --hero-w:1100px;
     --hero-lead-w:640px;
   }
-  .section{ padding:80px 40px; }
+  .section{ padding:80px 40px; scroll-margin-top:72px; }
   .section-panel{ padding-left:40px; padding-right:40px; }
   .topbar{ padding-left:100px; padding-right:100px; }
   .hero{ padding:0; min-height:820px; margin-top:-64px; }

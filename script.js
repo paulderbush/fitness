@@ -77,6 +77,19 @@ function setupStickyBar(){
   io.observe(hero);
 }
 
+// ============ TOPBAR OVER HERO ============
+function setupTopbarOverHero(){
+  const topbar = document.getElementById('topbar');
+  const hero = document.querySelector('.hero');
+  if(!topbar || !hero) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      topbar.classList.toggle('at-hero', entry.isIntersecting && entry.intersectionRatio > 0.4);
+    });
+  }, { threshold:[0, 0.4, 1] });
+  io.observe(hero);
+}
+
 // ============ POPUP (once per session, after 5s) ============
 function setupPopup(){
   const overlay = document.getElementById('popupOverlay');
@@ -162,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCountdown();
   setInterval(updateCountdown, 1000);
   setupStickyBar();
+  setupTopbarOverHero();
   setupPopup();
   setupAccountPopup();
   setupMobileMenu();

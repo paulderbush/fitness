@@ -150,6 +150,17 @@ function setupAccountPopup(){
   overlay.addEventListener('click', (e) => { if(e.target === overlay) hide(); });
 }
 
+// ============ HASH CLEANUP (avoid re-jumping to a section on reload) ============
+function setupHashCleanup(){
+  function stripHash(){
+    if(location.hash){
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+  }
+  stripHash();
+  window.addEventListener('hashchange', stripHash);
+}
+
 // ============ SIGNUP BUTTON (placeholder — wire to Stripe Checkout later) ============
 function setupSignup(){
   const btn = document.getElementById('signupBtn');
@@ -177,4 +188,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setupAccountPopup();
   setupMobileMenu();
   setupSignup();
+  setupHashCleanup();
 });

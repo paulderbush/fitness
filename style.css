@@ -359,7 +359,7 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .hero-results{
   font-family:'Fraunces', serif;
-  font-size:20px;
+  font-size:30px;
   font-style:italic;
   font-weight:600;
   color:var(--ink);
@@ -982,7 +982,7 @@ ul{ margin:0; padding:0; list-style:none; }
   .hero-media{ display:none; }
   .hero .eyebrow{ color:rgba(255,255,255,0.85); font-size:13px; }
   .hero-title{ color:#fff; font-size:clamp(46px,5vw,64px); }
-  .hero-results{ color:#fff; font-size:26px; }
+  .hero-results{ color:#fff; font-size:40px; }
   .hero-lead{ color:rgba(255,255,255,0.85); font-size:16px; max-width:460px; }
   .trust-row{ color:rgba(255,255,255,0.7); font-size:12.5px; }
   .hero-layout{
@@ -1005,7 +1005,7 @@ ul{ margin:0; padding:0; list-style:none; }
     gap:10px;
   }
   .hero-feature span{ line-height:1.25; }
-  .hero-feature svg{ color:#fff; width:66px; height:66px; }
+  .hero-feature svg{ color:#fff; width:33px; height:33px; }
   .hero-feature:not(:last-child){ position:relative; padding-right:20px; }
   .hero-feature:not(:last-child)::after{
     content:'';
@@ -1042,7 +1042,7 @@ ul{ margin:0; padding:0; list-style:none; }
     width:18px; height:1px;
     background:rgba(255,255,255,0.5);
   }
-  .hero-note{ font-size:44px; top:45px; right:100px; }
+  .hero-note{ font-size:44px; top:75px; right:130px; }
 
   .topbar.at-hero{ background:transparent; backdrop-filter:none; border-bottom-color:transparent; }
   .topbar.at-hero .topbar-brand,

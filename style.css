@@ -488,7 +488,10 @@ body:has(#mobileMenuOverlay.visible) .topbar.at-hero .topbar-link{ color:var(--i
   font-weight:700;
   letter-spacing:0.12em;
   text-transform:uppercase;
+  cursor:pointer;
+  transition:color 0.2s ease;
 }
+.hero-scroll:hover{ color:#fff; }
 .hero-scroll-chevron{
   width:20px; height:20px;
   animation:heroScrollBounce 1.8s ease-in-out infinite;
@@ -1080,7 +1083,14 @@ body:has(#mobileMenuOverlay.visible) .topbar.at-hero .topbar-link{ color:var(--i
   .hero-quote p{ color:#fff; }
   .hero-quote span{ color:rgba(255,255,255,0.7); }
   .hero-avatar{ border-color:rgba(255,255,255,0.85); }
-  .hero-scroll{ display:none; }
+  .hero-scroll{
+    display:flex;
+    position:absolute;
+    left:50%;
+    bottom:50px;
+    transform:translateX(-50%);
+    margin:0;
+  }
   .hero-footnote{
     display:block;
     position:absolute;

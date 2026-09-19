@@ -82,12 +82,11 @@ function setupTopbarOverHero(){
   const topbar = document.getElementById('topbar');
   const hero = document.querySelector('.hero');
   if(!topbar || !hero) return;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      topbar.classList.toggle('at-hero', entry.isIntersecting && entry.intersectionRatio > 0.4);
-    });
-  }, { threshold:[0, 0.4, 1] });
-  io.observe(hero);
+  function update(){
+    topbar.classList.toggle('at-hero', window.scrollY < 4);
+  }
+  update();
+  window.addEventListener('scroll', update, { passive:true });
 }
 
 // ============ POPUP (once per session, after 5s) ============

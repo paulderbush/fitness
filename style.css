@@ -312,15 +312,15 @@ ul{ margin:0; padding:0; list-style:none; }
 .hero-note{
   position:absolute;
   top:14px;
-  right:34px;
+  right:54px;
   z-index:2;
-  font-family:'Mea Culpa',cursive;
-  font-size:20px;
-  line-height:1.05;
+  font-family:'Great Vibes',cursive;
+  font-size:26px;
+  line-height:1.15;
   color:#E7CCB8;
   text-align:right;
   text-shadow:0 2px 10px rgba(0,0,0,0.3);
-  transform:rotate(-45deg);
+  transform:rotate(-20deg);
   transform-origin:100% 0%;
 }
 .hero-note-heart{ color:#E7CCB8; }
@@ -359,7 +359,8 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .hero-results{
   font-family:'Fraunces', serif;
-  font-size:18px;
+  font-size:20px;
+  font-style:italic;
   font-weight:600;
   color:var(--ink);
   margin:0 0 12px 0;
@@ -981,7 +982,7 @@ ul{ margin:0; padding:0; list-style:none; }
   .hero-media{ display:none; }
   .hero .eyebrow{ color:rgba(255,255,255,0.85); font-size:13px; }
   .hero-title{ color:#fff; font-size:clamp(46px,5vw,64px); }
-  .hero-results{ color:#fff; font-size:24px; }
+  .hero-results{ color:#fff; font-size:26px; }
   .hero-lead{ color:rgba(255,255,255,0.85); font-size:16px; max-width:460px; }
   .trust-row{ color:rgba(255,255,255,0.7); font-size:12.5px; }
   .hero-layout{
@@ -999,11 +1000,12 @@ ul{ margin:0; padding:0; list-style:none; }
     flex:1;
     min-width:0;
     flex-direction:column;
-    align-items:flex-start;
+    align-items:center;
+    text-align:center;
     gap:10px;
   }
   .hero-feature span{ line-height:1.25; }
-  .hero-feature svg{ color:#fff; width:22px; height:22px; }
+  .hero-feature svg{ color:#fff; width:66px; height:66px; }
   .hero-feature:not(:last-child){ position:relative; padding-right:20px; }
   .hero-feature:not(:last-child)::after{
     content:'';
@@ -1040,7 +1042,7 @@ ul{ margin:0; padding:0; list-style:none; }
     width:18px; height:1px;
     background:rgba(255,255,255,0.5);
   }
-  .hero-note{ font-size:36px; top:80px; right:60px; }
+  .hero-note{ font-size:44px; top:45px; right:100px; }
 
   .topbar.at-hero{ background:transparent; backdrop-filter:none; border-bottom-color:transparent; }
   .topbar.at-hero .topbar-brand,

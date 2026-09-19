@@ -8,23 +8,22 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,500&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,500&family=Jost:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- ============ TOP BAR ============ -->
-<header class="topbar">
+<header class="topbar" id="topbar">
   <a href="#top" class="topbar-brand">Body Muse</a>
   <nav class="topbar-nav">
-    <a href="#about" class="topbar-link">About</a>
-    <a href="#program" class="topbar-link">Program</a>
+    <a href="#program" class="topbar-link">Programs</a>
+    <a href="#program" class="topbar-link">Nutrition</a>
+    <a href="#about" class="topbar-link">Coach</a>
     <a href="#pricing" class="topbar-link">Pricing</a>
-    <a href="#faq" class="topbar-link">FAQ</a>
   </nav>
   <div class="topbar-actions">
-    <button type="button" class="btn btn-pill btn-sm btn-outline" id="accountBtn">My Account</button>
-    <a href="#signup" class="btn btn-pill btn-sm btn-primary">Start Trial</a>
+    <a href="#signup" class="btn btn-pill btn-sm btn-primary">Join Now</a>
     <button type="button" class="hamburger-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -35,11 +34,11 @@
 <div class="mobile-menu-overlay" id="mobileMenuOverlay">
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
   <nav class="mobile-menu-nav">
-    <a href="#about" class="mobile-menu-link">About</a>
-    <a href="#program" class="mobile-menu-link">Program</a>
+    <a href="#program" class="mobile-menu-link">Programs</a>
+    <a href="#program" class="mobile-menu-link">Nutrition</a>
+    <a href="#about" class="mobile-menu-link">Coach</a>
     <a href="#pricing" class="mobile-menu-link">Pricing</a>
-    <a href="#faq" class="mobile-menu-link">FAQ</a>
-    <a href="#signup" class="btn btn-pill btn-primary btn-lg mobile-menu-cta">Start Trial</a>
+    <a href="#signup" class="btn btn-pill btn-primary btn-lg mobile-menu-cta">Join Now</a>
   </nav>
   <div class="mobile-menu-social">
     <a href="https://www.instagram.com/yegorova.maria" target="_blank" rel="noopener" class="social-btn social-btn-instagram">
@@ -72,26 +71,87 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="blob blob-rose hero-blob-1"></div>
-    <div class="blob blob-tan hero-blob-2"></div>
-    <div class="blob blob-tan hero-blob-3"></div>
     <div class="hero-bg-photo"></div>
+    <div class="hero-note">Stronger<br>Happier<br>You <span class="hero-note-heart">♡</span></div>
 
     <div class="hero-layout">
       <div class="hero-media">
-        <img src="images/main.webp" alt="Maria, Body Muse coach" class="hero-photo" width="1100" height="1467" loading="eager">
+        <img src="images/wide1.webp" alt="Maria, Body Muse coach" class="hero-photo" width="3600" height="2070" loading="eager">
         <div class="hero-media-fade"></div>
       </div>
       <div class="hero-inner">
-        <div class="eyebrow">Body Muse</div>
-        <h1 class="hero-title">Look better.<br>Feel stronger.<br><em>Live healthier.</em></h1>
-        <p class="hero-sub">Build the best version of yourself.</p>
-        <p class="hero-lead">20-minute workouts for women who want to lose weight, get fit, flatten their stomachs, and feel good again.</p>
+        <div class="eyebrow">The complete body transformation<br>system for women</div>
+        <h1 class="hero-title">Body Muse</h1>
+        <p class="hero-results">See Results in <span class="hero-accent">14 Days.</span></p>
+        <p class="hero-lead">20-minute workouts, nutrition plans and expert support — everything you need to transform your body.</p>
 
-        <a href="#signup" class="btn btn-pill btn-primary btn-lg">Start My 10-Day Trial for €2.99</a>
-        <div class="trust-row">Instant access &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; 30-Day Results Guarantee</div>
+        <a href="#signup" class="btn btn-pill btn-primary btn-lg hero-cta">
+          Start My 10-Day Trial — €2.99
+          <svg class="hero-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <div class="trust-row">Full access for 10 days &nbsp;·&nbsp; Cancel anytime</div>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <rect x="2" y="9" width="3" height="6" rx="1"></rect>
+              <rect x="19" y="9" width="3" height="6" rx="1"></rect>
+              <rect x="6" y="7" width="2.5" height="10" rx="1"></rect>
+              <rect x="15.5" y="7" width="2.5" height="10" rx="1"></rect>
+              <line x1="8.5" y1="12" x2="15.5" y2="12"></line>
+            </svg>
+            <span>20-Minute Workouts</span>
+          </div>
+          <div class="hero-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 11h18a9 9 0 0 1-18 0Z"></path>
+              <path d="M8 11c0-2 1-4 3-5"></path>
+              <circle cx="12" cy="4.5" r="1.1" fill="currentColor" stroke="none"></circle>
+            </svg>
+            <span>Nutrition Plans</span>
+          </div>
+          <div class="hero-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <line x1="5" y1="19" x2="5" y2="13"></line>
+              <line x1="12" y1="19" x2="12" y2="8"></line>
+              <line x1="19" y1="19" x2="19" y2="4"></line>
+            </svg>
+            <span>Track Progress</span>
+          </div>
+          <div class="hero-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 20s-7-4.35-9.5-8.5C.8 8 2 4.5 5.5 4c2-.3 3.7.8 4.5 2.2C10.8 4.8 12.5 3.7 14.5 4c3.5.5 4.7 4 3 7.5C19 15.65 12 20 12 20Z"></path>
+            </svg>
+            <span>Real Support</span>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-top"><span class="hero-stars">★★★★★</span> <b>4.9</b></div>
+            <div class="hero-stat-label">From 500+ reviews</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-top"><b>2,000+</b></div>
+            <div class="hero-stat-label">Women transformed</div>
+          </div>
+        </div>
+
+        <div class="hero-quote-row">
+          <div class="hero-avatars">
+            <img src="images/1.webp" alt="" class="hero-avatar" aria-hidden="true">
+            <img src="images/2.webp" alt="" class="hero-avatar" aria-hidden="true">
+            <img src="images/3.webp" alt="" class="hero-avatar" aria-hidden="true">
+          </div>
+          <div class="hero-quote">
+            <p>"Body Muse changed my life!"</p>
+            <span>— Real member</span>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="hero-footnote">More than a workout — a better you</div>
   </section>
 
   <!-- ============ VIDEO / TRAILER ============ -->

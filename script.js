@@ -83,7 +83,7 @@ function setupTopbarOverHero(){
   const hero = document.querySelector('.hero');
   if(!topbar || !hero) return;
   function update(){
-    topbar.classList.toggle('at-hero', window.scrollY < 15);
+    topbar.classList.toggle('scrolled', window.scrollY >= 15);
   }
   update();
   window.addEventListener('scroll', update, { passive:true });

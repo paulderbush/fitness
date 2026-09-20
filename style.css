@@ -106,9 +106,9 @@ ul{ margin:0; padding:0; list-style:none; }
   justify-content:space-between;
   align-items:center;
   padding:14px 20px;
-  background:rgba(251,247,238,0.85);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(75,98,69,0.08);
+  background:transparent;
+  backdrop-filter:none;
+  border-bottom:1px solid transparent;
   transition:background 0.25s ease, border-color 0.25s ease;
 }
 .topbar-brand{
@@ -117,7 +117,7 @@ ul{ margin:0; padding:0; list-style:none; }
   font-size:17px;
   letter-spacing:0.14em;
   text-transform:uppercase;
-  color:var(--ink);
+  color:#fff;
   flex-shrink:0;
   transition:color 0.2s ease;
 }
@@ -131,10 +131,10 @@ ul{ margin:0; padding:0; list-style:none; }
 .topbar-link{
   font-size:14px;
   font-weight:700;
-  color:var(--ink-soft);
+  color:#fff;
   transition:color 0.15s ease;
 }
-.topbar-link:hover{ color:var(--brand-pink-deep); }
+.topbar-link:hover{ color:var(--brand-pink); }
 .topbar-actions{
   display:flex;
   align-items:center;
@@ -157,9 +157,9 @@ ul{ margin:0; padding:0; list-style:none; }
   position:absolute;
   left:9px;
   width:20px; height:2px;
-  background:var(--sage-deep);
+  background:#fff;
   border-radius:2px;
-  transition:transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
+  transition:transform 0.3s ease, opacity 0.2s ease, top 0.3s ease, background 0.2s ease;
 }
 .hamburger-btn span:nth-child(1){ top:14px; }
 .hamburger-btn span:nth-child(2){ top:18px; }
@@ -167,24 +167,24 @@ ul{ margin:0; padding:0; list-style:none; }
 .hamburger-btn.open span:nth-child(1){ top:18px; transform:rotate(45deg); }
 .hamburger-btn.open span:nth-child(2){ opacity:0; }
 .hamburger-btn.open span:nth-child(3){ top:18px; transform:rotate(-45deg); }
-
-.topbar.at-hero{ background:transparent; backdrop-filter:none; border-bottom-color:transparent; }
-.topbar.at-hero .topbar-brand,
-.topbar.at-hero .topbar-link{ color:#fff; }
-.topbar.at-hero .topbar-link:hover{ color:var(--brand-pink); }
-.topbar.at-hero .hamburger-btn span{ background:#fff; }
 .hamburger-btn.open span{ background:var(--sage-deep); }
-.topbar.at-hero .hamburger-btn.open span{ background:var(--sage-deep); }
+
+/* solid topbar once the page has been scrolled past the hero */
+.topbar.scrolled{ background:rgba(251,247,238,0.85); backdrop-filter:blur(12px); border-bottom-color:rgba(75,98,69,0.08); }
+.topbar.scrolled .topbar-brand{ color:var(--ink); }
+.topbar.scrolled .topbar-link{ color:var(--ink-soft); }
+.topbar.scrolled .topbar-link:hover{ color:var(--brand-pink-deep); }
+.topbar.scrolled .hamburger-btn span{ background:var(--sage-deep); }
 
 /* keep the hamburger's own X visible above the full-screen menu, in place */
-body:has(#mobileMenuOverlay.visible) .topbar{ z-index:75; }
-body:has(#mobileMenuOverlay.visible) .topbar.at-hero{
+body:has(#mobileMenuOverlay.visible) .topbar{
+  z-index:75;
   background:rgba(251,247,238,0.85);
   backdrop-filter:blur(12px);
   border-bottom-color:rgba(75,98,69,0.08);
 }
-body:has(#mobileMenuOverlay.visible) .topbar.at-hero .topbar-brand,
-body:has(#mobileMenuOverlay.visible) .topbar.at-hero .topbar-link{ color:var(--ink); }
+body:has(#mobileMenuOverlay.visible) .topbar .topbar-brand{ color:var(--ink); }
+body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft); }
 
 /* ============ mobile full-screen menu ============ */
 .mobile-menu-overlay{

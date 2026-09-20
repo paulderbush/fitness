@@ -83,10 +83,11 @@ function setupTopbarOverHero(){
   const hero = document.querySelector('.hero');
   if(!topbar || !hero) return;
   function update(){
-    topbar.classList.toggle('at-hero', window.scrollY < 4);
+    topbar.classList.toggle('at-hero', window.scrollY < 15);
   }
   update();
   window.addEventListener('scroll', update, { passive:true });
+  window.addEventListener('resize', update);
 }
 
 // ============ POPUP (once per session, after 5s) ============

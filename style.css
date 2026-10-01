@@ -982,7 +982,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   border-radius:12px;
   padding:14px 16px;
   font-family:'Jost',sans-serif;
-  font-size:15px;
+  font-size:16px;
   color:var(--ink);
   background:#fff;
   margin-bottom:14px;

@@ -527,6 +527,8 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   display:flex;
   width:max-content;
   animation:marquee-scroll 16s linear infinite;
+  will-change:transform;
+  backface-visibility:hidden;
 }
 .marquee-item{
   font-family:'Jost',sans-serif;

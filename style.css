@@ -1048,6 +1048,17 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   border-radius:10px;
   margin-bottom:14px;
 }
+.auth-success{
+  background:rgba(75,98,69,0.1);
+  color:var(--sage-deep);
+  font-size:13.5px;
+  font-weight:600;
+  line-height:1.5;
+  padding:16px;
+  border-radius:12px;
+}
+.auth-success p{ margin:0; }
+.auth-success p + p{ margin-top:6px; font-weight:500; }
 .auth-form .field-input:last-of-type{ margin-bottom:18px; }
 
 /* ============ account dashboard ============ */

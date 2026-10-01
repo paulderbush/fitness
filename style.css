@@ -220,6 +220,12 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .mobile-menu-link:hover{ color:var(--rose-deep); }
 .mobile-menu-account{ margin-top:10px; }
 .mobile-menu-cta{ margin-top:10px; }
+.mobile-menu-nav .mobile-menu-account,
+.mobile-menu-nav .mobile-menu-cta{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  width:190px;
+}
 .mobile-menu-social{
   position:absolute;
   bottom:36px;

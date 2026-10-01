@@ -105,6 +105,25 @@ function setupTopbarOverHero(){
   window.addEventListener('resize', update);
 }
 
+// ============ POPUP OVERLAY HELPERS ============
+// Overlays default to display:none so forms inside them (e.g. the account
+// login/signup fields) aren't part of the page at load - some browsers will
+// otherwise proactively offer to autofill a saved password for a form that
+// merely exists in the DOM, even while it's only hidden via opacity.
+function showOverlay(el){
+  el.style.display = 'flex';
+  requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('visible')));
+}
+function hideOverlay(el){
+  el.classList.remove('visible');
+  const onEnd = (e) => {
+    if(e.target !== el) return;
+    el.style.display = 'none';
+    el.removeEventListener('transitionend', onEnd);
+  };
+  el.addEventListener('transitionend', onEnd);
+}
+
 // ============ POPUP (once per session, after 5s) ============
 function setupPopup(){
   const overlay = document.getElementById('popupOverlay');
@@ -115,12 +134,12 @@ function setupPopup(){
   const alreadyShown = sessionStorage.getItem('bm_popup_shown');
   if(!alreadyShown){
     setTimeout(() => {
-      overlay.classList.add('visible');
+      showOverlay(overlay);
       sessionStorage.setItem('bm_popup_shown', '1');
     }, 5000);
   }
 
-  function hide(){ overlay.classList.remove('visible'); }
+  function hide(){ hideOverlay(overlay); }
   closeBtn.addEventListener('click', hide);
   overlay.addEventListener('click', (e) => { if(e.target === overlay) hide(); });
   cta.addEventListener('click', hide);
@@ -219,9 +238,9 @@ function setupAccount(){
   function openAuth(){
     setAuthTab('login');
     authForm.reset();
-    authOverlay.classList.add('visible');
+    showOverlay(authOverlay);
   }
-  function closeAuth(){ authOverlay.classList.remove('visible'); }
+  function closeAuth(){ hideOverlay(authOverlay); }
   authClose.addEventListener('click', closeAuth);
   authOverlay.addEventListener('click', (e) => { if(e.target === authOverlay) closeAuth(); });
 
@@ -259,7 +278,7 @@ function setupAccount(){
   });
 
   async function openDashboard(){
-    dashboardOverlay.classList.add('visible');
+    showOverlay(dashboardOverlay);
     dashboardEmail.textContent = '';
     dashboardStatus.textContent = 'Checking subscription…';
     dashboardContent.innerHTML = '';
@@ -267,7 +286,7 @@ function setupAccount(){
     if(!sb) return;
     const { data:{ session } } = await sb.auth.getSession();
     if(!session){
-      dashboardOverlay.classList.remove('visible');
+      hideOverlay(dashboardOverlay);
       openAuth();
       return;
     }
@@ -310,13 +329,13 @@ function setupAccount(){
     openAuth();
   }));
 
-  dashboardClose.addEventListener('click', () => dashboardOverlay.classList.remove('visible'));
-  dashboardOverlay.addEventListener('click', (e) => { if(e.target === dashboardOverlay) dashboardOverlay.classList.remove('visible'); });
+  dashboardClose.addEventListener('click', () => hideOverlay(dashboardOverlay));
+  dashboardOverlay.addEventListener('click', (e) => { if(e.target === dashboardOverlay) hideOverlay(dashboardOverlay); });
 
   logoutBtn.addEventListener('click', async () => {
     await sbReady;
     if(sb) await sb.auth.signOut();
-    dashboardOverlay.classList.remove('visible');
+    hideOverlay(dashboardOverlay);
   });
 }
 

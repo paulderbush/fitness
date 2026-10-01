@@ -550,11 +550,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   background-size:cover;
   background-position:center;
 }
-.video-section-bg::after{
-  content:'';
-  position:absolute; inset:0;
-  background:rgba(16,11,9,0.62);
-}
 .section-video .eyebrow{ color:rgba(255,255,255,0.85); text-align:center; }
 .section-video .h2{ color:#fff; text-align:center; }
 .showcase-accent{ color:var(--brand-pink); font-style:italic; font-weight:500; }
@@ -570,26 +565,31 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 .video-nav{
   display:flex;
-  gap:8px;
-  overflow-x:auto;
+  flex-wrap:wrap;
+  gap:6px;
 }
 .video-nav-item{
   display:flex;
   align-items:center;
-  gap:8px;
-  flex-shrink:0;
-  padding:10px 14px;
-  border-radius:12px;
+  justify-content:center;
+  gap:5px;
+  padding:8px 8px;
+  border-radius:10px;
   border:1px solid rgba(255,255,255,0.18);
   background:rgba(255,255,255,0.08);
   color:rgba(255,255,255,0.85);
   font-family:'Jost',sans-serif;
   font-weight:700;
-  font-size:12px;
-  white-space:nowrap;
+  font-size:10px;
+  line-height:1.25;
+  text-align:center;
+  white-space:normal;
   transition:background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
-.video-nav-item svg{ width:16px; height:16px; flex-shrink:0; }
+/* 2 items on the first row, 3 on the second - no horizontal scrolling */
+.video-nav-item:nth-child(-n+2){ flex:0 0 calc(50% - 3px); }
+.video-nav-item:nth-child(n+3){ flex:0 0 calc(33.333% - 4px); }
+.video-nav-item svg{ width:14px; height:14px; flex-shrink:0; }
 .video-nav-item.active{
   background:var(--brand-pink);
   border-color:var(--brand-pink);
@@ -1084,7 +1084,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   position:fixed; inset:0;
   background:rgba(36,43,34,0.45);
   backdrop-filter:blur(4px);
-  display:flex;
+  display:none;
   align-items:center;
   justify-content:center;
   padding:22px;
@@ -1231,7 +1231,10 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     grid-column:1; grid-row:1; align-self:center;
     height:260px; flex-direction:column; overflow-x:visible;
   }
-  .video-nav-item{ flex:1; white-space:normal; font-size:12.5px; padding:0 16px; }
+  .video-nav-item{ justify-content:flex-start; text-align:left; white-space:normal; font-size:12.5px; padding:0 16px; }
+  .video-nav-item:nth-child(-n+2),
+  .video-nav-item:nth-child(n+3){ flex:1; }
+  .video-nav-item svg{ width:16px; height:16px; }
   .video-player{ grid-column:2; grid-row:1; }
   .section-video .hero-features{ grid-column:2; grid-row:2; }
   .video-upnext{

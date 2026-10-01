@@ -1,0 +1,9 @@
+{
+  "name": "body-muse-site",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "stripe": "^17.4.0"
+  }
+}

@@ -32,6 +32,7 @@
     <a href="#pricing" class="topbar-link">Pricing</a>
   </nav>
   <div class="topbar-actions">
+    <button type="button" class="btn btn-pill btn-sm btn-outline-light account-btn-topbar" id="accountBtn">My Account</button>
     <a href="#signup" class="btn btn-pill btn-sm btn-primary">Join Now</a>
     <button type="button" class="hamburger-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -46,6 +47,7 @@
     <a href="#program" class="mobile-menu-link">Nutrition</a>
     <a href="#about" class="mobile-menu-link">Coach</a>
     <a href="#pricing" class="mobile-menu-link">Pricing</a>
+    <button type="button" class="mobile-menu-link mobile-menu-account" id="accountBtnMobile">My Account</button>
     <a href="#signup" class="btn btn-pill btn-primary btn-lg mobile-menu-cta">Join Now</a>
   </nav>
   <div class="mobile-menu-social">
@@ -433,7 +435,7 @@
           <li>✔ Healthy recipes</li>
           <li>✔ Step-by-step training system</li>
         </ul>
-        <p class="promo-fine">Then continue for only €20/month. Cancel anytime before your trial ends.</p>
+        <p class="promo-fine">Then continue for only €19.99/month. Cancel anytime before your trial ends.</p>
 
         <div class="countdown" id="countdown">
           <div class="countdown-label">Today's trial price ends at midnight</div>
@@ -456,9 +458,12 @@
       <h2 class="h2">Start your 10-day trial</h2>
       <div class="glass-card signup-card">
         <label class="field-label" for="emailInput">Email address</label>
-        <input type="email" id="emailInput" class="field-input" placeholder="you@email.com">
+        <input type="email" id="emailInput" class="field-input" placeholder="you@email.com" autocomplete="email">
 
-        <!-- Payment step connects to Stripe Checkout once payments are wired up -->
+        <label class="field-label" for="signupPassword">Create a password</label>
+        <input type="password" id="signupPassword" class="field-input" placeholder="At least 6 characters" autocomplete="new-password" minlength="6">
+        <div class="field-hint">This creates your member account, so you can log in anytime to manage your subscription.</div>
+
         <div class="payment-note">💳 Payment is collected securely on the next step</div>
 
         <button class="btn btn-pill btn-primary btn-lg btn-block" id="signupBtn" type="button">Start My 10-Day Trial for €2.99</button>
@@ -517,16 +522,38 @@
   </div>
 </div>
 
-<!-- ============ ACCOUNT POPUP ============ -->
+<!-- ============ ACCOUNT AUTH POPUP ============ -->
 <div class="popup-overlay" id="accountPopupOverlay">
-  <div class="glass-card popup-card">
+  <div class="glass-card popup-card auth-card">
     <button class="popup-close" id="accountPopupClose" aria-label="Close">✕</button>
-    <div class="eyebrow">My Account</div>
-    <div class="popup-title">Coming soon</div>
-    <p class="popup-text">We're building your personal member dashboard. It'll be ready soon — for now, start your trial to get access to the program.</p>
+    <div class="auth-tabs" role="tablist">
+      <button type="button" class="auth-tab active" data-tab="login" role="tab">Log In</button>
+      <button type="button" class="auth-tab" data-tab="signup" role="tab">Sign Up</button>
+    </div>
+    <div class="auth-error" id="authError" hidden></div>
+    <form class="auth-form" id="authForm" novalidate>
+      <label class="field-label" for="authEmail">Email address</label>
+      <input type="email" id="authEmail" class="field-input" placeholder="you@email.com" autocomplete="email" required>
+      <label class="field-label" for="authPassword">Password</label>
+      <input type="password" id="authPassword" class="field-input" placeholder="••••••••" autocomplete="current-password" minlength="6" required>
+      <button class="btn btn-pill btn-primary btn-lg btn-block" id="authSubmit" type="submit">Log In</button>
+    </form>
   </div>
 </div>
 
+<!-- ============ ACCOUNT DASHBOARD ============ -->
+<div class="popup-overlay" id="dashboardOverlay">
+  <div class="glass-card popup-card dashboard-card">
+    <button class="popup-close" id="dashboardClose" aria-label="Close">✕</button>
+    <div class="eyebrow">My Account</div>
+    <div class="dashboard-email" id="dashboardEmail"></div>
+    <div class="dashboard-status" id="dashboardStatus">Checking subscription…</div>
+    <div class="dashboard-content" id="dashboardContent"></div>
+    <button class="btn btn-ghost btn-sm" id="logoutBtn" type="button">Log out</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

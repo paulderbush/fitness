@@ -515,35 +515,88 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 .hero-footnote{ display:none; }
 
-/* ============ video ============ */
-.trailer-layout{ display:flex; flex-direction:column; gap:28px; }
-.trailer-text .eyebrow, .trailer-text .h2{ text-align:center; }
-.trailer-copy{
-  font-size:15.5px;
-  line-height:1.65;
-  color:var(--ink-soft);
-  font-weight:500;
-  text-align:center;
+/* ============ video showcase ============ */
+.section-video{ position:relative; overflow:hidden; padding:64px 22px; }
+.video-section-bg{
+  position:absolute; inset:0;
+  background-image:url(images/clear.webp);
+  background-size:cover;
+  background-position:center;
 }
-.video-placeholder{
+.video-section-bg::after{
+  content:'';
+  position:absolute; inset:0;
+  background:rgba(16,11,9,0.62);
+}
+.section-video .eyebrow{ color:rgba(255,255,255,0.85); text-align:center; }
+.section-video .h2{ color:#fff; text-align:center; }
+.showcase-accent{ color:var(--brand-pink); font-style:italic; font-weight:500; }
+.section-video .section-lead{ color:rgba(255,255,255,0.8); }
+.section-lead.center{ text-align:center; margin-left:auto; margin-right:auto; }
+
+.video-showcase{
   display:flex;
   flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  height:220px;
-  background:linear-gradient(135deg, var(--sage-pale), var(--rose-pale));
   gap:14px;
-  flex-shrink:0;
+  margin:28px 0 0 0;
 }
-.play-btn{
-  width:64px; height:64px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.85);
-  display:flex; align-items:center; justify-content:center;
-  font-size:22px;
-  color:var(--sage-deep);
+.video-player{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:18px;
+  overflow:hidden;
+  background:#000;
+  border:1px solid rgba(255,255,255,0.15);
   box-shadow:var(--shadow);
 }
+.video-player iframe{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  border:none;
+}
+.video-upnext{
+  display:flex;
+  gap:10px;
+}
+.video-upnext-label{
+  display:none;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.6);
+  margin-bottom:4px;
+}
+.video-upnext-item{
+  flex:1;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.08);
+  color:#fff;
+  font-family:'Jost',sans-serif;
+  font-weight:700;
+  font-size:12.5px;
+  cursor:pointer;
+  transition:background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.video-upnext-play{ display:flex; flex-shrink:0; }
+.video-upnext-play svg{ width:16px; height:16px; }
+.video-upnext-item.active{
+  background:var(--brand-pink);
+  border-color:var(--brand-pink);
+  color:var(--ink);
+}
+.video-upnext-item:not(.active):hover{ background:rgba(255,255,255,0.16); }
+
+.video-cta-wrap{ margin-top:30px; text-align:center; }
+.video-cta-wrap .btn{ display:inline-flex; gap:10px; }
+.video-cta-wrap .trust-row{ color:rgba(255,255,255,0.7); margin-top:12px; }
+
 .placeholder-note{
   font-size:13px;
   font-weight:700;
@@ -693,7 +746,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   margin-bottom:10px;
 }
 .outcomes-list li::before{
-  content:"—";
+  content:"-";
   position:absolute; left:0; color:var(--rose);
 }
 .outcomes-list li:last-child{ margin-bottom:0; }
@@ -1095,6 +1148,11 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .gallery-grid{ grid-template-columns:repeat(4,1fr); }
   .sticky-bar{ display:none; }
   .topbar-nav{ display:flex; }
+  .video-showcase{ flex-direction:row; align-items:stretch; gap:20px; }
+  .video-player{ flex:1; }
+  .video-upnext{ width:220px; flex-direction:column; flex-shrink:0; }
+  .video-upnext-label{ display:block; }
+  .video-upnext-item{ font-size:13px; padding:14px 16px; }
 }
 
 /* ============ wide desktop ============ */
@@ -1202,11 +1260,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .hero-note{ display:block; font-size:44px; top:75px; right:130px; }
   .eyebrow-br-desktop{ display:inline; }
   .eyebrow-br-mobile{ display:none; }
-  .trailer-layout{ flex-direction:row; align-items:center; gap:64px; }
-  .video-placeholder{ flex:1; height:460px; }
-  .trailer-text{ flex:1; }
-  .trailer-text .eyebrow, .trailer-text .h2{ text-align:left; }
-  .trailer-copy{ text-align:left; font-size:17px; margin-top:22px; }
   .coach-caption{
     height:150px;
     display:flex;

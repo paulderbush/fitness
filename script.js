@@ -176,6 +176,7 @@ function setupAccount(){
   const authPassword = document.getElementById('authPassword');
   const authSubmit = document.getElementById('authSubmit');
   const authError = document.getElementById('authError');
+  const authSuccess = document.getElementById('authSuccess');
 
   const dashboardOverlay = document.getElementById('dashboardOverlay');
   const dashboardClose = document.getElementById('dashboardClose');
@@ -195,6 +196,8 @@ function setupAccount(){
     authSubmit.textContent = tab === 'signup' ? 'Sign Up' : 'Log In';
     authPassword.autocomplete = tab === 'signup' ? 'new-password' : 'current-password';
     authError.hidden = true;
+    authSuccess.hidden = true;
+    authForm.hidden = false;
   }
   authTabs.forEach(t => t.addEventListener('click', () => setAuthTab(t.dataset.tab)));
 
@@ -219,13 +222,21 @@ function setupAccount(){
     const password = authPassword.value;
     authError.hidden = true;
     authSubmit.disabled = true;
-    const { error } = authTab === 'signup'
+    const { data, error } = authTab === 'signup'
       ? await sb.auth.signUp({ email, password })
       : await sb.auth.signInWithPassword({ email, password });
     authSubmit.disabled = false;
     if(error){
       authError.textContent = error.message;
       authError.hidden = false;
+      return;
+    }
+    if(authTab === 'signup' && !data.session){
+      // Email confirmation is required — the account exists but there's
+      // no active session yet, so show a success message instead of
+      // silently reopening the (now pointless) login form.
+      authForm.hidden = true;
+      authSuccess.hidden = false;
       return;
     }
     closeAuth();

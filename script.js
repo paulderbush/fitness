@@ -133,22 +133,165 @@ function setupMobileMenu(){
   menuBtn.addEventListener('click', () => {
     if(overlay.classList.contains('visible')) close(); else open();
   });
-  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  overlay.querySelectorAll('a, button').forEach(el => el.addEventListener('click', close));
 }
 
-// ============ ACCOUNT POPUP (My Account — coming soon) ============
-function setupAccountPopup(){
-  const btn = document.getElementById('accountBtn');
-  const overlay = document.getElementById('accountPopupOverlay');
-  const closeBtn = document.getElementById('accountPopupClose');
-  if(!btn || !overlay) return;
+// ============ SUPABASE CLIENT (config fetched from the server at runtime) ============
+let sb = null;
+const sbReady = (async () => {
+  try {
+    const res = await fetch('/api/public-config');
+    if(!res.ok) return;
+    const cfg = await res.json();
+    if(cfg.supabaseUrl && cfg.supabaseAnonKey && window.supabase){
+      sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+    }
+  } catch(e){
+    console.error('Supabase init failed', e);
+  }
+})();
 
-  function show(){ overlay.classList.add('visible'); }
-  function hide(){ overlay.classList.remove('visible'); }
+// ============ STRIPE CHECKOUT ============
+async function startCheckout(email, userId){
+  const res = await fetch('/api/create-checkout-session', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, userId }),
+  });
+  let data = {};
+  try { data = await res.json(); } catch(e){ /* non-JSON response */ }
+  if(!res.ok || !data.url){
+    throw new Error(data.error || 'Could not start checkout.');
+  }
+  window.location.href = data.url;
+}
 
-  btn.addEventListener('click', show);
-  closeBtn.addEventListener('click', hide);
-  overlay.addEventListener('click', (e) => { if(e.target === overlay) hide(); });
+// ============ ACCOUNT: AUTH POPUP + DASHBOARD ============
+function setupAccount(){
+  const authOverlay = document.getElementById('accountPopupOverlay');
+  const authClose = document.getElementById('accountPopupClose');
+  const authTabs = document.querySelectorAll('.auth-tab');
+  const authForm = document.getElementById('authForm');
+  const authEmail = document.getElementById('authEmail');
+  const authPassword = document.getElementById('authPassword');
+  const authSubmit = document.getElementById('authSubmit');
+  const authError = document.getElementById('authError');
+
+  const dashboardOverlay = document.getElementById('dashboardOverlay');
+  const dashboardClose = document.getElementById('dashboardClose');
+  const dashboardEmail = document.getElementById('dashboardEmail');
+  const dashboardStatus = document.getElementById('dashboardStatus');
+  const dashboardContent = document.getElementById('dashboardContent');
+  const logoutBtn = document.getElementById('logoutBtn');
+
+  const accountButtons = [document.getElementById('accountBtn'), document.getElementById('accountBtnMobile')].filter(Boolean);
+  if(!authOverlay || !dashboardOverlay || accountButtons.length === 0) return;
+
+  let authTab = 'login';
+
+  function setAuthTab(tab){
+    authTab = tab;
+    authTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+    authSubmit.textContent = tab === 'signup' ? 'Sign Up' : 'Log In';
+    authPassword.autocomplete = tab === 'signup' ? 'new-password' : 'current-password';
+    authError.hidden = true;
+  }
+  authTabs.forEach(t => t.addEventListener('click', () => setAuthTab(t.dataset.tab)));
+
+  function openAuth(){
+    setAuthTab('login');
+    authForm.reset();
+    authOverlay.classList.add('visible');
+  }
+  function closeAuth(){ authOverlay.classList.remove('visible'); }
+  authClose.addEventListener('click', closeAuth);
+  authOverlay.addEventListener('click', (e) => { if(e.target === authOverlay) closeAuth(); });
+
+  authForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await sbReady;
+    if(!sb){
+      authError.textContent = 'Account service is temporarily unavailable. Please try again shortly.';
+      authError.hidden = false;
+      return;
+    }
+    const email = authEmail.value.trim();
+    const password = authPassword.value;
+    authError.hidden = true;
+    authSubmit.disabled = true;
+    const { error } = authTab === 'signup'
+      ? await sb.auth.signUp({ email, password })
+      : await sb.auth.signInWithPassword({ email, password });
+    authSubmit.disabled = false;
+    if(error){
+      authError.textContent = error.message;
+      authError.hidden = false;
+      return;
+    }
+    closeAuth();
+    openDashboard();
+  });
+
+  async function openDashboard(){
+    dashboardOverlay.classList.add('visible');
+    dashboardEmail.textContent = '';
+    dashboardStatus.textContent = 'Checking subscription…';
+    dashboardContent.innerHTML = '';
+    await sbReady;
+    if(!sb) return;
+    const { data:{ session } } = await sb.auth.getSession();
+    if(!session){
+      dashboardOverlay.classList.remove('visible');
+      openAuth();
+      return;
+    }
+    dashboardEmail.textContent = session.user.email;
+    try {
+      const res = await fetch('/api/subscription-status', {
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      });
+      const data = await res.json();
+      if(data.active){
+        dashboardStatus.innerHTML = '<span class="status-badge status-active">Active subscription</span>';
+        dashboardContent.innerHTML = '<p class="dashboard-placeholder">Your video courses will appear here soon. 🎬</p>';
+      } else {
+        dashboardStatus.innerHTML = '<span class="status-badge status-inactive">No active subscription</span>';
+        dashboardContent.innerHTML = '<button class="btn btn-pill btn-primary btn-block" id="dashboardSubscribeBtn" type="button">Subscribe for €19.99/month</button>';
+        const subBtn = document.getElementById('dashboardSubscribeBtn');
+        subBtn.addEventListener('click', async () => {
+          subBtn.disabled = true;
+          subBtn.textContent = 'Redirecting to secure payment…';
+          try {
+            await startCheckout(session.user.email, session.user.id);
+          } catch(err){
+            alert(err.message);
+            subBtn.disabled = false;
+            subBtn.textContent = 'Subscribe for €19.99/month';
+          }
+        });
+      }
+    } catch(e){
+      dashboardStatus.textContent = 'Could not load subscription status.';
+    }
+  }
+
+  accountButtons.forEach(btn => btn.addEventListener('click', async () => {
+    await sbReady;
+    if(sb){
+      const { data:{ session } } = await sb.auth.getSession();
+      if(session){ openDashboard(); return; }
+    }
+    openAuth();
+  }));
+
+  dashboardClose.addEventListener('click', () => dashboardOverlay.classList.remove('visible'));
+  dashboardOverlay.addEventListener('click', (e) => { if(e.target === dashboardOverlay) dashboardOverlay.classList.remove('visible'); });
+
+  logoutBtn.addEventListener('click', async () => {
+    await sbReady;
+    if(sb) await sb.auth.signOut();
+    dashboardOverlay.classList.remove('visible');
+  });
 }
 
 // ============ HASH CLEANUP (avoid re-jumping to a section on reload) ============
@@ -162,20 +305,74 @@ function setupHashCleanup(){
   window.addEventListener('hashchange', stripHash);
 }
 
-// ============ SIGNUP BUTTON (placeholder — wire to Stripe Checkout later) ============
+// ============ SIGNUP: CREATE ACCOUNT + START CHECKOUT ============
 function setupSignup(){
   const btn = document.getElementById('signupBtn');
   const emailInput = document.getElementById('emailInput');
+  const passwordInput = document.getElementById('signupPassword');
   if(!btn) return;
-  btn.addEventListener('click', () => {
-    if(!emailInput.value || !emailInput.checkValidity()){
-      emailInput.focus();
+  const defaultLabel = btn.textContent;
+
+  function reset(){
+    btn.disabled = false;
+    btn.textContent = defaultLabel;
+  }
+
+  btn.addEventListener('click', async () => {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+    let valid = true;
+    if(!email || !emailInput.checkValidity()){
       emailInput.style.borderColor = '#C1587A';
+      valid = false;
+    } else {
+      emailInput.style.borderColor = '';
+    }
+    if(!password || password.length < 6){
+      passwordInput.style.borderColor = '#C1587A';
+      valid = false;
+    } else {
+      passwordInput.style.borderColor = '';
+    }
+    if(!valid) return;
+
+    await sbReady;
+    if(!sb){
+      alert('Account service is temporarily unavailable. Please try again shortly.');
       return;
     }
-    // TODO: replace with real Stripe Checkout redirect
+
+    btn.disabled = true;
+    btn.textContent = 'Creating your account…';
+
+    let userId;
+    const { data:signUpData, error:signUpError } = await sb.auth.signUp({ email, password });
+    if(signUpError){
+      if(/already registered|already exists/i.test(signUpError.message)){
+        const { data:signInData, error:signInError } = await sb.auth.signInWithPassword({ email, password });
+        if(signInError){
+          reset();
+          passwordInput.style.borderColor = '#C1587A';
+          alert('An account with this email already exists. Please check your password.');
+          return;
+        }
+        userId = signInData.user.id;
+      } else {
+        reset();
+        alert(signUpError.message);
+        return;
+      }
+    } else {
+      userId = signUpData.user.id;
+    }
+
     btn.textContent = 'Redirecting to secure payment…';
-    btn.style.opacity = '0.7';
+    try {
+      await startCheckout(email, userId);
+    } catch(err){
+      alert(err.message);
+      reset();
+    }
   });
 }
 
@@ -186,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupStickyBar();
   setupTopbarOverHero();
   setupPopup();
-  setupAccountPopup();
+  setupAccount();
   setupMobileMenu();
   setupSignup();
   setupHashCleanup();

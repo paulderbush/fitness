@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Your Program - Body Muse</title>
+<meta name="description" content="Your Body Muse program.">
+<meta name="theme-color" content="#0a0502">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,500&family=Jost:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar scrolled" id="topbar">
+  <a href="index.html" class="topbar-brand">Body Muse</a>
+  <nav class="topbar-nav">
+    <a href="index.html#program" class="topbar-link">Programs</a>
+    <a href="index.html#program" class="topbar-link">Nutrition</a>
+    <a href="index.html#about" class="topbar-link">Coach</a>
+    <a href="index.html#pricing" class="topbar-link">Pricing</a>
+  </nav>
+  <div class="topbar-actions">
+    <a href="account.html" class="btn btn-pill btn-sm btn-outline-light account-btn-topbar">My Account</a>
+    <button type="button" class="hamburger-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+  <nav class="mobile-menu-nav">
+    <a href="index.html#program" class="mobile-menu-link">Programs</a>
+    <a href="index.html#program" class="mobile-menu-link">Nutrition</a>
+    <a href="index.html#about" class="mobile-menu-link">Coach</a>
+    <a href="index.html#pricing" class="mobile-menu-link">Pricing</a>
+    <a href="account.html" class="btn btn-pill btn-outline btn-lg mobile-menu-account">My Account</a>
+  </nav>
+</div>
+
+<main>
+  <section class="section" id="gateLoading">
+    <div class="section-inner narrow">
+      <p class="program-gate-checking">Checking access…</p>
+    </div>
+  </section>
+
+  <section class="section" id="gateContent" hidden>
+    <div class="section-inner narrow">
+      <div class="eyebrow">Your Program</div>
+      <h2 class="h2">Body Muse Program</h2>
+      <div class="glass-card dashboard-card">
+        <p class="dashboard-placeholder">Your video courses will appear here soon. 🎬</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-brand">Body Muse</div>
+  <div class="footer-tagline">Strong. Beautiful. Confident.</div>
+  <div class="footer-fine">© Body Muse. All rights reserved.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="supabase-client.js"></script>
+<script src="nav.js"></script>
+<script src="program-guard.js"></script>
+</body>
+</html>

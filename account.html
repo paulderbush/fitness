@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>My Account - Body Muse</title>
+<meta name="description" content="Manage your Body Muse membership and subscription.">
+<meta name="theme-color" content="#0a0502">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,500&family=Jost:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar scrolled" id="topbar">
+  <a href="index.html" class="topbar-brand">Body Muse</a>
+  <nav class="topbar-nav">
+    <a href="index.html#program" class="topbar-link">Programs</a>
+    <a href="index.html#program" class="topbar-link">Nutrition</a>
+    <a href="index.html#about" class="topbar-link">Coach</a>
+    <a href="index.html#pricing" class="topbar-link">Pricing</a>
+  </nav>
+  <div class="topbar-actions">
+    <a href="index.html" class="btn btn-pill btn-sm btn-outline-light account-btn-topbar">Back to site</a>
+    <button type="button" class="hamburger-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+  <nav class="mobile-menu-nav">
+    <a href="index.html#program" class="mobile-menu-link">Programs</a>
+    <a href="index.html#program" class="mobile-menu-link">Nutrition</a>
+    <a href="index.html#about" class="mobile-menu-link">Coach</a>
+    <a href="index.html#pricing" class="mobile-menu-link">Pricing</a>
+    <a href="index.html" class="btn btn-pill btn-outline btn-lg mobile-menu-account">Back to site</a>
+  </nav>
+</div>
+
+<main>
+  <section class="section">
+    <div class="section-inner narrow">
+      <div class="eyebrow">My Account</div>
+      <h2 class="h2">Your membership</h2>
+
+      <div class="glass-card dashboard-card">
+        <div class="dashboard-email" id="dashboardEmail"></div>
+        <div class="dashboard-status" id="dashboardStatus">Checking subscription…</div>
+        <div class="dashboard-content" id="dashboardContent"></div>
+      </div>
+
+      <div class="account-programs">
+        <h3 class="account-programs-title">My Programs</h3>
+        <div id="programsList"></div>
+      </div>
+
+      <div class="account-actions">
+        <button class="btn btn-ghost btn-sm" id="logoutBtn" type="button">Log out</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-brand">Body Muse</div>
+  <div class="footer-tagline">Strong. Beautiful. Confident.</div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/yegorova.maria" target="_blank" rel="noopener" class="social-btn social-btn-instagram">
+      <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true">
+        <defs>
+          <linearGradient id="igGradFooterAcc" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FEDA75"/>
+            <stop offset="30%" stop-color="#FA7E1E"/>
+            <stop offset="60%" stop-color="#D62976"/>
+            <stop offset="85%" stop-color="#962FBF"/>
+            <stop offset="100%" stop-color="#4F5BD5"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke="url(#igGradFooterAcc)"></rect>
+        <circle cx="12" cy="12" r="4.2" stroke="url(#igGradFooterAcc)"></circle>
+        <circle cx="17.2" cy="6.8" r="1.1" fill="url(#igGradFooterAcc)"></circle>
+      </svg>
+      <span class="ig-text">Instagram</span>
+    </a>
+    <a href="https://t.me/bodymuse" target="_blank" rel="noopener" class="social-btn social-btn-telegram">
+      <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.14-3.05-2 1.92c-.21.21-.4.4-.75.4Z"></path>
+      </svg>
+      Telegram
+    </a>
+  </div>
+  <div class="footer-fine">© Body Muse. All rights reserved.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="supabase-client.js"></script>
+<script src="nav.js"></script>
+<script src="account.js"></script>
+</body>
+</html>

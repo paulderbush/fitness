@@ -36,7 +36,7 @@ module.exports = async (req, res) => {
         metadata: { supabase_user_id: userId },
       },
       metadata: { supabase_user_id: userId },
-      success_url: `${siteUrl}/?checkout=success`,
+      success_url: `${siteUrl}/account.html?checkout=success`,
       cancel_url: `${siteUrl}/?checkout=cancelled`,
     });
 

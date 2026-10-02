@@ -1204,6 +1204,51 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   border-radius:14px;
   padding:20px;
 }
+.dashboard-renew{
+  font-size:14px;
+  color:var(--ink-soft);
+  margin:0 0 14px 0;
+}
+
+/* ============ account page ============ */
+.section-inner.narrow{ max-width:560px; }
+.account-programs{ margin-top:28px; }
+.account-programs-title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:18px;
+  color:var(--sage-deep);
+  margin-bottom:14px;
+}
+.account-program-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:18px 22px;
+  border-radius:16px;
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--shadow);
+}
+.account-program-name{ font-weight:700; color:var(--ink); }
+.account-program-cta{ font-weight:700; color:var(--rose-deep); font-size:14px; }
+.account-locked{
+  font-size:14px;
+  color:var(--muted);
+  background:rgba(75,98,69,0.06);
+  border-radius:14px;
+  padding:18px 22px;
+  margin:0;
+}
+.account-actions{ text-align:center; margin-top:28px; }
+.program-gate-checking{
+  text-align:center;
+  font-size:14px;
+  font-weight:600;
+  color:var(--muted);
+  padding:60px 0;
+}
 
 /* ============ desktop ============ */
 @media (min-width:760px){

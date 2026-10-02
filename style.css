@@ -598,11 +598,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .video-nav-item:nth-child(-n+2){ flex:0 0 calc(50% - 3px); }
 .video-nav-item:nth-child(n+3){ flex:0 0 calc(33.333% - 4px); }
 .video-nav-item svg{ width:14px; height:14px; flex-shrink:0; }
-.video-nav-item.active{
-  background:var(--brand-pink);
-  border-color:var(--brand-pink);
-  color:var(--ink);
-}
 
 .video-player{
   position:relative;

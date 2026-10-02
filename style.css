@@ -1219,13 +1219,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 /* ============ account page ============ */
 .section-inner.narrow{ max-width:560px; }
 .account-programs{ margin-top:28px; }
-.account-programs-title{
-  font-family:'Fraunces',serif;
-  font-weight:600;
-  font-size:18px;
-  color:var(--sage-deep);
-  margin-bottom:14px;
-}
 .account-program-card{
   position:relative;
   display:flex;
@@ -1244,7 +1237,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .account-program-overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(10,5,2,0) 35%, rgba(10,5,2,0.75) 100%);
+  background:linear-gradient(180deg, rgba(10,5,2,0) 25%, rgba(10,5,2,0.9) 100%);
 }
 .account-program-name{
   position:relative;

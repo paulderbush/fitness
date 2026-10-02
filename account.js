@@ -62,7 +62,7 @@ async function refreshStatus(session){
 
       accountProgramsSection.hidden = false;
       programsList.innerHTML = `
-        <a href="program.html" class="account-program-card" style="background-image:url('images/preview1.webp')">
+        <a href="program.html" class="account-program-card" style="background-image:url('images/preview-program.webp')">
           <div class="account-program-overlay"></div>
           <span class="account-program-name">Body Muse Program</span>
           <span class="btn btn-pill btn-primary btn-sm account-program-cta">Start Training</span>

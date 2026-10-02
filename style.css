@@ -273,6 +273,12 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .btn-outline-light:hover{ background:rgba(255,255,255,0.14); }
 .topbar.scrolled .btn-outline-light{ color:var(--ink); border-color:rgba(75,98,69,0.3); }
 .topbar.scrolled .btn-outline-light:hover{ background:rgba(75,98,69,0.08); }
+.btn-outline-rose{
+  background:transparent;
+  color:var(--rose-deep);
+  border:1.5px solid var(--rose-deep);
+}
+.btn-outline-rose:hover{ background:rgba(193,88,122,0.08); }
 .btn-lg{ padding:18px 30px; font-size:16px; }
 .btn-sm{ padding:10px 18px; font-size:13.5px; }
 .btn-block{ display:flex; width:100%; margin-top:10px; }
@@ -1221,26 +1227,33 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   margin-bottom:14px;
 }
 .account-program-card{
+  position:relative;
   display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:18px 22px;
-  border-radius:16px;
-  background:var(--glass);
-  border:1px solid var(--glass-border);
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-end;
+  gap:14px;
+  min-height:260px;
+  padding:24px;
+  border-radius:20px;
+  background-size:cover;
+  background-position:center;
+  overflow:hidden;
   box-shadow:var(--shadow);
 }
-.account-program-name{ font-weight:700; color:var(--ink); }
-.account-program-cta{ font-weight:700; color:var(--rose-deep); font-size:14px; }
-.account-locked{
-  font-size:14px;
-  color:var(--muted);
-  background:rgba(75,98,69,0.06);
-  border-radius:14px;
-  padding:18px 22px;
-  margin:0;
+.account-program-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(10,5,2,0) 35%, rgba(10,5,2,0.75) 100%);
 }
+.account-program-name{
+  position:relative;
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:22px;
+  color:#fff;
+}
+.account-program-cta{ position:relative; }
 .account-actions{ text-align:center; margin-top:28px; }
 .program-gate-checking{
   text-align:center;

@@ -12,11 +12,13 @@ function daysLeft(iso){
 async function refreshStatus(session){
   const dashboardStatus = document.getElementById('dashboardStatus');
   const dashboardContent = document.getElementById('dashboardContent');
+  const accountProgramsSection = document.getElementById('accountProgramsSection');
   const programsList = document.getElementById('programsList');
 
   dashboardStatus.textContent = 'Checking subscription…';
   dashboardContent.innerHTML = '';
   programsList.innerHTML = '';
+  accountProgramsSection.hidden = true;
 
   try {
     const res = await fetch('/api/subscription-status', {
@@ -58,10 +60,12 @@ async function refreshStatus(session){
         });
       }
 
+      accountProgramsSection.hidden = false;
       programsList.innerHTML = `
-        <a href="program.html" class="account-program-card">
+        <a href="program.html" class="account-program-card" style="background-image:url('images/preview1.webp')">
+          <div class="account-program-overlay"></div>
           <span class="account-program-name">Body Muse Program</span>
-          <span class="account-program-cta">View Program →</span>
+          <span class="btn btn-pill btn-primary btn-sm account-program-cta">Start Training</span>
         </a>
       `;
     } else {
@@ -79,7 +83,6 @@ async function refreshStatus(session){
           btn.textContent = 'Subscribe for €19.99/month';
         }
       });
-      programsList.innerHTML = '<p class="account-locked">Subscribe to unlock your program.</p>';
     }
   } catch(e){
     dashboardStatus.textContent = 'Could not load subscription status.';

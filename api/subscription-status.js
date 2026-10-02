@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
 
     const { data, error } = await supabaseAdmin
       .from('subscriptions')
-      .select('status, current_period_end')
+      .select('status, current_period_end, cancel_at_period_end')
       .eq('user_id', userData.user.id)
       .maybeSingle();
 
@@ -36,6 +36,7 @@ module.exports = async (req, res) => {
       active,
       status: data ? data.status : 'none',
       currentPeriodEnd: data ? data.current_period_end : null,
+      cancelAtPeriodEnd: data ? !!data.cancel_at_period_end : false,
     });
   } catch(err){
     console.error('subscription-status error', err);

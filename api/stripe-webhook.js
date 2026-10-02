@@ -26,6 +26,7 @@ async function upsertSubscription(subscription){
     stripe_customer_id: subscription.customer,
     stripe_subscription_id: subscription.id,
     status: subscription.status,
+    cancel_at_period_end: subscription.cancel_at_period_end,
     current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
     updated_at: new Date().toISOString(),
   });

@@ -145,62 +145,9 @@ function setupPopup(){
   cta.addEventListener('click', hide);
 }
 
-// ============ MOBILE FULL-SCREEN MENU ============
-function setupMobileMenu(){
-  const menuBtn = document.getElementById('menuBtn');
-  const overlay = document.getElementById('mobileMenuOverlay');
-  if(!menuBtn || !overlay) return;
-
-  function open(){
-    overlay.classList.add('visible');
-    menuBtn.classList.add('open');
-    menuBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-  function close(){
-    overlay.classList.remove('visible');
-    menuBtn.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  menuBtn.addEventListener('click', () => {
-    if(overlay.classList.contains('visible')) close(); else open();
-  });
-  overlay.querySelectorAll('a, button').forEach(el => el.addEventListener('click', close));
-}
-
-// ============ SUPABASE CLIENT (config fetched from the server at runtime) ============
-let sb = null;
-const sbReady = (async () => {
-  try {
-    const res = await fetch('/api/public-config');
-    if(!res.ok) return;
-    const cfg = await res.json();
-    if(cfg.supabaseUrl && cfg.supabaseAnonKey && window.supabase){
-      sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
-    }
-  } catch(e){
-    console.error('Supabase init failed', e);
-  }
-})();
-
-// ============ STRIPE CHECKOUT ============
-async function startCheckout(email, userId){
-  const res = await fetch('/api/create-checkout-session', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, userId }),
-  });
-  let data = {};
-  try { data = await res.json(); } catch(e){ /* non-JSON response */ }
-  if(!res.ok || !data.url){
-    throw new Error(data.error || 'Could not start checkout.');
-  }
-  window.location.href = data.url;
-}
-
-// ============ ACCOUNT: AUTH POPUP + DASHBOARD ============
+// ============ ACCOUNT: AUTH POPUP ============
+// Signed-out users get the login/signup popup; signed-in users are sent
+// straight to the account page instead (see account.html / account.js).
 function setupAccount(){
   const authOverlay = document.getElementById('accountPopupOverlay');
   const authClose = document.getElementById('accountPopupClose');
@@ -212,15 +159,8 @@ function setupAccount(){
   const authError = document.getElementById('authError');
   const authSuccess = document.getElementById('authSuccess');
 
-  const dashboardOverlay = document.getElementById('dashboardOverlay');
-  const dashboardClose = document.getElementById('dashboardClose');
-  const dashboardEmail = document.getElementById('dashboardEmail');
-  const dashboardStatus = document.getElementById('dashboardStatus');
-  const dashboardContent = document.getElementById('dashboardContent');
-  const logoutBtn = document.getElementById('logoutBtn');
-
   const accountButtons = [document.getElementById('accountBtn'), document.getElementById('accountBtnMobile')].filter(Boolean);
-  if(!authOverlay || !dashboardOverlay || accountButtons.length === 0) return;
+  if(!authOverlay || accountButtons.length === 0) return;
 
   let authTab = 'login';
 
@@ -273,70 +213,17 @@ function setupAccount(){
       authSuccess.hidden = false;
       return;
     }
-    closeAuth();
-    openDashboard();
+    window.location.href = 'account.html';
   });
-
-  async function openDashboard(){
-    showOverlay(dashboardOverlay);
-    dashboardEmail.textContent = '';
-    dashboardStatus.textContent = 'Checking subscription…';
-    dashboardContent.innerHTML = '';
-    await sbReady;
-    if(!sb) return;
-    const { data:{ session } } = await sb.auth.getSession();
-    if(!session){
-      hideOverlay(dashboardOverlay);
-      openAuth();
-      return;
-    }
-    dashboardEmail.textContent = session.user.email;
-    try {
-      const res = await fetch('/api/subscription-status', {
-        headers: { Authorization: `Bearer ${session.access_token}` },
-      });
-      const data = await res.json();
-      if(data.active){
-        dashboardStatus.innerHTML = '<span class="status-badge status-active">Active subscription</span>';
-        dashboardContent.innerHTML = '<p class="dashboard-placeholder">Your video courses will appear here soon. 🎬</p>';
-      } else {
-        dashboardStatus.innerHTML = '<span class="status-badge status-inactive">No active subscription</span>';
-        dashboardContent.innerHTML = '<button class="btn btn-pill btn-primary btn-block" id="dashboardSubscribeBtn" type="button">Subscribe for €19.99/month</button>';
-        const subBtn = document.getElementById('dashboardSubscribeBtn');
-        subBtn.addEventListener('click', async () => {
-          subBtn.disabled = true;
-          subBtn.textContent = 'Redirecting to secure payment…';
-          try {
-            await startCheckout(session.user.email, session.user.id);
-          } catch(err){
-            alert(err.message);
-            subBtn.disabled = false;
-            subBtn.textContent = 'Subscribe for €19.99/month';
-          }
-        });
-      }
-    } catch(e){
-      dashboardStatus.textContent = 'Could not load subscription status.';
-    }
-  }
 
   accountButtons.forEach(btn => btn.addEventListener('click', async () => {
     await sbReady;
     if(sb){
       const { data:{ session } } = await sb.auth.getSession();
-      if(session){ openDashboard(); return; }
+      if(session){ window.location.href = 'account.html'; return; }
     }
     openAuth();
   }));
-
-  dashboardClose.addEventListener('click', () => hideOverlay(dashboardOverlay));
-  dashboardOverlay.addEventListener('click', (e) => { if(e.target === dashboardOverlay) hideOverlay(dashboardOverlay); });
-
-  logoutBtn.addEventListener('click', async () => {
-    await sbReady;
-    if(sb) await sb.auth.signOut();
-    hideOverlay(dashboardOverlay);
-  });
 }
 
 // ============ HASH CLEANUP (avoid re-jumping to a section on reload) ============
@@ -430,7 +317,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setupTopbarOverHero();
   setupPopup();
   setupAccount();
-  setupMobileMenu();
   setupSignup();
   setupHashCleanup();
 });

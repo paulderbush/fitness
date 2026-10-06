@@ -705,7 +705,8 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   position:relative;
   flex:0 0 100%;
   scroll-snap-align:start;
-  height:360px;
+  aspect-ratio:766/1190;
+  height:auto;
   border-radius:20px;
   overflow:hidden;
   background:rgba(113,67,43,0.5);
@@ -767,7 +768,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   left:50%;
   bottom:0;
   transform:translateX(-50%);
-  width:58%;
+  width:84%;
   aspect-ratio:2477/3160;
   container-type:inline-size;
 }
@@ -1442,7 +1443,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   }
   .video-upnext-item{ flex:1; font-size:13px; padding:0 16px; }
   .video-upnext-label{ display:block; }
-  .membership-card{ flex:0 0 calc((100% - 32px) / 3); height:420px; }
+  .membership-card{ flex:0 0 calc((100% - 32px) / 3); }
   .section{ padding:80px 40px; scroll-margin-top:64px; }
   .section-panel{ padding-left:40px; padding-right:40px; }
   .topbar{ padding-left:100px; padding-right:100px; }

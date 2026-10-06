@@ -1890,7 +1890,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .results-banner-photo{
     display:block;
     position:relative;
-    flex:0 0 32%;
+    flex:0 0 40%;
     z-index:0;
   }
   .results-banner-photo img{
@@ -1898,14 +1898,14 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     inset:0;
     width:100%; height:100%;
     object-fit:cover;
-    object-position:50% 30%;
+    object-position:62% 12%;
     display:block;
   }
   .results-banner-photo::after{
     content:'';
     position:absolute;
     inset:0;
-    background:linear-gradient(90deg, rgba(20,16,14,0) 65%, rgba(20,16,14,0.55) 100%);
+    background:linear-gradient(90deg, rgba(20,16,14,0) 58%, rgba(20,16,14,0.85) 100%);
   }
   .results-banner-caption{
     display:block;
@@ -1930,17 +1930,18 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .results-banner-note{
     display:block;
     position:absolute;
-    top:22px; right:32px;
+    top:20px; left:28px;
     z-index:2;
     font-family:'Great Vibes',cursive;
     font-size:19px;
     line-height:1.15;
-    color:var(--brand-pink);
-    text-align:right;
-    text-shadow:0 2px 10px rgba(0,0,0,0.3);
-    transform:rotate(6deg);
+    color:#fff;
+    text-align:left;
+    text-shadow:0 2px 10px rgba(0,0,0,0.35);
+    transform:rotate(-8deg);
+    transform-origin:0% 0%;
   }
-  .results-banner-note-heart{ color:var(--brand-pink); }
+  .results-banner-note-heart{ color:#fff; }
   .results-banner-glass{
     position:relative;
     z-index:1;
@@ -1948,16 +1949,15 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     min-width:0;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    gap:28px;
-    margin-left:-44px;
-    padding:30px 40px 30px 84px;
+    justify-content:flex-start;
+    gap:56px;
+    margin-left:-180px;
+    padding:30px 40px 30px 220px;
     background:rgba(255,255,255,0.10);
-    border-left:1px solid rgba(255,255,255,0.16);
     backdrop-filter:blur(32px) saturate(160%);
     -webkit-backdrop-filter:blur(32px) saturate(160%);
-    -webkit-mask-image:linear-gradient(90deg, transparent 0, black 70px);
-    mask-image:linear-gradient(90deg, transparent 0, black 70px);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, black 180px);
+    mask-image:linear-gradient(90deg, transparent 0, black 180px);
   }
   .results-banner-content{
     position:relative;
@@ -1978,19 +1978,19 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     display:flex;
     flex-shrink:0;
     align-items:center;
-    gap:12px;
+    gap:22px;
     margin:0;
     padding:0;
     border:none;
   }
   .results-banner-features .hero-feature{
     flex:none;
-    gap:6px;
-    font-size:9px;
+    gap:9px;
+    font-size:11.5px;
   }
-  .results-banner-features .hero-feature svg{ width:18px; height:18px; }
-  .results-banner-features .hero-feature:not(:last-child){ padding-right:12px; }
-  .results-banner-features .hero-feature:not(:last-child)::after{ right:5px; }
+  .results-banner-features .hero-feature svg{ width:28px; height:28px; }
+  .results-banner-features .hero-feature:not(:last-child){ padding-right:22px; }
+  .results-banner-features .hero-feature:not(:last-child)::after{ right:10px; }
 }
 
 @media (max-width:400px){

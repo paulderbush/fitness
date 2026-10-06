@@ -79,6 +79,22 @@ function setupVideoShowcase(){
   });
 }
 
+// ============ MEMBERSHIP CAROUSEL ============
+function setupMembershipCarousel(){
+  const viewport = document.getElementById('membershipViewport');
+  const prevBtn = document.querySelector('.membership-arrow-prev');
+  const nextBtn = document.querySelector('.membership-arrow-next');
+  const card = viewport && viewport.querySelector('.membership-card');
+  if(!viewport || !prevBtn || !nextBtn || !card) return;
+
+  function step(){
+    const gap = parseFloat(getComputedStyle(viewport.querySelector('.membership-track')).gap) || 0;
+    return card.getBoundingClientRect().width + gap;
+  }
+  prevBtn.addEventListener('click', () => viewport.scrollBy({ left: -step(), behavior:'smooth' }));
+  nextBtn.addEventListener('click', () => viewport.scrollBy({ left: step(), behavior:'smooth' }));
+}
+
 // ============ STICKY BAR ============
 function setupStickyBar(){
   const bar = document.getElementById('stickyBar');
@@ -314,6 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
   setupStickyBar();
   setupVideoShowcase();
+  setupMembershipCarousel();
   setupTopbarOverHero();
   setupPopup();
   setupAccount();

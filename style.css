@@ -1077,7 +1077,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 }
 
 /* ============ pricing ============ */
-.pricing-grid{ display:flex; flex-direction:column; gap:18px; }
+.pricing-grid{ display:flex; flex-direction:column; gap:18px; margin-top:28px; }
 .price-card{
   background:rgba(255,255,255,0.08);
   border:1px solid rgba(255,255,255,0.18);
@@ -1659,7 +1659,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     width:1px;
     background:rgba(255,255,255,0.2);
   }
-  .pricing-grid{ flex-direction:row; align-items:stretch; gap:28px; }
+  .pricing-grid{ flex-direction:row; align-items:stretch; gap:28px; margin-top:36px; }
   .price-card{ flex:1; padding:34px 30px; }
 
   .results-note{ display:block; font-size:30px; top:30px; left:40px; }

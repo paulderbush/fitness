@@ -1937,21 +1937,23 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .results-banner-glass{
     position:relative;
     z-index:1;
-    margin-left:38%;
-    padding:30px 440px 30px 56px;
+    min-height:220px;
   }
   .results-banner-content{
-    position:relative;
+    position:absolute;
     z-index:1;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    margin:0 auto;
+    margin:0;
     padding:0;
     width:max-content;
-    max-width:100%;
+    max-width:380px;
   }
   .results-banner-content .eyebrow,
   .results-banner-content .h2{ text-align:center; }

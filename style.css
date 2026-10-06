@@ -765,15 +765,18 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .placeholder-note.center{ text-align:center; margin-top:14px; }
 
 /* ============ about / coach ============ */
-.section-coach .eyebrow,
-.section-coach .h2{ text-align:left; }
-
 .coach-layout{
-  display:flex;
-  flex-direction:column;
+  display:grid;
+  grid-template-columns:1fr;
+  grid-template-areas:"header" "photo" "content";
   gap:28px;
 }
+.coach-header{ grid-area:header; }
+.coach-header .eyebrow,
+.coach-header .h2{ text-align:center; }
+.coach-content{ grid-area:content; }
 .coach-photo-card{
+  grid-area:photo;
   position:relative;
   aspect-ratio:1100/1467;
   border-radius:20px;
@@ -793,12 +796,12 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   font-family:'Great Vibes',cursive;
   font-size:24px;
   line-height:1.15;
-  color:var(--brand-pink);
+  color:#fff;
   text-shadow:0 2px 10px rgba(0,0,0,0.35);
   transform:rotate(-8deg);
   transform-origin:0% 0%;
 }
-.coach-photo-note-heart{ color:var(--brand-pink); }
+.coach-photo-note-heart{ color:#fff; }
 .coach-photo-caption{
   position:absolute;
   left:20px; bottom:20px;
@@ -1576,11 +1579,18 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .hero-note{ display:block; font-size:44px; top:75px; right:130px; }
   .eyebrow-br-desktop{ display:inline; }
   .eyebrow-br-mobile{ display:none; }
-  .coach-layout{ flex-direction:row; align-items:flex-start; gap:56px; }
-  .coach-photo-card{ flex:0 0 42%; }
+  .coach-layout{
+    grid-template-columns:42% 1fr;
+    grid-template-areas:"photo header" "photo content";
+    align-items:start;
+    gap:0 56px;
+  }
+  .coach-header{ margin-bottom:24px; }
+  .coach-header .eyebrow,
+  .coach-header .h2{ text-align:left; }
   .coach-photo-note{ font-size:30px; top:28px; left:28px; }
   .coach-photo-caption{ font-size:12px; left:28px; bottom:28px; }
-  .coach-content{ flex:1; min-width:0; }
+  .coach-content{ min-width:0; }
   .coach-bio{ font-size:15px; }
   .coach-credentials{
     flex-direction:row;

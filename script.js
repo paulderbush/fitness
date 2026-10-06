@@ -79,6 +79,23 @@ function setupVideoShowcase(){
   });
 }
 
+// ============ CAROUSEL ARROW LOOPING ============
+// Wraps prev/next scroll-by clicks so hitting the arrow at either end of the
+// viewport loops back to the opposite end instead of stopping.
+function setupLoopingArrows(viewport, prevBtn, nextBtn, step){
+  const EPS = 4;
+  function atStart(){ return viewport.scrollLeft <= EPS; }
+  function atEnd(){ return viewport.scrollLeft >= viewport.scrollWidth - viewport.clientWidth - EPS; }
+  prevBtn.addEventListener('click', () => {
+    if(atStart()) viewport.scrollTo({ left: viewport.scrollWidth - viewport.clientWidth, behavior:'smooth' });
+    else viewport.scrollBy({ left: -step(), behavior:'smooth' });
+  });
+  nextBtn.addEventListener('click', () => {
+    if(atEnd()) viewport.scrollTo({ left: 0, behavior:'smooth' });
+    else viewport.scrollBy({ left: step(), behavior:'smooth' });
+  });
+}
+
 // ============ MEMBERSHIP CAROUSEL ============
 function setupMembershipCarousel(){
   const viewport = document.getElementById('membershipViewport');
@@ -91,8 +108,7 @@ function setupMembershipCarousel(){
     const gap = parseFloat(getComputedStyle(viewport.querySelector('.membership-track')).gap) || 0;
     return card.getBoundingClientRect().width + gap;
   }
-  prevBtn.addEventListener('click', () => viewport.scrollBy({ left: -step(), behavior:'smooth' }));
-  nextBtn.addEventListener('click', () => viewport.scrollBy({ left: step(), behavior:'smooth' }));
+  setupLoopingArrows(viewport, prevBtn, nextBtn, step);
 }
 
 // ============ RESULTS CAROUSEL ============
@@ -105,8 +121,7 @@ function setupResultsCarousel(){
   if(!viewport || !prevBtn || !nextBtn || !card) return;
 
   function step(){ return card.getBoundingClientRect().width; }
-  prevBtn.addEventListener('click', () => viewport.scrollBy({ left: -step(), behavior:'smooth' }));
-  nextBtn.addEventListener('click', () => viewport.scrollBy({ left: step(), behavior:'smooth' }));
+  setupLoopingArrows(viewport, prevBtn, nextBtn, step);
 
   dots.forEach((dot, i) => {
     dot.addEventListener('click', () => viewport.scrollTo({ left: step() * i, behavior:'smooth' }));

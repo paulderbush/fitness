@@ -95,6 +95,37 @@ function setupMembershipCarousel(){
   nextBtn.addEventListener('click', () => viewport.scrollBy({ left: step(), behavior:'smooth' }));
 }
 
+// ============ RESULTS CAROUSEL ============
+function setupResultsCarousel(){
+  const viewport = document.getElementById('resultsViewport');
+  const prevBtn = document.querySelector('.results-arrow-prev');
+  const nextBtn = document.querySelector('.results-arrow-next');
+  const dots = Array.from(document.querySelectorAll('#resultsDots .results-dot'));
+  const card = viewport && viewport.querySelector('.results-card');
+  if(!viewport || !prevBtn || !nextBtn || !card) return;
+
+  function step(){ return card.getBoundingClientRect().width; }
+  prevBtn.addEventListener('click', () => viewport.scrollBy({ left: -step(), behavior:'smooth' }));
+  nextBtn.addEventListener('click', () => viewport.scrollBy({ left: step(), behavior:'smooth' }));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => viewport.scrollTo({ left: step() * i, behavior:'smooth' }));
+  });
+
+  if(dots.length){
+    let ticking = false;
+    viewport.addEventListener('scroll', () => {
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const index = Math.round(viewport.scrollLeft / step());
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        ticking = false;
+      });
+    }, { passive:true });
+  }
+}
+
 // ============ TOPBAR OVER HERO ============
 function setupTopbarOverHero(){
   const topbar = document.getElementById('topbar');
@@ -317,6 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
   setupVideoShowcase();
   setupMembershipCarousel();
+  setupResultsCarousel();
   setupTopbarOverHero();
   setupPopup();
   setupAccount();

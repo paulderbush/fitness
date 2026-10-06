@@ -700,14 +700,13 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .membership-viewport::-webkit-scrollbar{ display:none; }
 .membership-track{
   display:flex;
+  align-items:flex-start;
   gap:16px;
 }
 .membership-card{
   position:relative;
   flex:0 0 100%;
   scroll-snap-align:start;
-  aspect-ratio:766/1190;
-  height:auto;
   border-radius:20px;
   overflow:hidden;
   background:rgba(120,85,67,0.2);
@@ -745,11 +744,9 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 }
 
 .membership-phone{
-  position:absolute;
-  left:50%;
-  bottom:0;
-  transform:translateX(-50%);
+  position:relative;
   width:92%;
+  margin:33px auto 0;
   aspect-ratio:2477/3160;
 }
 .membership-phone-img{
@@ -1354,11 +1351,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .gallery-grid{ grid-template-columns:repeat(4,1fr); }
   .sticky-bar{ display:none; }
   .topbar-nav{ display:flex; }
-}
-
-/* ============ membership card: extra height so wrapped header text never overlaps the phone ============ */
-@media (max-width:1023px){
-  .membership-card{ min-height:640px; }
 }
 
 /* ============ wide desktop ============ */

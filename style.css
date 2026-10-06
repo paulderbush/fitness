@@ -736,85 +736,26 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   margin:0 0 6px 0;
 }
 .membership-card-text{
-  font-size:13px;
+  font-size:15px;
   line-height:1.4;
   font-weight:500;
   color:rgba(255,255,255,0.85);
   margin:0;
 }
 
-.membership-pill-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  margin-top:10px;
-}
-.membership-pill{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:7px 12px;
-  border-radius:999px;
-  background:#F1EDE9;
-  color:#71432B;
-  font-family:'Avenir Next','Jost',sans-serif;
-  font-weight:700;
-  font-size:10.5px;
-}
-.membership-pill svg{ width:13px; height:13px; flex-shrink:0; }
-
 .membership-phone{
   position:absolute;
   left:50%;
   bottom:0;
   transform:translateX(-50%);
-  width:84%;
+  width:92%;
   aspect-ratio:2477/3160;
-  container-type:inline-size;
 }
 .membership-phone-img{
   position:absolute; inset:0;
   width:100%; height:100%;
   display:block;
 }
-
-.membership-lesson-overlay{
-  position:absolute;
-  left:18.8%; top:32.8%;
-  width:62.5%; height:58.2%;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-.membership-lesson-overlay li{
-  display:flex;
-  align-items:center;
-  gap:3%;
-  height:9.4%;
-  padding:0 3%;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow:ellipsis;
-  font-family:'Avenir Next','Jost',sans-serif;
-  font-weight:700;
-  font-size:3.1cqw;
-  color:#71432B;
-}
-.membership-lesson-overlay svg{ width:9%; height:auto; flex-shrink:0; }
-
-.membership-chat-overlay{
-  position:absolute;
-  display:flex;
-  align-items:flex-start;
-  overflow:hidden;
-  font-family:'Avenir Next','Jost',sans-serif;
-  font-weight:500;
-  font-size:3.3cqw;
-  line-height:1.2;
-  color:#71432B;
-}
-.membership-chat-overlay-them{ left:18%; top:33%; width:50%; height:16%; padding:3% 3% 0; }
-.membership-chat-overlay-me{ left:33%; top:54.5%; width:47%; height:16.5%; padding:3% 3% 0; }
 
 .placeholder-note{
   font-size:13px;

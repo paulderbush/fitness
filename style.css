@@ -1356,6 +1356,11 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .topbar-nav{ display:flex; }
 }
 
+/* ============ membership card: extra height so wrapped header text never overlaps the phone ============ */
+@media (max-width:1023px){
+  .membership-card{ min-height:640px; }
+}
+
 /* ============ wide desktop ============ */
 @media (min-width:1024px){
   :root{

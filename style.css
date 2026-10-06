@@ -1808,7 +1808,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .results-carousel{ margin-top:36px; }
   .results-arrow{ display:none; }
   .results-viewport{ overflow:visible; }
-  .results-track{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .results-track{ display:grid; grid-template-columns:repeat(3,1fr); align-items:stretch; gap:24px; }
   .results-card{
     display:flex;
     border-radius:20px;
@@ -1816,7 +1816,15 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     box-shadow:var(--shadow-lg);
   }
   .results-photo-pair{ flex:1 1 55%; box-shadow:none; border-radius:0; overflow:visible; }
-  .results-photo-pair img{ border-radius:0; height:100%; object-fit:cover; }
+  .results-photo-pair img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border-radius:0;
+    object-fit:contain;
+    object-position:center;
+  }
   .results-photo-pair .results-stat{ display:none; }
   .results-tag{ top:auto; bottom:14px; }
 

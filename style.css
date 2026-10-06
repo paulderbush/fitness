@@ -667,12 +667,15 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 /* ============ membership carousel ============ */
 .section-membership{ padding-top:70px; }
+.membership-arrows{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:28px 0 0 0;
+}
 .membership-carousel{
   position:relative;
-  margin:32px 0 0 0;
-  display:flex;
-  align-items:center;
-  gap:10px;
+  margin:16px 0 0 0;
 }
 .membership-arrow{
   flex-shrink:0;

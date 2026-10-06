@@ -749,7 +749,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .membership-phone{
   position:relative;
   width:92%;
-  margin:33px auto 0;
+  margin:20px auto 0;
   aspect-ratio:2477/3160;
 }
 .membership-phone-img{

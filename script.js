@@ -95,19 +95,6 @@ function setupMembershipCarousel(){
   nextBtn.addEventListener('click', () => viewport.scrollBy({ left: step(), behavior:'smooth' }));
 }
 
-// ============ STICKY BAR ============
-function setupStickyBar(){
-  const bar = document.getElementById('stickyBar');
-  const hero = document.querySelector('.hero');
-  if(!bar || !hero) return;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      bar.classList.toggle('visible', !entry.isIntersecting);
-    });
-  }, { threshold:0 });
-  io.observe(hero);
-}
-
 // ============ TOPBAR OVER HERO ============
 function setupTopbarOverHero(){
   const topbar = document.getElementById('topbar');
@@ -328,7 +315,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFAQ();
   updateCountdown();
   setInterval(updateCountdown, 1000);
-  setupStickyBar();
   setupVideoShowcase();
   setupMembershipCarousel();
   setupTopbarOverHero();

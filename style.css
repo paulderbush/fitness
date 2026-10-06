@@ -320,7 +320,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
    avoiding a hard-edged color patch where the section clips them */
 .blob-soft{ filter:blur(95px); opacity:0.38; }
 
-.pricing-blob{ width:400px; height:400px; top:-160px; left:-180px; }
 .faq-blob{ width:300px; height:300px; top:-130px; right:-150px; opacity:0.3; }
 .promo-blob{ width:360px; height:360px; top:-150px; left:-170px; }
 .signup-blob{ width:320px; height:320px; bottom:-150px; left:-160px; opacity:0.3; }
@@ -1080,24 +1079,24 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 /* ============ pricing ============ */
 .pricing-grid{ display:flex; flex-direction:column; gap:18px; }
 .price-card{
-  background:rgba(255,255,255,0.5);
-  border:1.5px solid var(--glass-border);
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.18);
   border-radius:22px;
   padding:26px 22px;
   position:relative;
-  backdrop-filter:blur(22px) saturate(160%);
-  -webkit-backdrop-filter:blur(22px) saturate(160%);
-  box-shadow:var(--shadow);
+  backdrop-filter:blur(40px) saturate(160%);
+  -webkit-backdrop-filter:blur(40px) saturate(160%);
+  box-shadow:var(--shadow-lg);
   transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 .price-card:has(.btn:hover){
   transform:scale(1.03);
   box-shadow:var(--shadow-lg);
-  border-color:var(--rose);
-  background:rgba(255,255,255,0.68);
+  border-color:var(--brand-pink);
+  background:rgba(255,255,255,0.14);
 }
 .price-featured{
-  border-color:var(--rose);
+  border-color:var(--brand-pink);
   box-shadow:var(--shadow-lg);
   transform:scale(1.02);
 }
@@ -1117,22 +1116,23 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   margin-bottom:14px;
 }
 .price-badge-muted{ background:var(--sage-deep); }
-.price-name{ font-family:'Fraunces',serif; font-weight:600; font-size:20px; color:var(--ink); margin-bottom:4px; }
-.price-amount{ font-size:34px; font-weight:800; color:var(--sage-deep); margin-bottom:6px; }
-.price-amount span{ font-size:13px; font-weight:600; color:var(--muted); }
-.price-desc{ font-size:13.5px; color:var(--ink-soft); font-weight:500; margin-bottom:16px; }
+.price-name{ font-family:'Fraunces',serif; font-weight:600; font-size:20px; color:#fff; margin-bottom:4px; }
+.price-amount{ font-size:34px; font-weight:800; color:var(--brand-pink); margin-bottom:6px; }
+.price-amount span{ font-size:13px; font-weight:600; color:rgba(255,255,255,0.65); }
+.price-desc{ font-size:13.5px; color:rgba(255,255,255,0.8); font-weight:500; margin-bottom:16px; }
 .price-features{ margin-bottom:14px; }
 .price-features li{
   font-size:13.5px;
-  color:var(--ink-soft);
+  color:rgba(255,255,255,0.85);
   font-weight:500;
   padding:7px 0;
-  border-bottom:1px dashed rgba(75,98,69,0.15);
+  border-bottom:1px dashed rgba(255,255,255,0.18);
 }
 .price-features li:last-child{ border-bottom:none; }
-.gift-list li s{ color:var(--muted); margin:0 4px; }
-.gift-list li b{ color:var(--rose-deep); }
-.price-note{ font-size:12px; color:var(--muted); font-weight:600; margin-bottom:6px; }
+.gift-list li s{ color:rgba(255,255,255,0.5); margin:0 4px; }
+.gift-list li b{ color:var(--brand-pink); }
+.price-note{ font-size:12px; color:rgba(255,255,255,0.6); font-weight:600; margin-bottom:6px; }
+.price-trial-link{ color:var(--brand-pink); }
 
 .stars{ color:#F2D392; font-size:16px; letter-spacing:2px; margin-bottom:8px; }
 

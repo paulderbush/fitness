@@ -827,6 +827,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   overflow:hidden;
   box-shadow:var(--shadow-lg);
 }
+.results-photo-pair picture{ display:block; }
 .results-photo-pair img{ display:block; width:100%; height:auto; }
 .results-tag{
   position:absolute;
@@ -1816,14 +1817,15 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     box-shadow:var(--shadow-lg);
   }
   .results-photo-pair{ flex:1 1 55%; box-shadow:none; border-radius:0; overflow:visible; }
+  .results-photo-pair picture{ position:absolute; inset:0; }
   .results-photo-pair img{
     position:absolute;
     inset:0;
     width:100%;
     height:100%;
     border-radius:0;
-    object-fit:contain;
-    object-position:center;
+    object-fit:cover;
+    object-position:center top;
   }
   .results-photo-pair .results-stat{ display:none; }
   .results-tag{ top:auto; bottom:14px; }

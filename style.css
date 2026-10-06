@@ -778,7 +778,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .coach-photo-card{
   grid-area:photo;
   position:relative;
-  aspect-ratio:1100/1467;
+  aspect-ratio:900/1200;
   border-radius:20px;
   overflow:hidden;
   box-shadow:var(--shadow-lg);

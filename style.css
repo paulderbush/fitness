@@ -1937,12 +1937,8 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .results-banner-glass{
     position:relative;
     z-index:1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:56px;
     margin-left:38%;
-    padding:30px 56px;
+    padding:30px 440px 30px 56px;
   }
   .results-banner-content{
     position:relative;
@@ -1952,14 +1948,21 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     align-items:center;
     justify-content:center;
     text-align:center;
+    margin:0 auto;
     padding:0;
-    flex:none;
+    width:max-content;
+    max-width:100%;
   }
   .results-banner-content .eyebrow,
   .results-banner-content .h2{ text-align:center; }
   .results-banner-content .hero-cta{ margin:4px auto 0; align-self:center; }
   .results-banner-content .trust-row{ text-align:center; }
   .results-banner-features{
+    position:absolute;
+    top:50%;
+    right:56px;
+    transform:translateY(-50%);
+    z-index:1;
     display:flex;
     flex-shrink:0;
     align-items:center;

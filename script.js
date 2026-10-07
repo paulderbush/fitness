@@ -50,20 +50,6 @@ function renderFAQ(){
   if(first) first.style.maxHeight = first.scrollHeight + 'px';
 }
 
-// ============ COUNTDOWN TO MIDNIGHT ============
-function updateCountdown(){
-  const el = document.getElementById('countdownTimer');
-  if(!el) return;
-  const now = new Date();
-  const midnight = new Date(now);
-  midnight.setHours(24,0,0,0);
-  const diff = midnight - now;
-  const h = String(Math.floor(diff / 3600000)).padStart(2,'0');
-  const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
-  const s = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
-  el.textContent = `${h}:${m}:${s}`;
-}
-
 // ============ VIDEO SHOWCASE (Up Next) ============
 function setupVideoShowcase(){
   const frame = document.getElementById('showcaseVideoFrame');
@@ -317,6 +303,9 @@ function setupSignup(){
     }
     if(!valid) return;
 
+    const planInput = document.querySelector('input[name="signupPlan"]:checked');
+    const plan = planInput ? planInput.value : 'trial';
+
     await sbReady;
     if(!sb){
       alert('Account service is temporarily unavailable. Please try again shortly.');
@@ -349,7 +338,7 @@ function setupSignup(){
 
     btn.textContent = 'Redirecting to secure payment…';
     try {
-      await startCheckout(email, userId);
+      await startCheckout(email, userId, plan);
     } catch(err){
       alert(err.message);
       reset();
@@ -359,8 +348,6 @@ function setupSignup(){
 
 document.addEventListener('DOMContentLoaded', () => {
   renderFAQ();
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
   setupVideoShowcase();
   setupMembershipCarousel();
   setupResultsCarousel();

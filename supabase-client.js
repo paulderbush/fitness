@@ -15,11 +15,11 @@ const sbReady = (async () => {
 })();
 
 // ============ STRIPE CHECKOUT ============
-async function startCheckout(email, userId){
+async function startCheckout(email, userId, plan){
   const res = await fetch('/api/create-checkout-session', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, userId }),
+    body: JSON.stringify({ email, userId, plan }),
   });
   let data = {};
   try { data = await res.json(); } catch(e){ /* non-JSON response */ }

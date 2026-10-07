@@ -320,9 +320,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
    avoiding a hard-edged color patch where the section clips them */
 .blob-soft{ filter:blur(95px); opacity:0.38; }
 
-.promo-blob{ width:360px; height:360px; top:-150px; left:-170px; }
-.signup-blob{ width:320px; height:320px; bottom:-150px; left:-160px; opacity:0.3; }
-
 /* ============ hero ============ */
 .hero{
   position:relative;
@@ -1181,38 +1178,19 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   font-weight:500;
 }
 
-/* ============ promo ============ */
-.promo-section{ padding-top:20px; padding-bottom:20px; }
-.promo-card{ background:linear-gradient(160deg, rgba(255,255,255,0.75), rgba(243,217,225,0.55)); text-align:center; }
-.promo-card .eyebrow{ text-align:center; }
-.promo-card .h2{ text-align:center; }
-.promo-card .section-lead{ margin-left:auto; margin-right:auto; text-align:center; }
-.promo-list{ display:inline-block; text-align:left; margin:0 auto 14px auto; }
-.promo-list li{ font-size:14px; font-weight:600; color:var(--ink-soft); padding:4px 0; }
-.promo-fine{ font-size:13px; color:var(--muted); font-weight:500; margin-bottom:22px; }
-
-.countdown{ margin-bottom:22px; }
-.countdown-label{ font-size:12px; font-weight:700; color:var(--rose-deep); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px; }
-.countdown-timer{
-  font-family:'Jost',sans-serif;
-  font-weight:800;
-  font-size:32px;
-  color:var(--sage-deep);
-  letter-spacing:0.03em;
-}
-
-.guarantee-box{
-  background:rgba(255,255,255,0.7);
-  border-radius:16px;
-  padding:16px 18px;
-  text-align:left;
-}
-.guarantee-box b{ font-size:14px; color:var(--sage-deep); display:block; margin-bottom:4px; }
-.guarantee-box p{ margin:0; font-size:13px; color:var(--ink-soft); font-weight:500; line-height:1.5; }
-
 /* ============ signup ============ */
-.signup-card{ text-align:left; }
+.signup-card{
+  text-align:left;
+  max-width:640px;
+  margin-left:auto;
+  margin-right:auto;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.18);
+  backdrop-filter:blur(40px) saturate(160%);
+  -webkit-backdrop-filter:blur(40px) saturate(160%);
+}
 .field-label{ display:block; font-weight:700; font-size:13.5px; margin-bottom:8px; color:var(--ink); }
+.signup-card .field-label{ color:#fff; }
 .field-input{
   width:100%;
   border:1.5px solid rgba(75,98,69,0.2);
@@ -1231,19 +1209,41 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   margin:-8px 0 14px 0;
   line-height:1.4;
 }
+.signup-card .field-hint{ color:rgba(255,255,255,0.65); }
 .payment-note{
   font-size:12.5px;
   color:var(--muted);
   font-weight:600;
   margin-bottom:16px;
 }
+.signup-card .payment-note{ color:rgba(255,255,255,0.65); }
+.signup-card .trust-row{ color:rgba(255,255,255,0.7); }
+
+.plan-options{ display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+.plan-option{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 16px;
+  border-radius:14px;
+  border:1.5px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.06);
+  cursor:pointer;
+  transition:border-color 0.2s ease, background 0.2s ease;
+}
+.plan-option:has(input:checked){
+  border-color:var(--brand-pink);
+  background:rgba(255,255,255,0.14);
+}
+.plan-option input{ accent-color:var(--brand-pink); width:18px; height:18px; flex-shrink:0; }
+.plan-option-label{ font-size:14px; font-weight:700; color:#fff; }
 
 /* ============ footer ============ */
 .footer{
   text-align:center;
   padding:48px 22px 30px 22px;
-  background:var(--sage-deep);
-  color:#fff;
+  background:var(--cream);
+  color:var(--sage-deep);
 }
 @media (max-width:759px){
   .footer{ padding-bottom:100px; }

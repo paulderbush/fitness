@@ -1136,7 +1136,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .stars{ color:#F2D392; font-size:16px; letter-spacing:2px; margin-bottom:8px; }
 
 /* ============ faq ============ */
-.faq-list{ margin-top:28px; }
+.faq-list{ margin-top:28px; max-width:640px; margin-left:auto; margin-right:auto; }
 .faq-item{
   background:rgba(255,255,255,0.08);
   border:1px solid rgba(255,255,255,0.18);

@@ -399,6 +399,8 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .hero-cta{ gap:6px; text-transform:uppercase; letter-spacing:0.02em; font-size:10.5px; padding:14px 16px; white-space:nowrap; }
 .hero-cta-arrow{ width:16px; height:16px; flex-shrink:0; }
 
+.hero-stat-graphic{ display:none; }
+
 .hero-features{
   display:flex;
   flex-wrap:nowrap;
@@ -484,14 +486,20 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .membership-footnote{ display:none; }
 
 @media (max-width:1023px){
-  .hero-features{ margin-top:auto; width:100%; }
+  .hero-features{ width:100%; }
   .hero-stats{ justify-content:center; width:100%; }
   .hero-scroll{ display:none; }
   .hero-results{ font-size:clamp(40px,10.6vw,61px); line-height:0.92; margin-bottom:8px; }
   .hero-accent{ font-size:1em; }
   .hero-lead{ margin-bottom:13px; max-width:340px; }
+  .hero-stat-graphic{
+    display:block;
+    align-self:flex-start;
+    width:50%;
+    max-width:220px;
+    margin:auto 0 0 7%;
+  }
   .hero-features{
-    margin-top:auto;
     padding-top:14px;
     gap:0;
   }

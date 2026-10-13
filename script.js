@@ -86,8 +86,7 @@ function setupLoopingArrows(viewport, prevBtn, nextBtn, step){
 function setupMembershipCarousel(){
   const viewport = document.getElementById('membershipViewport');
   const dots = Array.from(document.querySelectorAll('#membershipDots .membership-dot'));
-  const cards = viewport ? Array.from(viewport.querySelectorAll('.membership-card')) : [];
-  const card = cards[0];
+  const card = viewport && viewport.querySelector('.membership-card');
   if(!viewport || !card) return;
 
   function step(){
@@ -95,39 +94,22 @@ function setupMembershipCarousel(){
     return card.getBoundingClientRect().width + gap;
   }
 
-  const MAX_TILT = 8;
-  function updateCardTilt(){
-    const viewportRect = viewport.getBoundingClientRect();
-    const viewportCenter = viewportRect.left + viewportRect.width / 2;
-    cards.forEach(c => {
-      const r = c.getBoundingClientRect();
-      const cardCenter = r.left + r.width / 2;
-      const offset = (cardCenter - viewportCenter) / (viewportRect.width / 2);
-      const clamped = Math.max(-1, Math.min(1, offset));
-      c.style.transform = `rotate(${clamped * -MAX_TILT}deg)`;
-    });
-  }
-  updateCardTilt();
-
   dots.forEach((dot, i) => {
     dot.addEventListener('click', () => viewport.scrollTo({ left: step() * i, behavior:'smooth' }));
   });
 
-  let ticking = false;
-  viewport.addEventListener('scroll', () => {
-    if(ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      updateCardTilt();
-      if(dots.length){
+  if(dots.length){
+    let ticking = false;
+    viewport.addEventListener('scroll', () => {
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
         const index = Math.round(viewport.scrollLeft / step());
         dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-      }
-      ticking = false;
-    });
-  }, { passive:true });
-
-  window.addEventListener('resize', updateCardTilt);
+        ticking = false;
+      });
+    }, { passive:true });
+  }
 }
 
 // ============ RESULTS CAROUSEL ============

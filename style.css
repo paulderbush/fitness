@@ -250,7 +250,18 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   transition:transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
   text-align:center;
 }
-.btn-pill{ border-radius:999px; }
+.btn-pill{
+  border-radius:18px;
+  position:relative;
+  overflow:hidden;
+}
+.btn-pill::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(140% 100% at 50% -20%, rgba(255,255,255,0.55), rgba(255,255,255,0) 60%);
+  pointer-events:none;
+}
 .btn:active{ transform:scale(0.97); }
 .btn-primary{
   background:var(--brand-pink);

@@ -85,16 +85,31 @@ function setupLoopingArrows(viewport, prevBtn, nextBtn, step){
 // ============ MEMBERSHIP CAROUSEL ============
 function setupMembershipCarousel(){
   const viewport = document.getElementById('membershipViewport');
-  const prevBtn = document.querySelector('.membership-arrow-prev');
-  const nextBtn = document.querySelector('.membership-arrow-next');
+  const dots = Array.from(document.querySelectorAll('#membershipDots .membership-dot'));
   const card = viewport && viewport.querySelector('.membership-card');
-  if(!viewport || !prevBtn || !nextBtn || !card) return;
+  if(!viewport || !card) return;
 
   function step(){
     const gap = parseFloat(getComputedStyle(viewport.querySelector('.membership-track')).gap) || 0;
     return card.getBoundingClientRect().width + gap;
   }
-  setupLoopingArrows(viewport, prevBtn, nextBtn, step);
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => viewport.scrollTo({ left: step() * i, behavior:'smooth' }));
+  });
+
+  if(dots.length){
+    let ticking = false;
+    viewport.addEventListener('scroll', () => {
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const index = Math.round(viewport.scrollLeft / step());
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        ticking = false;
+      });
+    }, { passive:true });
+  }
 }
 
 // ============ RESULTS CAROUSEL ============

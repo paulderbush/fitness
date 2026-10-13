@@ -130,7 +130,7 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .topbar-link{
   font-size:14px;
-  font-weight:700;
+  font-weight:500;
   color:#fff;
   transition:color 0.15s ease;
 }
@@ -142,7 +142,7 @@ ul{ margin:0; padding:0; list-style:none; }
   flex-shrink:0;
 }
 .topbar-actions .account-btn-topbar{ display:none; }
-@media (min-width:760px){ .topbar-actions .account-btn-topbar{ display:inline-flex; } }
+@media (min-width:1024px){ .topbar-actions .account-btn-topbar{ display:inline-flex; } }
 .topbar-actions .btn, .mobile-menu-nav .btn{ font-weight:600; }
 
 /* ============ hamburger ============ */
@@ -210,30 +210,31 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:26px;
+  gap:19.5px;
 }
 .mobile-menu-link{
   font-family:'Inter', sans-serif;
-  font-size:28px;
-  font-weight:600;
+  font-size:26px;
+  font-weight:500;
   color:var(--ink);
 }
 .mobile-menu-link:hover{ color:var(--brand-pink-deep); }
-.mobile-menu-account{ margin-top:10px; }
-.mobile-menu-cta{ margin-top:10px; }
-.mobile-menu-nav .mobile-menu-account,
-.mobile-menu-nav .mobile-menu-cta{
+.mobile-menu-account{ margin-top:7.5px; }
+.mobile-menu-nav .mobile-menu-account{
   font-family:'Inter', sans-serif;
   font-weight:600;
-  width:190px;
+  font-size:26px;
+  white-space:nowrap;
 }
+.mobile-menu-nav .mobile-menu-account{ color:#111; }
 .mobile-menu-social{
   position:absolute;
   bottom:36px;
   display:flex;
-  gap:12px;
+  gap:10px;
 }
-@media (min-width:760px){
+.mobile-menu-social .btn{ gap:8px; color:#111; }
+@media (min-width:1024px){
   .hamburger-btn, .mobile-menu-overlay{ display:none; }
 }
 
@@ -1219,46 +1220,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 }
 
 /* ============ social buttons ============ */
-.social-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 20px;
-  border-radius:999px;
-  font-size:13.5px;
-  font-weight:700;
-  border:1.5px solid transparent;
-  background:transparent;
-  transition:transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease, background 0.15s ease;
-}
-.social-btn:hover{ background:rgba(128,128,128,0.22); }
-.social-btn:active{ transform:scale(0.97); }
 .social-icon{ width:18px; height:18px; flex-shrink:0; }
-
-.social-btn-telegram{
-  border-color:#29A9EA;
-  color:#1487C9;
-}
-
-.social-btn-instagram{ position:relative; border-color:transparent; }
-.social-btn-instagram::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  padding:2px;
-  background:linear-gradient(45deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5);
-  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-  pointer-events:none;
-}
-.ig-text{
-  background-image:linear-gradient(45deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
 
 /* ============ popup ============ */
 .popup-overlay{
@@ -1441,7 +1403,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 }
 
 /* ============ desktop ============ */
-@media (min-width:760px){
+@media (min-width:1024px){
   .topbar-nav{ display:flex; }
 }
 

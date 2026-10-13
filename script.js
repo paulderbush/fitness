@@ -82,34 +82,142 @@ function setupLoopingArrows(viewport, prevBtn, nextBtn, step){
   });
 }
 
-// ============ MEMBERSHIP CAROUSEL ============
+// ============ MEMBERSHIP COVERFLOW CAROUSEL ============
 function setupMembershipCarousel(){
   const viewport = document.getElementById('membershipViewport');
+  const track = viewport && viewport.querySelector('.membership-track');
+  const cards = viewport ? Array.from(viewport.querySelectorAll('.membership-card')) : [];
   const dots = Array.from(document.querySelectorAll('#membershipDots .membership-dot'));
-  const card = viewport && viewport.querySelector('.membership-card');
-  if(!viewport || !card) return;
+  if(!viewport || !track || !cards.length) return;
 
-  function step(){
-    const gap = parseFloat(getComputedStyle(viewport.querySelector('.membership-track')).gap) || 0;
-    return card.getBoundingClientRect().width + gap;
+  const count = cards.length;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let activeIndex = 0;
+  let dragging = false;
+  let dragMoved = false;
+  let dragStartX = 0;
+  let cardWidthPx = 0;
+
+  function isMobile(){ return window.innerWidth < 760; }
+
+  function render(continuousOffset){
+    const base = continuousOffset == null ? activeIndex : continuousOffset;
+    const angle = isMobile() ? 26 : 48;
+    cards.forEach((card, i) => {
+      const offset = i - base;
+      const abs = Math.abs(offset);
+      const sign = offset < 0 ? -1 : (offset > 0 ? 1 : 0);
+      let x, z, rotate, scale, opacity;
+      if(abs <= 1){
+        x = sign * abs * 56;
+        z = -abs * 70;
+        rotate = -sign * abs * angle;
+        scale = 1 - abs * 0.14;
+        opacity = 1 - abs * 0.22;
+      } else {
+        const extra = abs - 1;
+        x = sign * (56 + extra * 34);
+        z = -70 - extra * 50;
+        rotate = -sign * angle;
+        scale = Math.max(0.56, 1 - abs * 0.14);
+        opacity = Math.max(0, 0.78 - extra * 0.42);
+      }
+      card.style.transform = `translateX(${x}%) translateZ(${z}px) rotateY(${rotate}deg) scale(${scale})`;
+      card.style.opacity = String(opacity);
+      card.style.zIndex = String(100 - Math.round(abs * 10));
+      card.style.pointerEvents = opacity > 0.05 ? 'auto' : 'none';
+      card.classList.toggle('active', continuousOffset == null && i === activeIndex);
+    });
   }
 
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => viewport.scrollTo({ left: step() * i, behavior:'smooth' }));
+  function updateDots(){
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+  }
+
+  function goTo(index){
+    activeIndex = Math.max(0, Math.min(count - 1, index));
+    render();
+    updateDots();
+  }
+
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      if(dragMoved) return;
+      if(i !== activeIndex) goTo(i);
+    });
   });
 
-  if(dots.length){
-    let ticking = false;
-    viewport.addEventListener('scroll', () => {
-      if(ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const index = Math.round(viewport.scrollLeft / step());
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-        ticking = false;
-      });
-    }, { passive:true });
+  viewport.addEventListener('keydown', (e) => {
+    if(e.key === 'ArrowLeft'){ e.preventDefault(); goTo(activeIndex - 1); }
+    else if(e.key === 'ArrowRight'){ e.preventDefault(); goTo(activeIndex + 1); }
+  });
+
+  let activePointerId = null;
+  function onPointerDown(e){
+    if(e.button !== undefined && e.button !== 0) return;
+    dragging = true;
+    dragMoved = false;
+    dragStartX = e.clientX;
+    activePointerId = e.pointerId;
+    cardWidthPx = cards[0].getBoundingClientRect().width || 1;
   }
+  function onPointerMove(e){
+    if(!dragging) return;
+    const dx = e.clientX - dragStartX;
+    if(!dragMoved && Math.abs(dx) > 4){
+      dragMoved = true;
+      viewport.classList.add('dragging');
+      // Only capture once a real drag is detected, so a plain click on a
+      // card still hit-tests normally instead of resolving to the viewport.
+      if(viewport.setPointerCapture){
+        try { viewport.setPointerCapture(activePointerId); } catch(err){ /* ignore */ }
+      }
+    }
+    if(dragMoved){
+      if(e.cancelable) e.preventDefault();
+      const frac = dx / (cardWidthPx * 0.9);
+      render(activeIndex - frac);
+    }
+  }
+  function endDrag(e){
+    if(!dragging) return;
+    dragging = false;
+    viewport.classList.remove('dragging');
+    if(!dragMoved) return;
+    const dx = (typeof e.clientX === 'number' ? e.clientX : dragStartX) - dragStartX;
+    const frac = dx / (cardWidthPx * 0.9);
+    let delta = Math.round(-frac);
+    if(delta === 0 && Math.abs(frac) > 0.15) delta = frac > 0 ? -1 : 1;
+    goTo(activeIndex + delta);
+  }
+
+  viewport.addEventListener('pointerdown', onPointerDown);
+  viewport.addEventListener('pointermove', onPointerMove);
+  viewport.addEventListener('pointerup', endDrag);
+  viewport.addEventListener('pointercancel', endDrag);
+  viewport.addEventListener('pointerleave', (e) => { if(dragging) endDrag(e); });
+
+  // trackpad horizontal swipe
+  let wheelCooldown = false;
+  viewport.addEventListener('wheel', (e) => {
+    if(Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    if(wheelCooldown) return;
+    if(Math.abs(e.deltaX) < 12) return;
+    wheelCooldown = true;
+    goTo(activeIndex + (e.deltaX > 0 ? 1 : -1));
+    setTimeout(() => { wheelCooldown = false; }, 420);
+  }, { passive:false });
+
+  if(reducedMotion){
+    cards.forEach(c => { c.style.transitionDuration = '0.01s'; });
+  }
+
+  render();
+  updateDots();
+  window.addEventListener('resize', () => render());
 }
 
 // ============ RESULTS CAROUSEL ============

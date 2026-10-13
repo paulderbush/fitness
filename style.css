@@ -349,9 +349,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   inset:0;
   background-image:url(images/hero-mobile-bg.webp);
   background-size:cover;
-  background-position:61% top;
-  transform:scale(1.35);
-  transform-origin:top center;
+  background-position:68% top;
 }
 
 .hero-layout{
@@ -489,6 +487,25 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .hero-features{ margin-top:auto; width:100%; }
   .hero-stats{ justify-content:center; width:100%; }
   .hero-scroll{ display:none; }
+  .hero-results{ font-size:clamp(40px,10.6vw,61px); line-height:0.76; margin-bottom:8px; }
+  .hero-accent{ font-size:1em; }
+  .hero-lead{ margin-bottom:13px; }
+  .hero-features{
+    margin-top:auto;
+    padding-top:14px;
+    gap:0;
+  }
+  .hero-feature{ font-size:8.25px; gap:6px; }
+  .hero-feature svg{ width:16.5px; height:16.5px; }
+  .hero-stats{
+    gap:10.5px;
+    margin-top:16px;
+    padding-top:14px;
+  }
+  .hero-avatar{ width:28.5px; height:28.5px; }
+  .hero-stat-top{ font-size:12px; gap:4.5px; }
+  .hero-stars{ font-size:10.5px; }
+  .hero-stat-label{ font-size:8.6px; }
 }
 
 /* ============ marquee strip ============ */

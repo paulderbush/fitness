@@ -214,7 +214,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 }
 .mobile-menu-link{
   font-family:'Inter', sans-serif;
-  font-size:26px;
+  font-size:22px;
   font-weight:500;
   color:var(--ink);
 }
@@ -223,7 +223,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .mobile-menu-nav .mobile-menu-account{
   font-family:'Inter', sans-serif;
   font-weight:600;
-  font-size:26px;
+  font-size:22px;
   white-space:nowrap;
 }
 .mobile-menu-nav .mobile-menu-account{ color:#111; }

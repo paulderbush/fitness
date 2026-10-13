@@ -487,9 +487,9 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .hero-features{ margin-top:auto; width:100%; }
   .hero-stats{ justify-content:center; width:100%; }
   .hero-scroll{ display:none; }
-  .hero-results{ font-size:clamp(40px,10.6vw,61px); line-height:0.76; margin-bottom:8px; }
+  .hero-results{ font-size:clamp(40px,10.6vw,61px); line-height:0.92; margin-bottom:8px; }
   .hero-accent{ font-size:1em; }
-  .hero-lead{ margin-bottom:13px; }
+  .hero-lead{ margin-bottom:13px; max-width:340px; }
   .hero-features{
     margin-top:auto;
     padding-top:14px;

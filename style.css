@@ -521,6 +521,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .showcase-accent{ color:var(--brand-pink); font-style:italic; font-weight:500; }
 .section-video .section-lead{ color:rgba(255,255,255,0.8); }
 .section-lead.center{ text-align:center; margin-left:auto; margin-right:auto; }
+#afterHero .video-section-bg{ background-image:url(images/workout-bg.webp); }
 
 .section-membership .video-section-bg{ background-image:url(images/backgroundmobilenew.webp); }
 .section-membership .eyebrow{ color:var(--ink); }

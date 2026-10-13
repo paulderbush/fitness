@@ -222,8 +222,8 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .mobile-menu-account{ margin-top:7.5px; }
 .mobile-menu-nav .mobile-menu-account{
   font-family:'Inter', sans-serif;
-  font-weight:600;
-  font-size:22px;
+  font-weight:500;
+  font-size:18px;
   white-space:nowrap;
 }
 .mobile-menu-nav .mobile-menu-account{ color:#111; }

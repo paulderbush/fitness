@@ -52,7 +52,7 @@
 </div>
 
 <main>
-  <section class="section section-video section-membership">
+  <section class="section section-video section-account">
     <div class="video-section-bg"></div>
     <div class="section-inner narrow">
       <div class="eyebrow">My Account</div>
@@ -64,8 +64,16 @@
         <div class="dashboard-content" id="dashboardContent"></div>
       </div>
 
-      <div class="account-programs" id="accountProgramsSection" hidden>
-        <div id="programsList"></div>
+      <div class="account-programs">
+        <a href="index.html#signup" class="account-program-card locked" id="programCard" style="background-image:url('images/preview-program.webp')">
+          <div class="account-program-overlay"></div>
+          <svg class="account-program-lock" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="5" y="11" width="14" height="9" rx="2"></rect>
+            <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+          </svg>
+          <span class="account-program-name">Body Muse Program</span>
+          <span class="btn btn-pill btn-primary btn-sm account-program-cta" id="programCardCta">Join Now</span>
+        </a>
       </div>
 
       <div class="account-actions">

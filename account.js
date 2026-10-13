@@ -9,16 +9,20 @@ function daysLeft(iso){
   return Math.max(0, Math.ceil(diff / 86400000));
 }
 
+function setProgramCardLocked(locked){
+  const programCard = document.getElementById('programCard');
+  const programCardCta = document.getElementById('programCardCta');
+  programCard.classList.toggle('locked', locked);
+  programCard.href = locked ? 'index.html#signup' : 'program.html';
+  programCardCta.textContent = locked ? 'Join Now' : 'Start Training';
+}
+
 async function refreshStatus(session){
   const dashboardStatus = document.getElementById('dashboardStatus');
   const dashboardContent = document.getElementById('dashboardContent');
-  const accountProgramsSection = document.getElementById('accountProgramsSection');
-  const programsList = document.getElementById('programsList');
 
   dashboardStatus.textContent = 'Checking subscription…';
   dashboardContent.innerHTML = '';
-  programsList.innerHTML = '';
-  accountProgramsSection.hidden = true;
 
   try {
     const res = await fetch('/api/subscription-status', {
@@ -60,17 +64,11 @@ async function refreshStatus(session){
         });
       }
 
-      accountProgramsSection.hidden = false;
-      programsList.innerHTML = `
-        <a href="program.html" class="account-program-card" style="background-image:url('images/preview-program.webp')">
-          <div class="account-program-overlay"></div>
-          <span class="account-program-name">Body Muse Program</span>
-          <span class="btn btn-pill btn-primary btn-sm account-program-cta">Start Training</span>
-        </a>
-      `;
+      setProgramCardLocked(false);
     } else {
       dashboardStatus.innerHTML = '<span class="status-badge status-inactive">No active subscription</span>';
       dashboardContent.innerHTML = '<button class="btn btn-pill btn-primary btn-block" id="subscribeBtn" type="button">Subscribe for €19.99/month</button>';
+      setProgramCardLocked(true);
       document.getElementById('subscribeBtn').addEventListener('click', async () => {
         const btn = document.getElementById('subscribeBtn');
         btn.disabled = true;

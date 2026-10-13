@@ -603,11 +603,9 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   pointer-events:none;
 }
 .video-player iframe{
-  position:absolute;
-  top:2.4%; left:3.8%;
-  width:92.4%; height:95.1%;
+  position:absolute; inset:0;
+  width:100%; height:100%;
   border:none;
-  border-radius:14px;
 }
 
 .video-upnext{

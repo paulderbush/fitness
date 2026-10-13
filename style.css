@@ -174,7 +174,7 @@ ul{ margin:0; padding:0; list-style:none; }
 /* solid topbar once the page has been scrolled past the hero */
 .topbar.scrolled{ background:rgba(251,247,238,0.85); backdrop-filter:blur(12px); border-bottom-color:rgba(75,98,69,0.08); }
 .topbar.scrolled .topbar-brand{ color:var(--ink); }
-.topbar.scrolled .topbar-link{ color:var(--ink-soft); }
+.topbar.scrolled .topbar-link{ color:var(--ink); }
 .topbar.scrolled .topbar-link:hover{ color:var(--brand-pink-deep); }
 .topbar.scrolled .hamburger-btn span{ background:var(--sage-deep); }
 
@@ -217,7 +217,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   font-weight:600;
   color:var(--ink);
 }
-.mobile-menu-link:hover{ color:var(--rose-deep); }
+.mobile-menu-link:hover{ color:var(--brand-pink-deep); }
 .mobile-menu-account{ margin-top:10px; }
 .mobile-menu-cta{ margin-top:10px; }
 .mobile-menu-nav .mobile-menu-account,
@@ -285,14 +285,14 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 }
 .btn-outline-light:hover{ background:rgba(255,255,255,0.14); }
 .topbar.scrolled .btn-outline-light{ color:var(--ink); }
-.topbar.scrolled .btn-outline-light:hover{ background:rgba(75,98,69,0.08); }
+.topbar.scrolled .btn-outline-light:hover{ background:rgba(75,98,69,0.08); color:var(--brand-pink-deep); }
 .btn-outline-rose{
   background:transparent;
   color:var(--rose-deep);
 }
 .btn-outline-rose:hover{ background:rgba(193,88,122,0.08); }
 .btn-lg{ padding:18px 30px; font-size:16px; }
-.btn-sm{ padding:10px 18px; font-size:13.5px; }
+.btn-sm{ padding:10px 18px; font-size:13.5px; border-radius:12px; }
 .btn-block{ display:flex; width:100%; margin-top:10px; }
 .btn-ghost{
   background:transparent;
@@ -525,6 +525,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .section-membership .eyebrow{ color:var(--ink); }
 .section-membership .h2{ color:var(--ink); font-weight:500; }
 .section-membership .showcase-accent{ font-style:normal; font-weight:800; }
+#afterHero .showcase-accent{ font-style:normal; }
 .section-membership .section-lead{ color:var(--ink-soft); }
 .section-membership .membership-card-title{ color:var(--ink); }
 .section-membership .membership-card-text{ color:var(--ink-soft); }
@@ -585,8 +586,20 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   border-radius:18px;
   overflow:hidden;
   background:#000;
-  border:1px solid rgba(255,255,255,0.15);
   box-shadow:var(--shadow);
+}
+.video-player::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+  border-radius:inherit;
+  padding:1.5px;
+  background:linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(142,142,142,0.6) 50%, rgba(255,255,255,0.95) 100%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
 }
 .video-player iframe{
   position:absolute; inset:0;

@@ -521,6 +521,23 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .section-video .section-lead{ color:rgba(255,255,255,0.8); }
 .section-lead.center{ text-align:center; margin-left:auto; margin-right:auto; }
 
+.section-membership .video-section-bg{ background-image:url(images/backgroundmobilenew.webp); }
+.section-membership .eyebrow{ color:var(--ink); }
+.section-membership .h2{ color:var(--ink); }
+.section-membership .showcase-accent{ font-style:normal; }
+.section-membership .section-lead{ color:var(--ink-soft); }
+.section-membership .membership-arrow{
+  border-color:rgba(75,98,69,0.25);
+  background:rgba(255,255,255,0.5);
+  color:var(--ink);
+}
+.section-membership .membership-arrow:hover{ background:#fff; border-color:rgba(75,98,69,0.4); }
+.section-membership .membership-card-title{ color:var(--ink); }
+.section-membership .membership-card-text{ color:var(--ink-soft); }
+.section-membership .video-cta-wrap .trust-row{ color:var(--ink-soft); }
+.section-membership .membership-footnote{ color:var(--ink-soft); }
+.section-membership .membership-footnote::before{ background:rgba(75,98,69,0.35); }
+
 .video-showcase{
   display:flex;
   flex-direction:column;
@@ -1415,6 +1432,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     --hero-w:1100px;
     --hero-lead-w:640px;
   }
+  .section-membership .video-section-bg{ background-image:url(images/backgroundwebnew.webp); }
   .video-showcase{
     display:grid;
     grid-template-columns:170px 1fr 200px;

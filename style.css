@@ -580,7 +580,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 .section-coach .video-section-bg{ background-image:url(images/coach-bg.webp); background-position:right center; }
 .section-coach .eyebrow{ color:#111; }
-.section-coach .h2{ color:#111; }
+.section-coach .h2{ color:#111; font-weight:500; }
 .section-coach .showcase-accent{ font-style:normal; font-weight:700; }
 .section-coach .coach-bio{ color:#111; }
 .section-coach .coach-credentials{ border-top-color:rgba(0,0,0,0.14); }
@@ -602,7 +602,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .section-coach .coach-credentials{
     flex-direction:row;
     gap:0;
-    margin:4px 0;
+    margin:0 0 6px 0;
     padding-top:4px;
   }
   .section-coach .coach-credential{
@@ -1591,7 +1591,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     justify-content:end;
     gap:24px;
   }
-  .coach-header{ margin-bottom:24px; }
+  .coach-header{ margin-bottom:0; }
   .coach-header .eyebrow,
   .coach-header .h2{ text-align:left; }
   .coach-content{ min-width:0; }

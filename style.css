@@ -598,11 +598,11 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   }
   .section-coach .coach-layout{ gap:4px; }
   .section-coach .coach-content{ text-align:center; }
-  .section-coach .coach-bio{ font-size:15.5px; line-height:1.65; margin-bottom:6px; }
+  .section-coach .coach-bio{ font-size:15.5px; line-height:1.65; margin-bottom:4px; }
   .section-coach .coach-credentials{
     flex-direction:row;
     gap:0;
-    margin:0 0 6px 0;
+    margin:0 0 4px 0;
     padding-top:4px;
   }
   .section-coach .coach-credential{

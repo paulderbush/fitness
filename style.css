@@ -581,7 +581,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .section-coach .video-section-bg{ background-image:url(images/coach-bg.webp); background-position:right center; }
 .section-coach .eyebrow{ color:#111; }
 .section-coach .h2{ color:#111; }
-.section-coach .showcase-accent{ font-style:normal; }
+.section-coach .showcase-accent{ font-style:normal; font-weight:700; }
 .section-coach .coach-bio{ color:#111; }
 .section-coach .coach-credentials{ border-top-color:rgba(0,0,0,0.14); }
 .section-coach .coach-credential span{ color:#111; }

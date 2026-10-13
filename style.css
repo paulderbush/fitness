@@ -521,6 +521,28 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .section-video .section-lead{ color:rgba(255,255,255,0.8); }
 .section-lead.center{ text-align:center; margin-left:auto; margin-right:auto; }
 
+.section-membership .video-section-bg{ background-image:url(images/backgroundmobilenew.webp); }
+.section-membership .eyebrow{ color:var(--ink); }
+.section-membership .h2{ color:var(--ink); font-weight:500; }
+.section-membership .showcase-accent{ font-style:normal; font-weight:800; }
+.section-membership .section-lead{ color:var(--ink-soft); }
+.section-membership .membership-card-title{ color:var(--ink); }
+.section-membership .membership-card-text{ color:var(--ink-soft); }
+.section-membership .video-cta-wrap .trust-row{ color:var(--ink-soft); }
+.section-membership .membership-footnote{ color:var(--ink-soft); }
+.section-membership .membership-footnote::before{ background:rgba(75,98,69,0.35); }
+.membership-dots{ display:flex; justify-content:center; gap:8px; margin-top:16px; }
+.membership-dot{
+  width:7px; height:7px;
+  border-radius:50%;
+  background:rgba(75,98,69,0.25);
+  border:none;
+  padding:0;
+  cursor:pointer;
+  transition:background 0.2s ease, transform 0.2s ease;
+}
+.membership-dot.active{ background:var(--brand-pink); transform:scale(1.3); }
+
 .video-showcase{
   display:flex;
   flex-direction:column;
@@ -623,32 +645,10 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 /* ============ membership carousel ============ */
 .section-membership{ padding-top:70px; }
-.membership-arrows{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin:28px 0 0 0;
-}
 .membership-carousel{
   position:relative;
   margin:16px 0 0 0;
 }
-.membership-arrow{
-  flex-shrink:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,0.3);
-  background:rgba(255,255,255,0.08);
-  color:#fff;
-  cursor:pointer;
-  transition:background 0.2s ease, border-color 0.2s ease;
-}
-.membership-arrow:hover{ background:rgba(255,255,255,0.18); border-color:rgba(255,255,255,0.5); }
-.membership-arrow svg{ width:18px; height:18px; }
 .membership-viewport{
   flex:1;
   overflow-x:auto;
@@ -666,52 +666,28 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   position:relative;
   flex:0 0 100%;
   scroll-snap-align:start;
-  border-radius:20px;
-  overflow:hidden;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.18);
-  backdrop-filter:blur(40px) saturate(160%);
-  -webkit-backdrop-filter:blur(40px) saturate(160%);
-  padding:33px 20px 0 30px;
-  display:flex;
-  flex-direction:column;
+  border-radius:24px;
   box-shadow:var(--shadow-lg);
+  transition:transform 0.2s ease-out;
+  will-change:transform;
 }
-.membership-card-head{ position:relative; z-index:2; flex-shrink:0; }
-.membership-card-number{
-  font-weight:800;
-  font-size:13px;
-  letter-spacing:0.08em;
-  color:var(--brand-pink);
-  margin-bottom:6px;
+.membership-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  padding:1.5px;
+  background:linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(142,142,142,0.6) 50%, rgba(255,255,255,0.95) 100%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
 }
-.membership-card-title{
-  font-family:'Inter', sans-serif;
-  font-weight:700;
-  font-size:21px;
-  text-transform:uppercase;
-  letter-spacing:0.01em;
-  color:#fff;
-  margin:0 0 6px 0;
-}
-.membership-card-text{
-  font-size:15px;
-  line-height:1.4;
-  font-weight:500;
-  color:rgba(255,255,255,0.85);
-  margin:0;
-}
-
-.membership-phone{
-  position:relative;
-  width:92%;
-  margin:20px auto 0;
-  aspect-ratio:2477/3160;
-}
-.membership-phone-img{
-  position:absolute; inset:0;
-  width:100%; height:100%;
+.membership-card-img{
   display:block;
+  width:100%;
+  height:auto;
+  border-radius:inherit;
 }
 
 /* ============ results ============ */
@@ -750,6 +726,22 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 /* before / after carousel */
 .results-carousel{ position:relative; margin:28px 0 0 0; }
+.membership-arrow{
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,0.3);
+  background:rgba(255,255,255,0.08);
+  color:#fff;
+  cursor:pointer;
+  transition:background 0.2s ease, border-color 0.2s ease;
+}
+.membership-arrow:hover{ background:rgba(255,255,255,0.18); border-color:rgba(255,255,255,0.5); }
+.membership-arrow svg{ width:18px; height:18px; }
 .results-arrow{ position:absolute; z-index:3; bottom:38px; }
 .results-arrow-prev{ left:0; }
 .results-arrow-next{ right:0; }
@@ -1406,6 +1398,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 /* ============ desktop ============ */
 @media (min-width:760px){
   .topbar-nav{ display:flex; }
+  .membership-title-break{ display:none; }
 }
 
 /* ============ wide desktop ============ */
@@ -1415,6 +1408,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     --hero-w:1100px;
     --hero-lead-w:640px;
   }
+  .section-membership .video-section-bg{ background-image:url(images/backgroundwebnew.webp); }
   .video-showcase{
     display:grid;
     grid-template-columns:170px 1fr 200px;

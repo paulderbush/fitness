@@ -1395,7 +1395,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 /* ============ desktop ============ */
 @media (min-width:760px){
   .topbar-nav{ display:flex; }
-  .membership-title-break{ display:none; }
 }
 
 /* ============ wide desktop ============ */

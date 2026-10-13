@@ -1585,6 +1585,13 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     width:18px; height:1px;
     background:rgba(255,255,255,0.5);
   }
+  .section-coach{
+    aspect-ratio:1672/941;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .section-coach > .section-inner{ width:100%; }
   .coach-layout{
     grid-template-columns:minmax(0, 620px);
     grid-template-areas:"header" "content";

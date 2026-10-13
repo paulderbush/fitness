@@ -143,6 +143,7 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .topbar-actions .account-btn-topbar{ display:none; }
 @media (min-width:760px){ .topbar-actions .account-btn-topbar{ display:inline-flex; } }
+.topbar-actions .btn, .mobile-menu-nav .btn{ font-weight:600; }
 
 /* ============ hamburger ============ */
 .hamburger-btn{
@@ -520,6 +521,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .showcase-accent{ color:var(--brand-pink); font-style:italic; font-weight:500; }
 .section-video .section-lead{ color:rgba(255,255,255,0.8); }
 .section-lead.center{ text-align:center; margin-left:auto; margin-right:auto; }
+#afterHero .video-section-bg{ background-image:url(images/workout-bg.webp); }
 
 .section-membership .video-section-bg{ background-image:url(images/backgroundmobilenew.webp); }
 .section-membership .eyebrow{ color:var(--ink); }
@@ -1200,7 +1202,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .footer-brand-block{ order:1; text-align:center; }
 .footer-links{ order:2; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
 .footer-fine{ order:3; font-size:11.5px; opacity:0.5; }
-.footer-brand{ font-family:'Inter', sans-serif; font-weight:600; font-size:18px; margin-bottom:2px; }
+.footer-brand{ font-family:'Inter', sans-serif; font-weight:800; font-size:17px; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:4px; }
 .footer-tagline{ font-size:12px; opacity:0.75; font-weight:500; }
 .footer-links .btn{ gap:8px; color:#111; }
 @media (min-width:760px){

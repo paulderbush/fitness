@@ -1117,7 +1117,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 }
 .price-badge-muted{ background:var(--sage-deep); }
 .price-name{ font-family:'Inter', sans-serif; font-weight:600; font-size:20px; color:var(--ink); margin-bottom:4px; }
-.price-amount{ font-size:34px; font-weight:800; color:var(--brand-pink-deep); margin-bottom:6px; }
+.price-amount{ font-size:34px; font-weight:800; color:#fff; margin-bottom:6px; }
 .price-amount span{ font-size:13px; font-weight:600; color:var(--ink-soft); }
 .price-desc{ font-size:13.5px; color:var(--ink-soft); font-weight:500; margin-bottom:16px; }
 .price-features{ margin-bottom:14px; }

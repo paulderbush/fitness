@@ -575,14 +575,19 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .section-membership .membership-footnote::before{ background:rgba(75,98,69,0.35); }
 
 .section-pricing .video-section-bg{ background-image:url(images/backgroundmobilenew.webp); }
-.section-pricing .eyebrow{ color:var(--ink); }
-.section-pricing .h2{ color:var(--ink); font-weight:500; }
-.section-pricing .btn-outline-light{ color:var(--ink); }
-.section-pricing .btn-outline-light:hover{ background:rgba(36,43,34,0.08); }
+.section-pricing .eyebrow{ color:#111; }
+.section-pricing .h2{ color:#111; font-weight:500; }
+.section-pricing .showcase-accent{ font-style:normal; font-weight:800; }
+.section-pricing .btn-primary{ color:#111; }
 
 .section-account .video-section-bg{ background-image:url(images/accountbackground.webp); }
 .section-account .eyebrow{ color:var(--ink); }
 .section-account .h2{ color:var(--ink); font-weight:500; }
+
+.section-signup .video-section-bg{ background-image:url(images/faqbackground.webp); }
+.section-signup .eyebrow{ color:#111; }
+.section-signup .h2{ color:#111; font-weight:500; }
+.section-signup .showcase-accent{ color:var(--rose-deep); font-style:normal; font-weight:800; }
 
 .section-coach .video-section-bg{ background-image:url(images/coach-bg.webp); background-position:right center; }
 .section-coach .eyebrow{ color:#111; }
@@ -1084,6 +1089,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   border-radius:22px;
   padding:26px 22px;
   position:relative;
+  text-align:center;
   backdrop-filter:blur(40px) saturate(160%);
   -webkit-backdrop-filter:blur(40px) saturate(160%);
   box-shadow:var(--shadow-lg);
@@ -1116,22 +1122,22 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   margin-bottom:14px;
 }
 .price-badge-muted{ background:var(--sage-deep); }
-.price-name{ font-family:'Inter', sans-serif; font-weight:600; font-size:20px; color:var(--ink); margin-bottom:4px; }
-.price-amount{ font-size:34px; font-weight:800; color:#fff; margin-bottom:6px; }
-.price-amount span{ font-size:13px; font-weight:600; color:var(--ink-soft); }
-.price-desc{ font-size:13.5px; color:var(--ink-soft); font-weight:500; margin-bottom:16px; }
+.price-name{ font-family:'Inter', sans-serif; font-weight:600; font-size:20px; color:#111; margin-bottom:4px; }
+.price-amount{ font-size:34px; font-weight:800; color:var(--rose); margin-bottom:6px; }
+.price-amount span{ font-size:13px; font-weight:600; color:rgba(17,17,17,0.6); }
+.price-desc{ font-size:13.5px; color:rgba(17,17,17,0.65); font-weight:500; margin-bottom:16px; }
 .price-features{ margin-bottom:14px; }
 .price-features li{
   font-size:13.5px;
-  color:var(--ink);
+  color:#111;
   font-weight:500;
   padding:7px 0;
-  border-bottom:1px dashed rgba(36,43,34,0.16);
+  border-bottom:1px dashed rgba(0,0,0,0.16);
 }
 .price-features li:last-child{ border-bottom:none; }
-.gift-list li s{ color:var(--ink-soft); margin:0 4px; }
+.gift-list li s{ color:rgba(17,17,17,0.5); margin:0 4px; }
 .gift-list li b{ color:var(--brand-pink-deep); }
-.price-note{ font-size:12px; color:var(--ink-soft); font-weight:600; margin-bottom:6px; }
+.price-note{ font-size:12px; color:rgba(17,17,17,0.6); font-weight:600; margin-bottom:6px; }
 .price-trial-link{ color:var(--brand-pink-deep); }
 
 .stars{ color:#F2D392; font-size:16px; letter-spacing:2px; margin-bottom:8px; }
@@ -1188,13 +1194,13 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   max-width:640px;
   margin-left:auto;
   margin-right:auto;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.45);
+  border:1px solid rgba(0,0,0,0.08);
   backdrop-filter:blur(40px) saturate(160%);
   -webkit-backdrop-filter:blur(40px) saturate(160%);
 }
 .field-label{ display:block; font-weight:700; font-size:13.5px; margin-bottom:8px; color:var(--ink); }
-.signup-card .field-label{ color:#fff; }
+.signup-card .field-label{ color:#111; }
 .field-input{
   width:100%;
   border:1.5px solid rgba(75,98,69,0.2);
@@ -1213,15 +1219,15 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   margin:-8px 0 14px 0;
   line-height:1.4;
 }
-.signup-card .field-hint{ color:rgba(255,255,255,0.65); }
+.signup-card .field-hint{ color:rgba(17,17,17,0.6); }
 .payment-note{
   font-size:12.5px;
   color:var(--muted);
   font-weight:600;
   margin-bottom:16px;
 }
-.signup-card .payment-note{ color:rgba(255,255,255,0.65); }
-.signup-card .trust-row{ color:rgba(255,255,255,0.7); }
+.signup-card .payment-note{ color:rgba(17,17,17,0.6); }
+.signup-card .trust-row{ color:rgba(17,17,17,0.65); }
 
 .plan-options{ display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
 .plan-option{
@@ -1230,17 +1236,17 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   gap:12px;
   padding:14px 16px;
   border-radius:14px;
-  border:1.5px solid rgba(255,255,255,0.18);
-  background:rgba(255,255,255,0.06);
+  border:1.5px solid rgba(0,0,0,0.1);
+  background:rgba(255,255,255,0.4);
   cursor:pointer;
   transition:border-color 0.2s ease, background 0.2s ease;
 }
 .plan-option:has(input:checked){
   border-color:var(--brand-pink);
-  background:rgba(255,255,255,0.14);
+  background:rgba(255,255,255,0.7);
 }
 .plan-option input{ accent-color:var(--brand-pink); width:18px; height:18px; flex-shrink:0; }
-.plan-option-label{ font-size:14px; font-weight:700; color:#fff; }
+.plan-option-label{ font-size:14px; font-weight:700; color:#111; }
 
 /* ============ footer ============ */
 .footer{

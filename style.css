@@ -1090,7 +1090,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 /* ============ faq ============ */
 .faq-list{ margin-top:28px; max-width:640px; margin-left:auto; margin-right:auto; }
 .faq-col{ display:contents; }
-.section-faq .video-section-bg{ background-image:url(images/faq-bg.webp); }
+.section-faq .video-section-bg{ background-image:url(images/faq-bg-mobile.webp); }
 .section-faq .h2{ font-weight:400; }
 .section-faq .showcase-accent{ font-style:normal; font-weight:800; }
 .faq-item{
@@ -1424,6 +1424,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   }
   .section-membership .video-section-bg{ background-image:url(images/backgroundwebnew.webp); }
   .section-pricing .video-section-bg{ background-image:url(images/backgroundwebnew.webp); }
+  .section-faq .video-section-bg{ background-image:url(images/faq-bg.webp); }
   .video-showcase{
     display:grid;
     grid-template-columns:170px 1fr 200px;

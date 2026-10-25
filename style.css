@@ -578,7 +578,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .section-pricing .eyebrow{ color:#111; }
 .section-pricing .h2{ color:#111; font-weight:500; }
 .section-pricing .showcase-accent{ font-style:normal; font-weight:800; }
-.section-pricing .btn-primary{ color:#111; }
 
 .section-account .video-section-bg{ background-image:url(images/accountbackground.webp); }
 .section-account .eyebrow{ color:var(--ink); }
@@ -1081,64 +1080,9 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   margin:0;
 }
 
-/* ============ pricing ============ */
-.pricing-grid{ display:flex; flex-direction:column; gap:18px; margin-top:28px; }
-.price-card{
-  background:rgba(240,177,194,0.25);
-  border:1px solid rgba(217,139,161,0.3);
-  border-radius:22px;
-  padding:26px 22px;
-  position:relative;
-  text-align:center;
-  backdrop-filter:blur(40px) saturate(160%);
-  -webkit-backdrop-filter:blur(40px) saturate(160%);
-  box-shadow:var(--shadow-lg);
-  transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-}
-.price-card:has(.btn:hover){
-  transform:scale(1.03);
-  box-shadow:var(--shadow-lg);
-  border-color:var(--brand-pink);
-  background:rgba(240,177,194,0.35);
-}
-.price-featured{
-  border-color:var(--brand-pink);
-  box-shadow:var(--shadow-lg);
-  transform:scale(1.02);
-}
-.price-featured:has(.btn:hover){
-  transform:scale(1.05);
-}
-.price-badge{
-  display:inline-block;
-  background:var(--rose);
-  color:#fff;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:0.04em;
-  text-transform:uppercase;
-  padding:6px 12px;
-  border-radius:999px;
-  margin-bottom:14px;
-}
-.price-badge-muted{ background:var(--sage-deep); }
-.price-name{ font-family:'Inter', sans-serif; font-weight:600; font-size:20px; color:#111; margin-bottom:4px; }
-.price-amount{ font-size:34px; font-weight:800; color:var(--rose); margin-bottom:6px; }
-.price-amount span{ font-size:13px; font-weight:600; color:rgba(17,17,17,0.6); }
-.price-desc{ font-size:13.5px; color:rgba(17,17,17,0.65); font-weight:500; margin-bottom:16px; }
-.price-features{ margin-bottom:14px; }
-.price-features li{
-  font-size:13.5px;
-  color:#111;
-  font-weight:500;
-  padding:7px 0;
-  border-bottom:1px dashed rgba(0,0,0,0.16);
-}
-.price-features li:last-child{ border-bottom:none; }
-.gift-list li s{ color:rgba(17,17,17,0.5); margin:0 4px; }
-.gift-list li b{ color:var(--brand-pink-deep); }
-.price-note{ font-size:12px; color:rgba(17,17,17,0.6); font-weight:600; margin-bottom:6px; }
-.price-trial-link{ color:var(--brand-pink-deep); }
+/* ============ pricing coverflow carousel ============ */
+.section-pricing .membership-viewport{ height:calc(var(--card-w) * 1464 / 889 + 60px); }
+.section-pricing .membership-card{ aspect-ratio:889/1464; }
 
 .stars{ color:#F2D392; font-size:16px; letter-spacing:2px; margin-bottom:8px; }
 
@@ -1633,8 +1577,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .coach-quote-mark-open,
   .coach-quote-mark-close{ margin:0; }
   .coach-quote-text{ margin:0; }
-  .pricing-grid{ flex-direction:row; align-items:stretch; gap:28px; margin-top:36px; }
-  .price-card{ flex:1; padding:34px 30px; }
   .faq-list{ margin-top:36px; }
 
   .results-badge{ display:block; top:26px; right:40px; width:80px; height:80px; }

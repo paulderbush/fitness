@@ -83,16 +83,16 @@ function setupLoopingArrows(viewport, prevBtn, nextBtn, step){
 }
 
 // ============ MEMBERSHIP COVERFLOW CAROUSEL ============
-function setupMembershipCarousel(){
-  const viewport = document.getElementById('membershipViewport');
+function setupCoverFlowCarousel({ viewportId, dotsId, startIndex = 0, onActiveClick }){
+  const viewport = document.getElementById(viewportId);
   const track = viewport && viewport.querySelector('.membership-track');
   const cards = viewport ? Array.from(viewport.querySelectorAll('.membership-card')) : [];
-  const dots = Array.from(document.querySelectorAll('#membershipDots .membership-dot'));
+  const dots = Array.from(document.querySelectorAll('#' + dotsId + ' .membership-dot'));
   if(!viewport || !track || !cards.length) return;
 
   const count = cards.length;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let activeIndex = 0;
+  let activeIndex = Math.max(0, Math.min(count - 1, startIndex));
   let dragging = false;
   let dragMoved = false;
   let dragStartX = 0;
@@ -146,6 +146,7 @@ function setupMembershipCarousel(){
     card.addEventListener('click', () => {
       if(dragMoved) return;
       if(i !== activeIndex) goTo(i);
+      else if(onActiveClick) onActiveClick();
     });
   });
 
@@ -218,6 +219,22 @@ function setupMembershipCarousel(){
   render();
   updateDots();
   window.addEventListener('resize', () => render());
+}
+
+function setupMembershipCarousel(){
+  setupCoverFlowCarousel({ viewportId:'membershipViewport', dotsId:'membershipDots' });
+}
+
+function setupPricingCarousel(){
+  setupCoverFlowCarousel({
+    viewportId:'pricingViewport',
+    dotsId:'pricingDots',
+    startIndex:1,
+    onActiveClick: () => {
+      const signup = document.getElementById('signup');
+      if(signup) signup.scrollIntoView({ behavior:'smooth' });
+    }
+  });
 }
 
 // ============ RESULTS CAROUSEL ============
@@ -473,6 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFAQ();
   setupVideoShowcase();
   setupMembershipCarousel();
+  setupPricingCarousel();
   setupResultsCarousel();
   setupTopbarOverHero();
   setupPopup();

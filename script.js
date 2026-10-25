@@ -1,6 +1,6 @@
 // ============ FAQ DATA ============
 const FAQ = [
-  { q:"Is this program right for beginners or advanced users?", a:"The program is designed for both beginners and experienced women. Every workout includes adjustable intensity levels, allowing you to train at the pace that's right for you while progressing safely over time." },
+  { q:"What level should I be?", a:"Any level. The program is designed for both beginners and experienced women. Every workout includes adjustable intensity levels, allowing you to train at the pace that's right for you while progressing safely over time." },
   { q:"I'm over 40. Is this program right for me?", a:"Absolutely. Your body can become stronger, leaner, and healthier at any age. The program adapts to your fitness level so you can train safely and continue making progress." },
   { q:"Can I do this program after pregnancy?", a:"Yes, if your doctor has cleared you to exercise. The workouts can be adapted to your current level and gradually increased as your body gets stronger." },
   { q:"What if I have back pain or poor posture?", a:"Strong muscles help support good posture. Along with the main program, you'll have access to posture-focused workouts designed to strengthen your back and core, and improve the way you move." },

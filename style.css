@@ -363,7 +363,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   width:100%;
   padding:90px 22px 28px 22px;
 }
-@media (max-width:1023px){
+@media (max-width:879px){
   .hero-inner{ display:contents; }
 }
 
@@ -486,7 +486,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .hero-footnote{ display:none; }
 .membership-footnote{ display:none; }
 
-@media (max-width:1023px){
+@media (max-width:879px){
   .hero-features{ width:100%; }
   .hero-stats{ justify-content:center; width:100%; }
   .hero-scroll{ display:none; }
@@ -598,7 +598,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .section-coach .coach-credential:not(:last-child)::after{ background:rgba(0,0,0,0.16); }
 .section-coach .coach-quote{ background:rgba(0,0,0,0.05); border-color:rgba(0,0,0,0.1); }
 .section-coach .coach-quote-text{ color:#111; }
-@media (max-width:1023px){
+@media (max-width:879px){
   .section-coach{ aspect-ratio:720/1786; }
   .section-coach .video-section-bg{
     background-image:url(images/coach-mobile.webp);
@@ -1416,7 +1416,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 }
 
 /* ============ wide desktop ============ */
-@media (min-width:1024px){
+@media (min-width:880px){
   :root{
     --content-w:1280px;
     --hero-w:1100px;

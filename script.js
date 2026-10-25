@@ -27,7 +27,7 @@ function renderFAQ(){
   const mid = Math.ceil(FAQ.length / 2);
   FAQ.forEach((item, i) => {
     const el = document.createElement('div');
-    el.className = 'faq-item' + (i === 0 ? ' open' : '');
+    el.className = 'faq-item';
     el.innerHTML = `
       <div class="faq-q">
         <span>${item.q}</span>
@@ -50,9 +50,6 @@ function renderFAQ(){
     });
     (i < mid ? colLeft : colRight).appendChild(el);
   });
-  // set initial open height after render
-  const first = wrap.querySelector('.faq-item.open .faq-a');
-  if(first) first.style.maxHeight = first.scrollHeight + 'px';
 }
 
 // ============ VIDEO SHOWCASE (Up Next) ============

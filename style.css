@@ -1082,7 +1082,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 /* ============ pricing coverflow carousel ============ */
 .section-pricing .membership-viewport{ height:calc(var(--card-w) * 1464 / 889 + 60px); }
-.section-pricing .membership-card{ aspect-ratio:889/1464; }
+.section-pricing .membership-card{ aspect-ratio:889/1464; box-shadow:none; }
 .section-pricing .membership-card::before{ content:none; }
 
 .stars{ color:#F2D392; font-size:16px; letter-spacing:2px; margin-bottom:8px; }

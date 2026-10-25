@@ -15,11 +15,16 @@ const FAQ = [
   { q:"Why should I trust this program?", a:"This isn't a random collection of workouts - it's a complete body transformation system created specifically for women, combining evidence-based training, personalized nutrition, healthy recipes, and progressive programs designed to help you lose weight, tone your body, improve your posture, and build habits that last." },
   { q:"Is this just another workout app?", a:"No - it's a complete transformation platform. Inside your membership you'll find step-by-step workout systems, weight loss programs, posture correction, flat stomach and glute programs, personalized nutrition plans, hundreds of healthy recipes, and new content added regularly. Everything you need is in one place." },
   { q:"Why should I start today instead of waiting?", a:"Because every week you wait is another week without progress. For just €2.99, you can start today, experience the full program, and see whether it's the right fit for you - with virtually no risk, thanks to our 30-Day Results Guarantee." },
+  { q:"Can I cancel my subscription anytime?", a:"Yes. There are no long-term contracts or hidden fees. You can cancel directly from your account at any time, and you'll keep full access until the end of your current billing period." },
 ];
 
 function renderFAQ(){
   const wrap = document.getElementById('faqList');
-  wrap.innerHTML = '';
+  const colLeft = document.getElementById('faqColLeft');
+  const colRight = document.getElementById('faqColRight');
+  colLeft.innerHTML = '';
+  colRight.innerHTML = '';
+  const mid = Math.ceil(FAQ.length / 2);
   FAQ.forEach((item, i) => {
     const el = document.createElement('div');
     el.className = 'faq-item' + (i === 0 ? ' open' : '');
@@ -43,7 +48,7 @@ function renderFAQ(){
         a.style.maxHeight = a.scrollHeight + 'px';
       }
     });
-    wrap.appendChild(el);
+    (i < mid ? colLeft : colRight).appendChild(el);
   });
   // set initial open height after render
   const first = wrap.querySelector('.faq-item.open .faq-a');

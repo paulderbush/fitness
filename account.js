@@ -87,6 +87,59 @@ async function refreshStatus(session){
   }
 }
 
+function updateEmailDisplay(user){
+  const name = user.user_metadata && user.user_metadata.name;
+  document.getElementById('dashboardEmail').textContent = name ? `Hi, ${name} (${user.email})` : user.email;
+}
+
+// Members who signed up straight into checkout (see setupSignup in
+// script.js) don't have a password yet - their account was created with a
+// throwaway one. Block the dashboard behind this one-time step so they set
+// their own password (and optionally a name) before using the account page.
+function needsOnboarding(session){
+  return !(session.user.user_metadata && session.user.user_metadata.password_set);
+}
+
+function setupOnboarding(session){
+  const card = document.getElementById('onboardingCard');
+  const dashboardCard = document.getElementById('dashboardCard');
+  const nameInput = document.getElementById('onboardingName');
+  const passwordInput = document.getElementById('onboardingPassword');
+  const saveBtn = document.getElementById('onboardingSaveBtn');
+  const defaultLabel = saveBtn.textContent;
+
+  card.style.display = '';
+  dashboardCard.style.display = 'none';
+
+  saveBtn.addEventListener('click', async () => {
+    const name = nameInput.value.trim();
+    const password = passwordInput.value;
+    if(!password || password.length < 6){
+      passwordInput.style.borderColor = '#C1587A';
+      return;
+    }
+    passwordInput.style.borderColor = '';
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving…';
+
+    const { data, error } = await sb.auth.updateUser({
+      password,
+      data: { password_set: true, name: name || undefined },
+    });
+    if(error){
+      saveBtn.disabled = false;
+      saveBtn.textContent = defaultLabel;
+      alert(error.message);
+      return;
+    }
+
+    updateEmailDisplay(data.user);
+    card.style.display = 'none';
+    dashboardCard.style.display = '';
+    await refreshStatus(session);
+  });
+}
+
 async function initAccountPage(){
   await sbReady;
   const dashboardStatus = document.getElementById('dashboardStatus');
@@ -101,13 +154,18 @@ async function initAccountPage(){
     return;
   }
 
-  document.getElementById('dashboardEmail').textContent = session.user.email;
+  updateEmailDisplay(session.user);
   document.getElementById('logoutBtn').addEventListener('click', async () => {
     await sb.auth.signOut();
     window.location.href = 'index.html';
   });
 
-  await refreshStatus(session);
+  if(needsOnboarding(session)){
+    setupOnboarding(session);
+  } else {
+    document.getElementById('dashboardCard').style.display = '';
+    await refreshStatus(session);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', initAccountPage);

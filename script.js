@@ -415,10 +415,19 @@ function setupHashCleanup(){
 }
 
 // ============ SIGNUP: CREATE ACCOUNT + START CHECKOUT ============
+// The password is deliberately not collected here - we create the account
+// behind the scenes with a throwaway password and send the member straight
+// to checkout. They choose their real password on the account page right
+// after paying (see setupAccountOnboarding in account.js), so a user who
+// never finishes checkout never has to think about a password at all.
+function randomPassword(){
+  if(window.crypto && crypto.randomUUID) return crypto.randomUUID() + crypto.randomUUID();
+  return Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2) + Date.now();
+}
+
 function setupSignup(){
   const btn = document.getElementById('signupBtn');
   const emailInput = document.getElementById('emailInput');
-  const passwordInput = document.getElementById('signupPassword');
   if(!btn) return;
   const defaultLabel = btn.textContent;
 
@@ -429,24 +438,11 @@ function setupSignup(){
 
   btn.addEventListener('click', async () => {
     const email = emailInput.value.trim();
-    const password = passwordInput.value;
-    let valid = true;
     if(!email || !emailInput.checkValidity()){
       emailInput.style.borderColor = '#C1587A';
-      valid = false;
-    } else {
-      emailInput.style.borderColor = '';
+      return;
     }
-    if(!password || password.length < 6){
-      passwordInput.style.borderColor = '#C1587A';
-      valid = false;
-    } else {
-      passwordInput.style.borderColor = '';
-    }
-    if(!valid) return;
-
-    const planInput = document.querySelector('input[name="signupPlan"]:checked');
-    const plan = planInput ? planInput.value : 'trial';
+    emailInput.style.borderColor = '';
 
     await sbReady;
     if(!sb){
@@ -458,29 +454,33 @@ function setupSignup(){
     btn.textContent = 'Creating your account…';
 
     let userId;
-    const { data:signUpData, error:signUpError } = await sb.auth.signUp({ email, password });
-    if(signUpError){
-      if(/already registered|already exists/i.test(signUpError.message)){
-        const { data:signInData, error:signInError } = await sb.auth.signInWithPassword({ email, password });
-        if(signInError){
-          reset();
-          passwordInput.style.borderColor = '#C1587A';
-          alert('An account with this email already exists. Please check your password.');
-          return;
-        }
-        userId = signInData.user.id;
-      } else {
+    // If this browser already has a session for this email (e.g. they
+    // started checkout before but didn't finish it), reuse that account
+    // instead of trying to sign up again.
+    const { data:{ session:existingSession } } = await sb.auth.getSession();
+    if(existingSession && existingSession.user.email.toLowerCase() === email.toLowerCase()){
+      userId = existingSession.user.id;
+    } else {
+      const { data:signUpData, error:signUpError } = await sb.auth.signUp({
+        email,
+        password: randomPassword(),
+        options: { data: { password_set: false } },
+      });
+      if(signUpError){
         reset();
-        alert(signUpError.message);
+        if(/already registered|already exists/i.test(signUpError.message)){
+          alert("This email already has an account. If you started signing up before, please continue on the same device and browser you used then.");
+        } else {
+          alert(signUpError.message);
+        }
         return;
       }
-    } else {
       userId = signUpData.user.id;
     }
 
     btn.textContent = 'Redirecting to secure payment…';
     try {
-      await startCheckout(email, userId, plan);
+      await startCheckout(email, userId, 'trial');
     } catch(err){
       alert(err.message);
       reset();

@@ -1326,6 +1326,11 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .dashboard-card{ text-align:center; }
 .dashboard-email{ font-size:13px; font-weight:700; color:var(--muted); margin-bottom:10px; }
 .dashboard-status{ margin-bottom:18px; min-height:30px; display:flex; align-items:center; justify-content:center; }
+
+#onboardingCard{ text-align:left; }
+#onboardingCard .eyebrow{ text-align:left; }
+.onboarding-title{ font-family:'Inter', sans-serif; font-weight:700; font-size:22px; color:var(--ink); margin:4px 0 10px 0; }
+#onboardingCard .field-hint{ margin:0 0 18px 0; }
 .status-badge{
   display:inline-flex;
   align-items:center;

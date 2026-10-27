@@ -75,7 +75,21 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
       <div class="eyebrow">My Account</div>
       <h2 class="h2">Your membership</h2>
 
-      <div class="glass-card dashboard-card">
+      <div class="glass-card dashboard-card" id="onboardingCard" style="display:none;">
+        <div class="eyebrow">Payment received</div>
+        <h3 class="onboarding-title">Finish setting up your account</h3>
+        <p class="field-hint">One last step - choose a password so you can log in anytime to manage your subscription.</p>
+
+        <label class="field-label" for="onboardingName">Your name (optional)</label>
+        <input type="text" id="onboardingName" class="field-input" placeholder="Your name" autocomplete="name">
+
+        <label class="field-label" for="onboardingPassword">Create a password</label>
+        <input type="password" id="onboardingPassword" class="field-input" placeholder="At least 6 characters" autocomplete="new-password" minlength="6">
+
+        <button class="btn btn-pill btn-primary btn-lg btn-block" id="onboardingSaveBtn" type="button">Save and continue</button>
+      </div>
+
+      <div class="glass-card dashboard-card" id="dashboardCard" style="display:none;">
         <div class="dashboard-email" id="dashboardEmail"></div>
         <div class="dashboard-status" id="dashboardStatus">Checking subscription…</div>
         <div class="dashboard-content" id="dashboardContent"></div>

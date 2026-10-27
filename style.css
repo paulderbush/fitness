@@ -586,7 +586,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .section-signup .video-section-bg{ background-image:url(images/faqbackground.webp); }
 .section-signup .eyebrow{ color:#111; }
 .section-signup .h2{ color:#111; font-weight:500; }
-.section-signup .showcase-accent{ color:var(--rose-deep); font-style:normal; font-weight:800; }
+.section-signup .showcase-accent{ color:var(--brand-pink); font-style:normal; font-weight:800; }
 
 .section-coach .video-section-bg{ background-image:url(images/coach-bg.webp); background-position:right center; }
 .section-coach .eyebrow{ color:#111; }
@@ -1178,24 +1178,17 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .signup-card .payment-note{ color:rgba(17,17,17,0.6); }
 .signup-card .trust-row{ color:rgba(17,17,17,0.65); }
 
-.plan-options{ display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
-.plan-option{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:14px 16px;
-  border-radius:14px;
-  border:1.5px solid rgba(0,0,0,0.1);
+.signup-plan-note{
+  font-size:13.5px;
+  line-height:1.55;
+  color:rgba(17,17,17,0.75);
   background:rgba(255,255,255,0.4);
-  cursor:pointer;
-  transition:border-color 0.2s ease, background 0.2s ease;
+  border:1px solid rgba(0,0,0,0.08);
+  border-radius:14px;
+  padding:14px 16px;
+  margin-bottom:16px;
 }
-.plan-option:has(input:checked){
-  border-color:var(--brand-pink);
-  background:rgba(255,255,255,0.7);
-}
-.plan-option input{ accent-color:var(--brand-pink); width:18px; height:18px; flex-shrink:0; }
-.plan-option-label{ font-size:14px; font-weight:700; color:#111; }
+.signup-plan-note strong{ color:var(--brand-pink-deep); font-weight:800; }
 
 /* ============ footer ============ */
 .footer{

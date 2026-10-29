@@ -395,7 +395,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 }
 .trust-row.center{ text-align:center; }
 .hero .trust-row{ color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.03em; font-size:9.5px; }
-.hero-by{ color:var(--brand-pink); font-weight:700; font-size:12.5px; margin-top:8px; }
+.hero-signature-img{ display:block; width:clamp(220px, 68vw, 300px); height:auto; margin:20px 0 0 0; }
 
 .hero-cta-wrap{ display:block; text-align:center; width:100%; }
 .hero-cta{ gap:6px; text-transform:uppercase; letter-spacing:0.02em; font-size:10.5px; padding:14px 16px; white-space:nowrap; }
@@ -1389,6 +1389,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .hero-lead{ color:rgba(255,255,255,0.85); font-size:16px; max-width:460px; margin-left:0; margin-right:0; text-align:left; }
   .hero .trust-row{ color:rgba(255,255,255,0.7); font-size:12.5px; text-transform:none; letter-spacing:normal; text-align:center; }
   .hero-cta-wrap{ display:inline-block; text-align:left; width:auto; }
+  .hero-signature-img{ display:none; }
   .hero-cta{ gap:10px; text-transform:none; letter-spacing:normal; }
   .hero-cta-arrow{ width:18px; height:18px; }
   .hero-layout{

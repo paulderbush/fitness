@@ -395,7 +395,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 }
 .trust-row.center{ text-align:center; }
 .hero .trust-row{ color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.03em; font-size:9.5px; }
-.hero-signature-img{ display:block; width:clamp(220px, 68vw, 300px); height:auto; margin:20px 0 0 0; }
+.hero-signature-img{ display:block; align-self:flex-start; width:clamp(154px, 47.6vw, 210px); height:auto; margin:20px 0 0 7%; }
 
 .hero-cta-wrap{ display:block; text-align:center; width:100%; }
 .hero-cta{ gap:6px; text-transform:uppercase; letter-spacing:0.02em; font-size:10.5px; padding:14px 16px; white-space:nowrap; }

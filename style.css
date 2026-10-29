@@ -557,6 +557,8 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .section-video .eyebrow{ color:rgba(255,255,255,0.85); text-align:center; }
 .section-video .h2{ color:#fff; text-align:center; }
 .showcase-accent{ color:var(--brand-pink); font-style:italic; font-weight:500; }
+.section-results .h2{ font-weight:500; }
+.section-results .showcase-accent{ font-style:normal; font-weight:800; }
 .section-video .section-lead{ color:rgba(255,255,255,0.8); }
 .section-lead.center{ text-align:center; margin-left:auto; margin-right:auto; }
 #afterHero .video-section-bg{ background-image:url(images/workout-bg.webp); }
@@ -841,6 +843,12 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 /* ============ results ============ */
 .section-results{ padding-top:70px; padding-bottom:0; }
+.section-results .video-section-bg{ background-image:url(images/results-bg.webp); }
+.section-results .membership-viewport{ height:calc(var(--card-w) * 1199 / 1312 + 60px); }
+.section-results .membership-card{ aspect-ratio:1312/1199; box-shadow:none; }
+.section-results .membership-card::before{ content:none; }
+.section-results .membership-dot{ background:rgba(255,255,255,0.3); }
+.section-results .membership-dot.active{ background:var(--brand-pink); }
 
 
 .results-badge{
@@ -873,101 +881,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 .results-stories-eyebrow{ margin-top:32px; }
 
-/* before / after carousel */
-.results-carousel{ position:relative; margin:28px 0 0 0; }
-.membership-arrow{
-  flex-shrink:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,0.3);
-  background:rgba(255,255,255,0.08);
-  color:#fff;
-  cursor:pointer;
-  transition:background 0.2s ease, border-color 0.2s ease;
-}
-.membership-arrow:hover{ background:rgba(255,255,255,0.18); border-color:rgba(255,255,255,0.5); }
-.membership-arrow svg{ width:18px; height:18px; }
-.results-arrow{ position:absolute; z-index:3; bottom:38px; }
-.results-arrow-prev{ left:0; }
-.results-arrow-next{ right:0; }
-.results-viewport{
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  scrollbar-width:none;
-  -ms-overflow-style:none;
-}
-.results-viewport::-webkit-scrollbar{ display:none; }
-.results-track{ display:flex; align-items:flex-start; }
-.results-card{
-  position:relative;
-  flex:0 0 100%;
-  scroll-snap-align:start;
-}
-.results-photo-pair{
-  position:relative;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:var(--shadow-lg);
-}
-.results-photo-pair picture{ display:block; }
-.results-photo-pair img{ display:block; width:100%; height:auto; }
-.results-tag{
-  position:absolute;
-  top:14px;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:0.05em;
-  text-transform:uppercase;
-  padding:6px 14px;
-  border-radius:999px;
-  color:#fff;
-  background:rgba(20,15,12,0.55);
-}
-.results-tag-before{ left:14px; }
-.results-tag-after{ right:14px; background:var(--brand-pink); color:#4a1f2c; }
-.results-photo-pair .results-stat{
-  position:absolute;
-  left:50%; bottom:14%;
-  z-index:1;
-  transform:translateX(-50%) rotate(-6deg);
-  font-family:'Inter', sans-serif;
-  font-size:clamp(44px,13vw,60px);
-  color:var(--brand-pink);
-  text-shadow:0 3px 14px rgba(0,0,0,0.4);
-  white-space:nowrap;
-}
-.results-info{ padding:18px 46px 0; text-align:center; }
-.results-stat-desktop{ display:none; }
-.results-tags{ display:none; }
-.results-stars{ display:flex; justify-content:center; margin:0 0 10px 0; }
-.results-quote{
-  font-family:'Inter', sans-serif;
-  font-weight:500;
-  font-size:15.5px;
-  line-height:1.5;
-  color:#fff;
-  margin:0 0 12px 0;
-}
-.results-name{ font-size:13px; }
-.results-name strong{ font-weight:700; color:#fff; }
-.results-name span{ font-weight:600; color:rgba(255,255,255,0.6); }
-.results-name span::before{ content:' · '; }
-
-.results-dots{ display:flex; justify-content:center; gap:8px; margin-top:16px; }
-.results-dot{
-  width:7px; height:7px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.3);
-  border:none;
-  padding:0;
-  cursor:pointer;
-  transition:background 0.2s ease, transform 0.2s ease;
-}
-.results-dot.active{ background:var(--brand-pink); transform:scale(1.3); }
+.results-cover-carousel{ margin-top:28px; }
 
 /* real women, real stories */
 .results-testimonials{
@@ -1587,68 +1501,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .results-badge{ display:block; top:26px; right:40px; width:80px; height:80px; }
   .results-badge-heart{ font-size:15px; }
 
-  .results-carousel{ margin-top:36px; }
-  .results-arrow{ display:none; }
-  .results-viewport{ overflow:visible; }
-  .results-track{ display:grid; grid-template-columns:repeat(3,1fr); align-items:stretch; gap:24px; }
-  .results-card{
-    display:flex;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:var(--shadow-lg);
-  }
-  .results-photo-pair{ flex:1 1 55%; box-shadow:none; border-radius:0; overflow:visible; }
-  .results-photo-pair picture{ position:absolute; inset:0; }
-  .results-photo-pair img{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    border-radius:0;
-    object-fit:cover;
-    object-position:center top;
-  }
-  .results-photo-pair .results-stat{ display:none; }
-  .results-tag{ top:auto; bottom:14px; }
-
-  .results-info{
-    flex:1 1 45%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:28px 22px;
-    text-align:left;
-    background:var(--cream);
-  }
-  .results-stat-desktop{
-    display:block;
-    font-family:'Inter', sans-serif;
-    font-style:italic;
-    font-weight:600;
-    font-size:30px;
-    color:var(--rose-deep);
-    margin-bottom:10px;
-  }
-  .results-tags{
-    display:block;
-    font-size:11.5px;
-    font-weight:700;
-    letter-spacing:0.04em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    line-height:1.8;
-    padding-bottom:16px;
-    margin-bottom:14px;
-    border-bottom:1px solid rgba(75,98,69,0.15);
-  }
-  .results-stars{ display:none; }
-  .results-quote{ color:var(--ink); font-weight:500; font-size:14px; margin-bottom:14px; }
-  .results-name{ font-size:13.5px; }
-  .results-name strong{ display:block; color:var(--ink); }
-  .results-name span{ display:block; color:var(--muted); font-weight:600; margin-top:2px; }
-  .results-name span::before{ content:''; }
-
-  .results-dots{ display:none; }
+  .results-cover-carousel{ margin-top:36px; }
 
   .results-stories-eyebrow{ margin-top:52px; }
   .results-testimonials{ flex-direction:row; margin-top:24px; }

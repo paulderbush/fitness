@@ -67,23 +67,6 @@ function setupVideoShowcase(){
   });
 }
 
-// ============ CAROUSEL ARROW LOOPING ============
-// Wraps prev/next scroll-by clicks so hitting the arrow at either end of the
-// viewport loops back to the opposite end instead of stopping.
-function setupLoopingArrows(viewport, prevBtn, nextBtn, step){
-  const EPS = 4;
-  function atStart(){ return viewport.scrollLeft <= EPS; }
-  function atEnd(){ return viewport.scrollLeft >= viewport.scrollWidth - viewport.clientWidth - EPS; }
-  prevBtn.addEventListener('click', () => {
-    if(atStart()) viewport.scrollTo({ left: viewport.scrollWidth - viewport.clientWidth, behavior:'smooth' });
-    else viewport.scrollBy({ left: -step(), behavior:'smooth' });
-  });
-  nextBtn.addEventListener('click', () => {
-    if(atEnd()) viewport.scrollTo({ left: 0, behavior:'smooth' });
-    else viewport.scrollBy({ left: step(), behavior:'smooth' });
-  });
-}
-
 // ============ MEMBERSHIP COVERFLOW CAROUSEL ============
 function setupCoverFlowCarousel({ viewportId, dotsId, startIndex = 0, onActiveClick }){
   const viewport = document.getElementById(viewportId);
@@ -239,34 +222,8 @@ function setupPricingCarousel(){
   });
 }
 
-// ============ RESULTS CAROUSEL ============
 function setupResultsCarousel(){
-  const viewport = document.getElementById('resultsViewport');
-  const prevBtn = document.querySelector('.results-arrow-prev');
-  const nextBtn = document.querySelector('.results-arrow-next');
-  const dots = Array.from(document.querySelectorAll('#resultsDots .results-dot'));
-  const card = viewport && viewport.querySelector('.results-card');
-  if(!viewport || !prevBtn || !nextBtn || !card) return;
-
-  function step(){ return card.getBoundingClientRect().width; }
-  setupLoopingArrows(viewport, prevBtn, nextBtn, step);
-
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => viewport.scrollTo({ left: step() * i, behavior:'smooth' }));
-  });
-
-  if(dots.length){
-    let ticking = false;
-    viewport.addEventListener('scroll', () => {
-      if(ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const index = Math.round(viewport.scrollLeft / step());
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-        ticking = false;
-      });
-    }, { passive:true });
-  }
+  setupCoverFlowCarousel({ viewportId:'resultsViewport', dotsId:'resultsDots', startIndex:1 });
 }
 
 // ============ TOPBAR OVER HERO ============

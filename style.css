@@ -787,6 +787,9 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   touch-action:pan-y;
   cursor:grab;
 }
+@media (max-width:759px){
+  .section-membership .membership-viewport{ --card-w: clamp(260px, 75.4vw, 364px); }
+}
 .membership-viewport:focus-visible{ outline:2px solid var(--brand-pink); outline-offset:6px; border-radius:24px; }
 .membership-viewport:active{ cursor:grabbing; }
 .membership-viewport.dragging *{ transition:none !important; }

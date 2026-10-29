@@ -836,6 +836,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 }
 @media (min-width:760px){
   .membership-viewport{ --card-w: clamp(230px, 24vw, 320px); }
+  .section-results .membership-viewport{ --card-w: clamp(288px, 30vw, 400px); }
 }
 @media (prefers-reduced-motion: reduce){
   .membership-card{ transition:transform 0.01s linear, opacity 0.01s linear; }
@@ -844,7 +845,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 /* ============ results ============ */
 .section-results{ padding-top:70px; padding-bottom:0; }
 .section-results .video-section-bg{ background-image:url(images/results-bg.webp); }
-.section-results .membership-viewport{ height:calc(var(--card-w) * 1199 / 1312 + 60px); }
+.section-results .membership-viewport{ --card-w: clamp(250px, 72.5vw, 350px); height:calc(var(--card-w) * 1199 / 1312 + 60px); }
 .section-results .membership-card{ aspect-ratio:1312/1199; box-shadow:none; }
 .section-results .membership-card::before{ content:none; }
 .section-results .membership-dot{ background:rgba(255,255,255,0.3); }

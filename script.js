@@ -223,7 +223,7 @@ function setupPricingCarousel(){
 }
 
 function setupResultsCarousel(){
-  setupCoverFlowCarousel({ viewportId:'resultsViewport', dotsId:'resultsDots', startIndex:2 });
+  setupCoverFlowCarousel({ viewportId:'resultsViewport', dotsId:'resultsDots', startIndex:1 });
 }
 
 // ============ TOPBAR OVER HERO ============

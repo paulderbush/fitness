@@ -1086,7 +1086,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 .signup-info{ background:rgba(0,0,0,0.04); border-color:rgba(0,0,0,0.1); margin-bottom:16px; }
 .signup-info .faq-q{ color:#111; font-size:13.5px; }
-.signup-info .faq-q .plus{ background:rgba(0,0,0,0.08); }
+.signup-info .faq-q .plus{ background:var(--brand-pink-deep); color:#fff; }
 .signup-info .faq-a-inner{ color:rgba(17,17,17,0.7); }
 .signup-info .faq-a-inner strong{ color:var(--brand-pink-deep); font-weight:800; }
 

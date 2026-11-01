@@ -573,7 +573,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .section-membership .section-lead{ color:var(--ink-soft); }
 .section-membership .membership-card-title{ color:var(--ink); }
 .section-membership .membership-card-text{ color:var(--ink-soft); }
-.section-membership .video-cta-wrap .trust-row{ color:var(--ink-soft); }
 .section-membership .membership-footnote{ color:var(--ink-soft); }
 .section-membership .membership-footnote::before{ background:rgba(75,98,69,0.35); }
 
@@ -770,7 +769,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 .video-cta-wrap{ margin-top:30px; text-align:center; }
 .video-cta-wrap .btn{ display:inline-flex; gap:10px; }
-.video-cta-wrap .trust-row{ color:rgba(255,255,255,0.7); margin-top:12px; }
 
 /* ============ membership coverflow carousel ============ */
 .section-membership{ padding-top:70px; }

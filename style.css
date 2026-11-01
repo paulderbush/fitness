@@ -614,8 +614,12 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .section-coach .coach-credentials{
     flex-direction:row;
     gap:0;
-    margin:0 0 4px 0;
-    padding-top:0;
+    margin:0;
+    padding:14px 10px 12px 10px;
+    background:rgba(240,177,194,0.6);
+    border:1px solid rgba(240,177,194,0.85);
+    border-bottom:none;
+    border-radius:18px 18px 0 0;
   }
   .section-coach .coach-credential{
     flex:1;
@@ -631,6 +635,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     position:absolute;
     right:0; top:2px; bottom:2px;
     width:1px;
+    background:rgba(255,255,255,0.5);
   }
   .section-coach .coach-credential svg{ width:22px; height:22px; }
   .section-coach .coach-credential span{ font-size:9.5px; line-height:1.25; }
@@ -639,9 +644,11 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:8px 14px;
-    background:rgba(240,177,194,0.2);
-    border-color:rgba(240,177,194,0.4);
+    padding:10px 14px 14px 14px;
+    background:rgba(240,177,194,0.6);
+    border:1px solid rgba(240,177,194,0.85);
+    border-top:none;
+    border-radius:0 0 18px 18px;
   }
   .section-coach .coach-quote-mark{ display:none; }
   .section-coach .coach-quote-text{ font-size:13px; line-height:1.4; }
@@ -996,6 +1003,9 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   color:#fff;
   margin:0;
 }
+
+.coach-cta-wrap{ margin-top:18px; text-align:center; }
+.coach-cta-wrap .btn{ display:inline-flex; gap:10px; }
 
 /* ============ pricing coverflow carousel ============ */
 .section-pricing .membership-viewport{ height:calc(var(--card-w) * 1464 / 889 + 60px); }

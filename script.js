@@ -371,6 +371,19 @@ function setupHashCleanup(){
   window.addEventListener('hashchange', stripHash);
 }
 
+// ============ SIGNUP: INFO ACCORDION ============
+function setupSignupInfo(){
+  const item = document.getElementById('signupInfoItem');
+  if(!item) return;
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    item.classList.toggle('open', !isOpen);
+    a.style.maxHeight = isOpen ? null : a.scrollHeight + 'px';
+  });
+}
+
 // ============ SIGNUP: CREATE ACCOUNT + START CHECKOUT ============
 // The password is deliberately not collected here - we create the account
 // behind the scenes with a throwaway password and send the member straight
@@ -454,6 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupTopbarOverHero();
   setupPopup();
   setupAccount();
+  setupSignupInfo();
   setupSignup();
   setupHashCleanup();
 });

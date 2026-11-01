@@ -615,11 +615,10 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     flex-direction:row;
     gap:0;
     margin:0;
-    padding:14px 10px 12px 10px;
-    background:rgba(58,38,26,0.75);
-    border:1px solid rgba(58,38,26,0.9);
-    border-bottom:none;
-    border-radius:18px 18px 0 0;
+    padding:14px 10px;
+    background:rgba(58,38,26,0.6);
+    border:1px solid rgba(58,38,26,0.78);
+    border-radius:18px;
   }
   .section-coach .coach-credential{
     flex:1;
@@ -639,19 +638,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   }
   .section-coach .coach-credential svg{ width:22px; height:22px; }
   .section-coach .coach-credential span{ font-size:9.5px; line-height:1.25; color:#fff; }
-  .section-coach .coach-quote{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:10px 14px 14px 14px;
-    background:rgba(58,38,26,0.75);
-    border:1px solid rgba(58,38,26,0.9);
-    border-top:none;
-    border-radius:0 0 18px 18px;
-  }
-  .section-coach .coach-quote-mark{ display:none; }
-  .section-coach .coach-quote-text{ font-size:13px; line-height:1.4; color:#fff; }
+  .section-coach .coach-quote{ display:none; }
 }
 
 .membership-dots{ display:flex; justify-content:center; gap:8px; margin-top:16px; }

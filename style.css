@@ -610,7 +610,9 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   }
   .section-coach .coach-layout{ gap:4px; }
   .section-coach .coach-content{ text-align:center; }
-  .section-coach .coach-bio{ font-size:15.5px; line-height:1.65; margin-bottom:4px; }
+  .section-coach .eyebrow{ color:#fff; }
+  .section-coach .h2{ color:#fff; }
+  .section-coach .coach-bio{ font-size:15.5px; line-height:1.65; margin-bottom:4px; color:#fff; }
   .section-coach .coach-credentials{
     flex-direction:row;
     gap:0;
@@ -840,7 +842,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 
 /* ============ results ============ */
 .section-results{ padding-top:70px; padding-bottom:0; }
-.section-results .video-section-bg{ background-image:url(images/results-bg.webp); }
+.section-results .video-section-bg{ background-image:url(images/results-bg-mobile.webp); }
 .section-results .membership-viewport{ --card-w: clamp(250px, 72.5vw, 350px); height:calc(var(--card-w) * 1199 / 1312 + 60px); }
 .section-results .membership-card{ aspect-ratio:1312/1199; box-shadow:none; }
 .section-results .membership-card::before{ content:none; }
@@ -892,7 +894,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   gap:14px;
   padding:20px;
   border-radius:18px;
-  background:rgba(255,255,255,0.06);
   border:1px solid rgba(255,255,255,0.14);
 }
 .results-avatar{
@@ -929,7 +930,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .results-banner-content .h2{ text-align:center; color:#fff; }
 .results-banner-content .eyebrow{ color:rgba(255,255,255,0.8); }
 .results-banner-content .hero-cta{ margin:4px auto 0; }
-.results-banner-content .trust-row{ text-align:center; color:rgba(255,255,255,0.7); }
 .results-banner-features{ display:none; }
 
 /* ============ about / coach ============ */
@@ -1337,6 +1337,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .section-membership .video-section-bg{ background-image:url(images/backgroundwebnew.webp); }
   .section-pricing .video-section-bg{ background-image:url(images/backgroundwebnew.webp); }
   .section-faq .video-section-bg{ background-image:url(images/faq-bg.webp); }
+  .section-results .video-section-bg{ background-image:url(images/results-bg.webp); }
   .video-showcase{
     display:grid;
     grid-template-columns:170px 1fr 200px;
@@ -1588,7 +1589,6 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   .results-banner-content .eyebrow,
   .results-banner-content .h2{ text-align:center; }
   .results-banner-content .hero-cta{ margin:4px auto 0; align-self:center; }
-  .results-banner-content .trust-row{ text-align:center; }
   .results-banner-features{
     position:absolute;
     top:50%;

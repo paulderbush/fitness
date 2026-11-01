@@ -610,7 +610,9 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   }
   .section-coach .coach-layout{ gap:4px; }
   .section-coach .coach-content{ text-align:center; }
-  .section-coach .coach-bio{ font-size:15.5px; line-height:1.65; margin-bottom:4px; }
+  .section-coach .eyebrow{ color:#fff; }
+  .section-coach .h2{ color:#fff; }
+  .section-coach .coach-bio{ font-size:15.5px; line-height:1.65; margin-bottom:4px; color:#fff; }
   .section-coach .coach-credentials{
     flex-direction:row;
     gap:0;

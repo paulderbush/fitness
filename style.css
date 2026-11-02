@@ -610,8 +610,8 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
     gap:0;
     margin:0;
     padding:14px 10px;
-    background:rgba(58,38,26,0.48);
-    border:1px solid rgba(58,38,26,0.62);
+    background:rgba(58,38,26,0.36);
+    border:1px solid rgba(58,38,26,0.465);
     border-radius:18px;
   }
   .section-coach .coach-credential{

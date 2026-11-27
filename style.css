@@ -143,6 +143,8 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 .topbar-actions .account-btn-topbar{ display:none; }
 @media (min-width:1024px){ .topbar-actions .account-btn-topbar{ display:inline-flex; } }
+.topbar-actions .account-btn-topbar,
+.topbar-actions .btn-primary{ border-radius:999px; }
 .topbar-actions .btn, .mobile-menu-nav .btn{ font-weight:600; }
 
 /* ============ hamburger ============ */

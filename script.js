@@ -287,29 +287,60 @@ function setupPopup(){
 function setupAccount(){
   const authOverlay = document.getElementById('accountPopupOverlay');
   const authClose = document.getElementById('accountPopupClose');
+  const authTabsWrap = document.querySelector('.auth-tabs');
   const authTabs = document.querySelectorAll('.auth-tab');
   const authForm = document.getElementById('authForm');
   const authEmail = document.getElementById('authEmail');
   const authPassword = document.getElementById('authPassword');
+  const authPasswordLabel = document.getElementById('authPasswordLabel');
   const authSubmit = document.getElementById('authSubmit');
   const authError = document.getElementById('authError');
   const authSuccess = document.getElementById('authSuccess');
+  const authResetSent = document.getElementById('authResetSent');
+  const authForgotLink = document.getElementById('authForgotLink');
+  const authBackToLogin = document.getElementById('authBackToLogin');
 
   const accountButtons = [document.getElementById('accountBtn'), document.getElementById('accountBtnMobile')].filter(Boolean);
   if(!authOverlay || accountButtons.length === 0) return;
 
   let authTab = 'login';
+  let resetMode = false;
 
   function setAuthTab(tab){
     authTab = tab;
+    resetMode = false;
+    authTabsWrap.hidden = false;
     authTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
     authSubmit.textContent = bmT(tab === 'signup' ? 'auth.signup_tab' : 'auth.login_tab');
     authPassword.autocomplete = tab === 'signup' ? 'new-password' : 'current-password';
+    authPassword.hidden = false;
+    authPasswordLabel.hidden = false;
+    authPassword.required = true;
+    authForgotLink.hidden = tab !== 'login';
+    authBackToLogin.hidden = true;
     authError.hidden = true;
     authSuccess.hidden = true;
+    authResetSent.hidden = true;
     authForm.hidden = false;
   }
   authTabs.forEach(t => t.addEventListener('click', () => setAuthTab(t.dataset.tab)));
+
+  function enterResetMode(){
+    resetMode = true;
+    authTabsWrap.hidden = true;
+    authPassword.hidden = true;
+    authPasswordLabel.hidden = true;
+    authPassword.required = false;
+    authForgotLink.hidden = true;
+    authBackToLogin.hidden = false;
+    authSubmit.textContent = bmT('auth.reset_submit');
+    authError.hidden = true;
+    authSuccess.hidden = true;
+    authResetSent.hidden = true;
+    authForm.hidden = false;
+  }
+  authForgotLink.addEventListener('click', enterResetMode);
+  authBackToLogin.addEventListener('click', () => setAuthTab('login'));
 
   function openAuth(){
     setAuthTab('login');
@@ -329,9 +360,25 @@ function setupAccount(){
       return;
     }
     const email = authEmail.value.trim();
-    const password = authPassword.value;
     authError.hidden = true;
     authSubmit.disabled = true;
+
+    if(resetMode){
+      const { error } = await sb.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/reset-password.html',
+      });
+      authSubmit.disabled = false;
+      if(error){
+        authError.textContent = error.message;
+        authError.hidden = false;
+        return;
+      }
+      authForm.hidden = true;
+      authResetSent.hidden = false;
+      return;
+    }
+
+    const password = authPassword.value;
     const { data, error } = authTab === 'signup'
       ? await sb.auth.signUp({ email, password })
       : await sb.auth.signInWithPassword({ email, password });

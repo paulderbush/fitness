@@ -667,12 +667,22 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
       <p data-i18n="auth.success1">✅ You successfully made an account.</p>
       <p data-i18n="auth.success2">Check your email to confirm your registration, then log in.</p>
     </div>
+    <div class="auth-success" id="authResetSent" hidden>
+      <p data-i18n="auth.reset_sent">✉️ Check your email for a link to reset your password.</p>
+    </div>
+    <div class="auth-success" id="authPasswordUpdated" hidden>
+      <p data-i18n="auth.password_updated">✅ Password updated. You can now log in.</p>
+    </div>
     <form class="auth-form" id="authForm" novalidate>
-      <label class="field-label" for="authEmail" data-i18n="auth.email_label">Email address</label>
+      <label class="field-label" for="authEmail" id="authEmailLabel" data-i18n="auth.email_label">Email address</label>
       <input type="email" id="authEmail" class="field-input" placeholder="you@email.com" autocomplete="email" required>
-      <label class="field-label" for="authPassword" data-i18n="auth.password_label">Password</label>
+      <label class="field-label" for="authPassword" id="authPasswordLabel">Password</label>
       <input type="password" id="authPassword" class="field-input" placeholder="••••••••" autocomplete="current-password" minlength="6" required>
-      <button class="btn btn-pill btn-primary btn-lg btn-block" id="authSubmit" type="submit" data-i18n="auth.login_tab">Log In</button>
+      <div class="auth-forgot-wrap">
+        <button type="button" class="auth-forgot-link" id="authForgotLink" data-i18n="auth.forgot_link">Forgot password?</button>
+        <button type="button" class="auth-forgot-link" id="authBackToLogin" hidden data-i18n="auth.back_to_login">Back to login</button>
+      </div>
+      <button class="btn btn-pill btn-primary btn-lg btn-block" id="authSubmit" type="submit">Log In</button>
     </form>
   </div>
 </div>

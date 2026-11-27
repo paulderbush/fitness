@@ -1,6 +1,13 @@
 // ============ I18N ENGINE (EN / RU) ============
 // Shared by index.html, account.html and program.html. Loaded before
 // nav.js/script.js/account.js so BM_I18N helpers are available to them.
+
+// Captured as early as possible, before setupHashCleanup (script.js) can
+// strip it - Supabase's password-recovery redirect lands with
+// #access_token=...&type=recovery in the URL hash, and script.js needs to
+// know that even if its own async init reads location.hash too late.
+const BM_INITIAL_HASH = location.hash;
+
 const BM_LANG_KEY = 'bm_lang';
 const BM_LANG_DEFAULT = 'en';
 
@@ -116,6 +123,13 @@ const TRANSLATIONS = {
     'auth.password_label': 'Password',
     'auth.service_unavailable': 'Account service is temporarily unavailable. Please try again shortly.',
     'auth.email_taken': 'This email already has an account. If you started signing up before, please continue on the same device and browser you used then.',
+    'auth.forgot_link': 'Forgot password?',
+    'auth.back_to_login': 'Back to login',
+    'auth.reset_submit': 'Send reset link',
+    'auth.reset_sent': '✉️ Check your email for a link to reset your password.',
+    'auth.new_password_label': 'New password',
+    'auth.save_password_submit': 'Save new password',
+    'auth.password_updated': '✅ Password updated. You can now log in.',
 
     'signup.creating': 'Creating your account…',
     'signup.redirecting': 'Redirecting to secure payment…',
@@ -264,6 +278,13 @@ const TRANSLATIONS = {
     'auth.password_label': 'Пароль',
     'auth.service_unavailable': 'Сервис аккаунтов временно недоступен. Попробуйте немного позже.',
     'auth.email_taken': 'У этого email уже есть аккаунт. Если вы уже начинали регистрацию раньше, продолжите на том же устройстве и в том же браузере.',
+    'auth.forgot_link': 'Забыли пароль?',
+    'auth.back_to_login': 'Назад ко входу',
+    'auth.reset_submit': 'Отправить ссылку',
+    'auth.reset_sent': '✉️ Проверьте почту - там ссылка для сброса пароля.',
+    'auth.new_password_label': 'Новый пароль',
+    'auth.save_password_submit': 'Сохранить новый пароль',
+    'auth.password_updated': '✅ Пароль обновлён. Теперь можно войти.',
 
     'signup.creating': 'Создаём аккаунт…',
     'signup.redirecting': 'Перенаправляем на безопасную оплату…',

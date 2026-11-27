@@ -1091,6 +1091,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   -webkit-backdrop-filter:blur(40px) saturate(160%);
 }
 .field-label{ display:block; font-weight:700; font-size:13.5px; margin-bottom:8px; color:var(--ink); }
+.field-label[hidden]{ display:none; }
 .signup-card .field-label{ color:#111; }
 .field-input{
   width:100%;
@@ -1240,6 +1241,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   margin-top:22px;
   margin-bottom:20px;
 }
+.auth-tabs[hidden]{ display:none; }
 .auth-tab{
   flex:1;
   border:none;
@@ -1275,6 +1277,22 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
 .auth-success p{ margin:0; }
 .auth-success p + p{ margin-top:6px; font-weight:500; }
 .auth-form .field-input:last-of-type{ margin-bottom:18px; }
+.auth-forgot-wrap{
+  display:flex;
+  justify-content:flex-end;
+  margin:-8px 0 18px 0;
+}
+.auth-forgot-link{
+  background:none;
+  border:none;
+  padding:0;
+  font-family:'Inter', sans-serif;
+  font-size:12.5px;
+  font-weight:600;
+  color:var(--rose-deep);
+  cursor:pointer;
+}
+.auth-forgot-link:hover{ text-decoration:underline; }
 
 /* ============ account dashboard ============ */
 .dashboard-card{ text-align:center; }

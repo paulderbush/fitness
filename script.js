@@ -287,29 +287,104 @@ function setupPopup(){
 function setupAccount(){
   const authOverlay = document.getElementById('accountPopupOverlay');
   const authClose = document.getElementById('accountPopupClose');
+  const authTabsWrap = document.querySelector('.auth-tabs');
   const authTabs = document.querySelectorAll('.auth-tab');
   const authForm = document.getElementById('authForm');
   const authEmail = document.getElementById('authEmail');
+  const authEmailLabel = document.getElementById('authEmailLabel');
   const authPassword = document.getElementById('authPassword');
+  const authPasswordLabel = document.getElementById('authPasswordLabel');
   const authSubmit = document.getElementById('authSubmit');
   const authError = document.getElementById('authError');
   const authSuccess = document.getElementById('authSuccess');
+  const authResetSent = document.getElementById('authResetSent');
+  const authPasswordUpdated = document.getElementById('authPasswordUpdated');
+  const authForgotLink = document.getElementById('authForgotLink');
+  const authBackToLogin = document.getElementById('authBackToLogin');
 
   const accountButtons = [document.getElementById('accountBtn'), document.getElementById('accountBtnMobile')].filter(Boolean);
   if(!authOverlay || accountButtons.length === 0) return;
 
   let authTab = 'login';
+  let mode = 'login'; // 'login' | 'signup' | 'reset' | 'recovery'
+
+  // The submit button and password label have no text of their own in the
+  // markup - they always reflect whichever mode is active, in the current
+  // language, so this also re-runs on bm:langchange.
+  function syncModeTexts(){
+    authPasswordLabel.textContent = bmT(mode === 'recovery' ? 'auth.new_password_label' : 'auth.password_label');
+    authSubmit.textContent = bmT(
+      mode === 'recovery' ? 'auth.save_password_submit' :
+      mode === 'reset' ? 'auth.reset_submit' :
+      mode === 'signup' ? 'auth.signup_tab' : 'auth.login_tab'
+    );
+  }
+  document.addEventListener('bm:langchange', syncModeTexts);
 
   function setAuthTab(tab){
     authTab = tab;
+    mode = tab;
+    authTabsWrap.hidden = false;
     authTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
-    authSubmit.textContent = bmT(tab === 'signup' ? 'auth.signup_tab' : 'auth.login_tab');
     authPassword.autocomplete = tab === 'signup' ? 'new-password' : 'current-password';
+    authEmail.hidden = false;
+    authEmailLabel.hidden = false;
+    authEmail.required = true;
+    authPassword.hidden = false;
+    authPasswordLabel.hidden = false;
+    authPassword.required = true;
+    authForgotLink.hidden = tab !== 'login';
+    authBackToLogin.hidden = true;
     authError.hidden = true;
     authSuccess.hidden = true;
+    authResetSent.hidden = true;
+    authPasswordUpdated.hidden = true;
     authForm.hidden = false;
+    syncModeTexts();
   }
   authTabs.forEach(t => t.addEventListener('click', () => setAuthTab(t.dataset.tab)));
+
+  function enterResetMode(){
+    mode = 'reset';
+    authTabsWrap.hidden = true;
+    authPassword.hidden = true;
+    authPasswordLabel.hidden = true;
+    authPassword.required = false;
+    authForgotLink.hidden = true;
+    authBackToLogin.hidden = false;
+    authError.hidden = true;
+    authSuccess.hidden = true;
+    authResetSent.hidden = true;
+    authPasswordUpdated.hidden = true;
+    authForm.hidden = false;
+    syncModeTexts();
+  }
+  authForgotLink.addEventListener('click', enterResetMode);
+  authBackToLogin.addEventListener('click', () => setAuthTab('login'));
+
+  // Entered automatically when the page loads from the password-recovery
+  // link Supabase emails out (see checkPasswordRecovery below) - the
+  // temporary recovery session lets us set a new password without asking
+  // for the email again.
+  function enterRecoveryMode(){
+    mode = 'recovery';
+    authTabsWrap.hidden = true;
+    authEmail.hidden = true;
+    authEmailLabel.hidden = true;
+    authEmail.required = false;
+    authPassword.hidden = false;
+    authPasswordLabel.hidden = false;
+    authPassword.required = true;
+    authPassword.autocomplete = 'new-password';
+    authForgotLink.hidden = true;
+    authBackToLogin.hidden = true;
+    authError.hidden = true;
+    authSuccess.hidden = true;
+    authResetSent.hidden = true;
+    authPasswordUpdated.hidden = true;
+    authForm.hidden = false;
+    syncModeTexts();
+  }
 
   function openAuth(){
     setAuthTab('login');
@@ -328,10 +403,44 @@ function setupAccount(){
       authError.hidden = false;
       return;
     }
-    const email = authEmail.value.trim();
-    const password = authPassword.value;
     authError.hidden = true;
     authSubmit.disabled = true;
+
+    if(mode === 'reset'){
+      const email = authEmail.value.trim();
+      const { error } = await sb.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/index.html',
+      });
+      authSubmit.disabled = false;
+      if(error){
+        authError.textContent = error.message;
+        authError.hidden = false;
+        return;
+      }
+      authForm.hidden = true;
+      authResetSent.hidden = false;
+      return;
+    }
+
+    if(mode === 'recovery'){
+      const { error } = await sb.auth.updateUser({
+        password: authPassword.value,
+        data: { password_set: true },
+      });
+      authSubmit.disabled = false;
+      if(error){
+        authError.textContent = error.message;
+        authError.hidden = false;
+        return;
+      }
+      authForm.hidden = true;
+      authPasswordUpdated.hidden = false;
+      setTimeout(() => { authForm.reset(); setAuthTab('login'); }, 1800);
+      return;
+    }
+
+    const email = authEmail.value.trim();
+    const password = authPassword.value;
     const { data, error } = authTab === 'signup'
       ? await sb.auth.signUp({ email, password })
       : await sb.auth.signInWithPassword({ email, password });
@@ -360,12 +469,46 @@ function setupAccount(){
     }
     openAuth();
   }));
+
+  // ============ PASSWORD RECOVERY LINK DETECTION ============
+  // Supabase's reset-password email redirects back here with
+  // #access_token=...&type=recovery in the URL hash. BM_INITIAL_HASH (set
+  // at the very top of i18n.js) captures it before anything else can strip
+  // it; we gate on that, then wait for Supabase's own PASSWORD_RECOVERY
+  // event (the documented way to detect this) with a short getSession()
+  // fallback in case that event fires before we're listening.
+  if(/type=recovery/.test(typeof BM_INITIAL_HASH !== 'undefined' ? BM_INITIAL_HASH : location.hash)){
+    sbReady.then(() => {
+      if(!sb) return;
+      let handled = false;
+      const { data:{ subscription } } = sb.auth.onAuthStateChange((event) => {
+        if(event === 'PASSWORD_RECOVERY' && !handled){
+          handled = true;
+          enterRecoveryMode();
+          showOverlay(authOverlay);
+        }
+      });
+      setTimeout(async () => {
+        if(handled) return;
+        const { data:{ session } } = await sb.auth.getSession();
+        if(session){
+          handled = true;
+          subscription.unsubscribe();
+          enterRecoveryMode();
+          showOverlay(authOverlay);
+        }
+      }, 1200);
+    });
+  }
 }
 
 // ============ HASH CLEANUP (avoid re-jumping to a section on reload) ============
 function setupHashCleanup(){
+  // Never strip a Supabase auth-callback hash (password recovery, magic
+  // links, etc.) - supabase-client.js still needs to read it, and clears
+  // it itself once it has.
   function stripHash(){
-    if(location.hash){
+    if(location.hash && !/access_token|refresh_token|type=recovery|type=signup|type=magiclink/.test(location.hash)){
       history.replaceState(null, '', location.pathname + location.search);
     }
   }

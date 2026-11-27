@@ -1,6 +1,13 @@
 // ============ I18N ENGINE (EN / RU) ============
 // Shared by index.html, account.html and program.html. Loaded before
 // nav.js/script.js/account.js so BM_I18N helpers are available to them.
+
+// Captured as early as possible, before setupHashCleanup (script.js) can
+// strip it - Supabase's password-recovery redirect lands with
+// #access_token=...&type=recovery in the URL hash, and script.js needs to
+// know that even if its own async init reads location.hash too late.
+const BM_INITIAL_HASH = location.hash;
+
 const BM_LANG_KEY = 'bm_lang';
 const BM_LANG_DEFAULT = 'en';
 
@@ -120,16 +127,9 @@ const TRANSLATIONS = {
     'auth.back_to_login': 'Back to login',
     'auth.reset_submit': 'Send reset link',
     'auth.reset_sent': '✉️ Check your email for a link to reset your password.',
-
-    'reset.eyebrow': 'Reset Password',
-    'reset.heading': 'Set a new password',
-    'reset.checking': 'Checking your reset link…',
-    'reset.invalid': 'This reset link is invalid or has expired.',
-    'reset.back_home': 'Back to home',
-    'reset.password_label': 'New password',
-    'reset.submit': 'Save new password',
-    'reset.done': '✅ Password updated. You can now log in.',
-    'reset.go_to_account': 'Go to my account',
+    'auth.new_password_label': 'New password',
+    'auth.save_password_submit': 'Save new password',
+    'auth.password_updated': '✅ Password updated. You can now log in.',
 
     'signup.creating': 'Creating your account…',
     'signup.redirecting': 'Redirecting to secure payment…',
@@ -282,16 +282,9 @@ const TRANSLATIONS = {
     'auth.back_to_login': 'Назад ко входу',
     'auth.reset_submit': 'Отправить ссылку',
     'auth.reset_sent': '✉️ Проверьте почту - там ссылка для сброса пароля.',
-
-    'reset.eyebrow': 'Сброс пароля',
-    'reset.heading': 'Придумайте новый пароль',
-    'reset.checking': 'Проверяем ссылку…',
-    'reset.invalid': 'Эта ссылка для сброса недействительна или устарела.',
-    'reset.back_home': 'На главную',
-    'reset.password_label': 'Новый пароль',
-    'reset.submit': 'Сохранить новый пароль',
-    'reset.done': '✅ Пароль обновлён. Теперь можно войти.',
-    'reset.go_to_account': 'Перейти в личный кабинет',
+    'auth.new_password_label': 'Новый пароль',
+    'auth.save_password_submit': 'Сохранить новый пароль',
+    'auth.password_updated': '✅ Пароль обновлён. Теперь можно войти.',
 
     'signup.creating': 'Создаём аккаунт…',
     'signup.redirecting': 'Перенаправляем на безопасную оплату…',

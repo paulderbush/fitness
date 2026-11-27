@@ -1,22 +1,42 @@
 // ============ FAQ DATA ============
-const FAQ = [
-  { q:"What level should I be?", a:"Any level. The program is designed for both beginners and experienced women. Every workout includes adjustable intensity levels, allowing you to train at the pace that's right for you while progressing safely over time." },
-  { q:"I'm over 40. Is this program right for me?", a:"Absolutely. Your body can become stronger, leaner, and healthier at any age. The program adapts to your fitness level so you can train safely and continue making progress." },
-  { q:"Can I do this program after pregnancy?", a:"Yes, if your doctor has cleared you to exercise. The workouts can be adapted to your current level and gradually increased as your body gets stronger." },
-  { q:"What if I have back pain or poor posture?", a:"Strong muscles help support good posture. Along with the main program, you'll have access to posture-focused workouts designed to strengthen your back and core, and improve the way you move." },
-  { q:"What if I don't have enough motivation?", a:"You don't need more motivation - you need a system. Our step-by-step program tells you exactly what to do every day, so you never have to guess. Many members notice their first positive changes within the first 10 days, which makes it much easier to stay motivated." },
-  { q:"What if I don't have enough time?", a:"Each workout takes just 20 minutes. We recommend training at least four times a week - that's only 1.5 hours per week. You and your body definitely deserve it." },
-  { q:"How much weight can I lose?", a:"Weight loss depends on many factors, including your starting point, nutrition, sleep, and consistency. For many people, a gradual loss of around 5% of body weight over time is considered a safe and realistic pace, though individual results vary." },
-  { q:"What if I don't get results?", a:"We're confident in our system. If you follow the workouts and nutrition plan as instructed for 30 days and don't see measurable progress, we'll refund your money according to our guarantee policy." },
-  { q:"Do I need a gym?", a:"No. Every workout can be completed at home." },
-  { q:"Do I need equipment?", a:"Most workouts require no equipment at all. Some optional programs use resistance bands to increase training variety and intensity." },
-  { q:"Do I need to follow a strict diet?", a:"No - we don't believe in restrictive diets. Instead, we teach a balanced, sustainable approach to nutrition that supports your health, energy, and long-term body transformation." },
-  { q:"Will I get meal plans and recipes?", a:"Yes. Your membership includes personalized nutrition plans and a large collection of healthy, delicious recipes that are easy to prepare and fit into everyday life." },
-  { q:"Why should I trust this program?", a:"This isn't a random collection of workouts - it's a complete body transformation system created specifically for women, combining evidence-based training, personalized nutrition, healthy recipes, and progressive programs designed to help you lose weight, tone your body, improve your posture, and build habits that last." },
-  { q:"Is this just another workout app?", a:"No - it's a complete transformation platform. Inside your membership you'll find step-by-step workout systems, weight loss programs, posture correction, flat stomach and glute programs, personalized nutrition plans, hundreds of healthy recipes, and new content added regularly. Everything you need is in one place." },
-  { q:"Why should I start today instead of waiting?", a:"Because every week you wait is another week without progress. For just €2.99, you can start today, experience the full program, and see whether it's the right fit for you - with virtually no risk, thanks to our 30-Day Results Guarantee." },
-  { q:"Can I cancel my subscription anytime?", a:"Yes. There are no long-term contracts or hidden fees. You can cancel directly from your account at any time, and you'll keep full access until the end of your current billing period." },
-];
+const FAQ = {
+  en: [
+    { q:"What level should I be?", a:"Any level. The program is designed for both beginners and experienced women. Every workout includes adjustable intensity levels, allowing you to train at the pace that's right for you while progressing safely over time." },
+    { q:"I'm over 40. Is this program right for me?", a:"Absolutely. Your body can become stronger, leaner, and healthier at any age. The program adapts to your fitness level so you can train safely and continue making progress." },
+    { q:"Can I do this program after pregnancy?", a:"Yes, if your doctor has cleared you to exercise. The workouts can be adapted to your current level and gradually increased as your body gets stronger." },
+    { q:"What if I have back pain or poor posture?", a:"Strong muscles help support good posture. Along with the main program, you'll have access to posture-focused workouts designed to strengthen your back and core, and improve the way you move." },
+    { q:"What if I don't have enough motivation?", a:"You don't need more motivation - you need a system. Our step-by-step program tells you exactly what to do every day, so you never have to guess. Many members notice their first positive changes within the first 10 days, which makes it much easier to stay motivated." },
+    { q:"What if I don't have enough time?", a:"Each workout takes just 20 minutes. We recommend training at least four times a week - that's only 1.5 hours per week. You and your body definitely deserve it." },
+    { q:"How much weight can I lose?", a:"Weight loss depends on many factors, including your starting point, nutrition, sleep, and consistency. For many people, a gradual loss of around 5% of body weight over time is considered a safe and realistic pace, though individual results vary." },
+    { q:"What if I don't get results?", a:"We're confident in our system. If you follow the workouts and nutrition plan as instructed for 30 days and don't see measurable progress, we'll refund your money according to our guarantee policy." },
+    { q:"Do I need a gym?", a:"No. Every workout can be completed at home." },
+    { q:"Do I need equipment?", a:"Most workouts require no equipment at all. Some optional programs use resistance bands to increase training variety and intensity." },
+    { q:"Do I need to follow a strict diet?", a:"No - we don't believe in restrictive diets. Instead, we teach a balanced, sustainable approach to nutrition that supports your health, energy, and long-term body transformation." },
+    { q:"Will I get meal plans and recipes?", a:"Yes. Your membership includes personalized nutrition plans and a large collection of healthy, delicious recipes that are easy to prepare and fit into everyday life." },
+    { q:"Why should I trust this program?", a:"This isn't a random collection of workouts - it's a complete body transformation system created specifically for women, combining evidence-based training, personalized nutrition, healthy recipes, and progressive programs designed to help you lose weight, tone your body, improve your posture, and build habits that last." },
+    { q:"Is this just another workout app?", a:"No - it's a complete transformation platform. Inside your membership you'll find step-by-step workout systems, weight loss programs, posture correction, flat stomach and glute programs, personalized nutrition plans, hundreds of healthy recipes, and new content added regularly. Everything you need is in one place." },
+    { q:"Why should I start today instead of waiting?", a:"Because every week you wait is another week without progress. For just €2.99, you can start today, experience the full program, and see whether it's the right fit for you - with virtually no risk, thanks to our 30-Day Results Guarantee." },
+    { q:"Can I cancel my subscription anytime?", a:"Yes. There are no long-term contracts or hidden fees. You can cancel directly from your account at any time, and you'll keep full access until the end of your current billing period." },
+  ],
+  ru: [
+    { q:"Какой у меня должен быть уровень подготовки?", a:"Любой уровень. Программа подходит как новичкам, так и опытным. В каждой тренировке есть варианты нагрузки, которые можно подстроить под себя и безопасно прогрессировать со временем." },
+    { q:"Мне за 40. Подходит ли мне эта программа?", a:"Конечно. Тело может становиться сильнее, стройнее и здоровее в любом возрасте. Программа подстраивается под твой уровень, чтобы тренироваться безопасно и продолжать прогрессировать." },
+    { q:"Можно ли заниматься по этой программе после родов?", a:"Да, если врач разрешил физические нагрузки. Тренировки можно адаптировать под твой текущий уровень и постепенно увеличивать нагрузку по мере того, как тело становится сильнее." },
+    { q:"Что если у меня болит спина или плохая осанка?", a:"Сильные мышцы помогают поддерживать правильную осанку. Помимо основной программы, у тебя будет доступ к тренировкам для осанки, которые укрепляют спину и кор и улучшают качество движений." },
+    { q:"Что если мне не хватает мотивации?", a:"Тебе нужна не мотивация, а система. Наша пошаговая программа точно говорит, что делать каждый день, чтобы не было догадок. Многие участницы замечают первые изменения уже в первые 10 дней, и это сильно помогает сохранять мотивацию." },
+    { q:"Что если у меня не хватает времени?", a:"Каждая тренировка занимает всего 20 минут. Мы рекомендуем заниматься минимум четыре раза в неделю - это всего 1,5 часа в неделю. Ты и твоё тело точно этого заслуживаете." },
+    { q:"Сколько веса я могу сбросить?", a:"Снижение веса зависит от многих факторов: исходных данных, питания, сна и регулярности. Для многих безопасным и реалистичным темпом считается постепенная потеря около 5% веса тела со временем, но результаты индивидуальны." },
+    { q:"Что если я не увижу результата?", a:"Мы уверены в нашей системе. Если ты будешь следовать тренировкам и плану питания как указано в течение 30 дней и не увидишь измеримого прогресса, мы вернём деньги согласно условиям гарантии." },
+    { q:"Нужен ли тренажёрный зал?", a:"Нет. Все тренировки можно выполнять дома." },
+    { q:"Нужен ли инвентарь?", a:"Большинство тренировок вообще не требуют инвентаря. В некоторых опциональных программах используются резинки для увеличения разнообразия и интенсивности тренировок." },
+    { q:"Нужно ли соблюдать строгую диету?", a:"Нет - мы не верим в ограничительные диеты. Вместо этого мы учим сбалансированному, устойчивому подходу к питанию, который поддерживает здоровье, энергию и долгосрочное преображение тела." },
+    { q:"Будут ли планы питания и рецепты?", a:"Да. В твоё членство включены персональные планы питания и большая коллекция полезных и вкусных рецептов, которые легко готовить и которые вписываются в повседневную жизнь." },
+    { q:"Почему я должна доверять этой программе?", a:"Это не случайный набор тренировок - это полноценная система преображения тела, созданная специально для женщин, объединяющая тренировки на основе науки, персональное питание, полезные рецепты и прогрессивные программы, которые помогают сбросить вес, подтянуть тело, улучшить осанку и выработать привычки, которые остаются с тобой надолго." },
+    { q:"Это просто ещё одно приложение с тренировками?", a:"Нет - это полноценная платформа для преображения. Внутри членства тебя ждут пошаговые системы тренировок, программы для похудения, коррекция осанки, программы для плоского живота и ягодиц, персональные планы питания, сотни полезных рецептов и регулярно обновляемый контент. Всё необходимое - в одном месте." },
+    { q:"Почему начать сегодня, а не ждать?", a:"Потому что каждая неделя ожидания - это ещё одна неделя без прогресса. Всего за €2.99 ты можешь начать уже сегодня, попробовать всю программу и понять, подходит ли она тебе - практически без риска благодаря нашей гарантии результата на 30 дней." },
+    { q:"Можно ли отменить подписку в любой момент?", a:"Да. Нет долгосрочных контрактов или скрытых платежей. Ты можешь отменить подписку прямо в личном кабинете в любой момент и сохранишь полный доступ до конца оплаченного периода." },
+  ],
+};
 
 function renderFAQ(){
   const wrap = document.getElementById('faqList');
@@ -24,8 +44,9 @@ function renderFAQ(){
   const colRight = document.getElementById('faqColRight');
   colLeft.innerHTML = '';
   colRight.innerHTML = '';
-  const mid = Math.ceil(FAQ.length / 2);
-  FAQ.forEach((item, i) => {
+  const list = FAQ[bmCurrentLang()] || FAQ.en;
+  const mid = Math.ceil(list.length / 2);
+  list.forEach((item, i) => {
     const el = document.createElement('div');
     el.className = 'faq-item';
     el.innerHTML = `
@@ -239,26 +260,7 @@ function setupTopbarOverHero(){
   window.addEventListener('resize', update);
 }
 
-// ============ POPUP OVERLAY HELPERS ============
-// Overlays default to display:none so forms inside them (e.g. the account
-// login/signup fields) aren't part of the page at load - some browsers will
-// otherwise proactively offer to autofill a saved password for a form that
-// merely exists in the DOM, even while it's only hidden via opacity.
-function showOverlay(el){
-  el.style.display = 'flex';
-  requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('visible')));
-}
-function hideOverlay(el){
-  el.classList.remove('visible');
-  const onEnd = (e) => {
-    if(e.target !== el) return;
-    el.style.display = 'none';
-    el.removeEventListener('transitionend', onEnd);
-  };
-  el.addEventListener('transitionend', onEnd);
-}
-
-// ============ POPUP (once per session, after 5s) ============
+// ============ POPUP (once per session, after 30s) ============
 function setupPopup(){
   const overlay = document.getElementById('popupOverlay');
   const closeBtn = document.getElementById('popupClose');
@@ -270,7 +272,7 @@ function setupPopup(){
     setTimeout(() => {
       showOverlay(overlay);
       sessionStorage.setItem('bm_popup_shown', '1');
-    }, 5000);
+    }, 30000);
   }
 
   function hide(){ hideOverlay(overlay); }
@@ -301,7 +303,7 @@ function setupAccount(){
   function setAuthTab(tab){
     authTab = tab;
     authTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
-    authSubmit.textContent = tab === 'signup' ? 'Sign Up' : 'Log In';
+    authSubmit.textContent = bmT(tab === 'signup' ? 'auth.signup_tab' : 'auth.login_tab');
     authPassword.autocomplete = tab === 'signup' ? 'new-password' : 'current-password';
     authError.hidden = true;
     authSuccess.hidden = true;
@@ -322,7 +324,7 @@ function setupAccount(){
     e.preventDefault();
     await sbReady;
     if(!sb){
-      authError.textContent = 'Account service is temporarily unavailable. Please try again shortly.';
+      authError.textContent = bmT('auth.service_unavailable');
       authError.hidden = false;
       return;
     }
@@ -399,11 +401,13 @@ function setupSignup(){
   const btn = document.getElementById('signupBtn');
   const emailInput = document.getElementById('emailInput');
   if(!btn) return;
-  const defaultLabel = btn.textContent;
+  const defaultHTML = btn.innerHTML;
 
   function reset(){
     btn.disabled = false;
-    btn.textContent = defaultLabel;
+    btn.innerHTML = defaultHTML;
+    const span = btn.querySelector('[data-i18n-html]');
+    if(span) span.innerHTML = bmT(span.getAttribute('data-i18n-html'));
   }
 
   btn.addEventListener('click', async () => {
@@ -416,12 +420,12 @@ function setupSignup(){
 
     await sbReady;
     if(!sb){
-      alert('Account service is temporarily unavailable. Please try again shortly.');
+      alert(bmT('auth.service_unavailable'));
       return;
     }
 
     btn.disabled = true;
-    btn.textContent = 'Creating your account…';
+    btn.textContent = bmT('signup.creating');
 
     let userId;
     // If this browser already has a session for this email (e.g. they
@@ -439,7 +443,7 @@ function setupSignup(){
       if(signUpError){
         reset();
         if(/already registered|already exists/i.test(signUpError.message)){
-          alert("This email already has an account. If you started signing up before, please continue on the same device and browser you used then.");
+          alert(bmT('auth.email_taken'));
         } else {
           alert(signUpError.message);
         }
@@ -448,7 +452,7 @@ function setupSignup(){
       userId = signUpData.user.id;
     }
 
-    btn.textContent = 'Redirecting to secure payment…';
+    btn.textContent = bmT('signup.redirecting');
     try {
       await startCheckout(email, userId, 'trial');
     } catch(err){
@@ -471,3 +475,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSignup();
   setupHashCleanup();
 });
+
+document.addEventListener('bm:langchange', renderFAQ);

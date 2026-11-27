@@ -39,20 +39,38 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
 </head>
 <body>
 
+<!-- ============ LANGUAGE MODAL (first visit only) ============ -->
+<div class="popup-overlay lang-modal-overlay" id="langModalOverlay">
+  <div class="glass-card popup-card lang-modal-card">
+    <div class="lang-modal-question">
+      <p data-i18n="lang.modal_q1">Choose your language</p>
+      <p data-i18n="lang.modal_q2">Выберите язык</p>
+    </div>
+    <div class="lang-modal-actions">
+      <button type="button" class="btn btn-pill btn-primary btn-lg" data-lang-choice="ru">Русский</button>
+      <button type="button" class="btn btn-pill btn-outline btn-lg" data-lang-choice="en">English</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ TOP BAR ============ -->
 <header class="topbar" id="topbar">
   <a href="#top" class="topbar-brand">Body Muse</a>
   <nav class="topbar-nav">
-    <a href="#membership" class="topbar-link">Membership</a>
-    <a href="#afterHero" class="topbar-link">Workouts</a>
-    <a href="#about" class="topbar-link">Coach</a>
-    <a href="#results" class="topbar-link">Reviews</a>
-    <a href="#pricing" class="topbar-link">Subscription</a>
-    <a href="#faq" class="topbar-link">FAQ</a>
+    <a href="#membership" class="topbar-link" data-i18n="nav.membership">Membership</a>
+    <a href="#afterHero" class="topbar-link" data-i18n="nav.workouts">Workouts</a>
+    <a href="#about" class="topbar-link" data-i18n="nav.coach">Coach</a>
+    <a href="#results" class="topbar-link" data-i18n="nav.reviews">Reviews</a>
+    <a href="#pricing" class="topbar-link" data-i18n="nav.subscription">Subscription</a>
+    <a href="#faq" class="topbar-link" data-i18n="nav.faq">FAQ</a>
   </nav>
   <div class="topbar-actions">
-    <button type="button" class="btn btn-pill btn-sm btn-outline-light account-btn-topbar" id="accountBtn">My Account</button>
-    <a href="#signup" class="btn btn-pill btn-sm btn-primary">Join Now</a>
+    <div class="lang-switch" role="group">
+      <button type="button" class="lang-switch-btn" data-lang-switch="ru">RU</button>
+      <button type="button" class="lang-switch-btn" data-lang-switch="en">EN</button>
+    </div>
+    <button type="button" class="btn btn-pill btn-sm btn-outline-light account-btn-topbar" id="accountBtn" data-i18n="nav.account">My Account</button>
+    <a href="#signup" class="btn btn-pill btn-sm btn-primary" data-i18n="nav.join">Join Now</a>
     <button type="button" class="hamburger-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -62,13 +80,17 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
 <!-- ============ MOBILE MENU ============ -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay">
   <nav class="mobile-menu-nav">
-    <a href="#membership" class="mobile-menu-link">Membership</a>
-    <a href="#afterHero" class="mobile-menu-link">Workouts</a>
-    <a href="#about" class="mobile-menu-link">Coach</a>
-    <a href="#results" class="mobile-menu-link">Reviews</a>
-    <a href="#pricing" class="mobile-menu-link">Subscription</a>
-    <a href="#faq" class="mobile-menu-link">FAQ</a>
-    <button type="button" class="btn btn-pill btn-outline btn-lg mobile-menu-account" id="accountBtnMobile">My Account</button>
+    <a href="#membership" class="mobile-menu-link" data-i18n="nav.membership">Membership</a>
+    <a href="#afterHero" class="mobile-menu-link" data-i18n="nav.workouts">Workouts</a>
+    <a href="#about" class="mobile-menu-link" data-i18n="nav.coach">Coach</a>
+    <a href="#results" class="mobile-menu-link" data-i18n="nav.reviews">Reviews</a>
+    <a href="#pricing" class="mobile-menu-link" data-i18n="nav.subscription">Subscription</a>
+    <a href="#faq" class="mobile-menu-link" data-i18n="nav.faq">FAQ</a>
+    <div class="lang-switch lang-switch-mobile" role="group">
+      <button type="button" class="lang-switch-btn" data-lang-switch="ru">RU</button>
+      <button type="button" class="lang-switch-btn" data-lang-switch="en">EN</button>
+    </div>
+    <button type="button" class="btn btn-pill btn-outline btn-lg mobile-menu-account" id="accountBtnMobile" data-i18n="nav.account">My Account</button>
   </nav>
   <div class="mobile-menu-social">
     <a href="https://www.instagram.com/yegorova.maria" target="_blank" rel="noopener" class="btn btn-pill btn-outline btn-sm">
@@ -96,12 +118,12 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
 
     <div class="hero-layout">
       <div class="hero-inner">
-        <h1 class="hero-results">See Real Results<br>in <span class="hero-accent">10 Days.</span></h1>
-        <p class="hero-lead">20-Min Workouts &bull; Nutrition Plans<br>500+ Recipes &bull; Online Coach Support</p>
+        <h1 class="hero-results" data-i18n-html="hero_title">See Real Results<br>in <span class="hero-accent">10 Days.</span></h1>
+        <p class="hero-lead" data-i18n-html="hero.lead">20-Min Workouts &bull; Nutrition Plans<br>500+ Recipes &bull; Online Coach Support</p>
 
         <div class="hero-cta-wrap">
           <a href="#signup" class="btn btn-pill btn-primary btn-lg hero-cta">
-            Full Access for 10 Days &bull; €2.99
+            <span data-i18n-html="cta.main">Full Access for 10 Days &bull; €2.99</span>
             <svg class="hero-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -119,7 +141,7 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
               <rect x="15.5" y="7" width="2.5" height="10" rx="1"></rect>
               <line x1="8.5" y1="12" x2="15.5" y2="12"></line>
             </svg>
-            <span>20-Minute<br>Workouts</span>
+            <span data-i18n-html="hero.feature1">20-Minute<br>Workouts</span>
           </div>
           <div class="hero-feature">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -127,7 +149,7 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
               <path d="M8 11c0-2 1-4 3-5"></path>
               <circle cx="12" cy="4.5" r="1.1" fill="currentColor" stroke="none"></circle>
             </svg>
-            <span>Nutrition<br>Plans</span>
+            <span data-i18n-html="hero.feature2">Nutrition<br>Plans</span>
           </div>
           <div class="hero-feature">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
@@ -135,13 +157,13 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
               <line x1="12" y1="19" x2="12" y2="8"></line>
               <line x1="19" y1="19" x2="19" y2="4"></line>
             </svg>
-            <span>Track<br>Progress</span>
+            <span data-i18n-html="hero.feature3">Track<br>Progress</span>
           </div>
           <div class="hero-feature">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
             </svg>
-            <span>Expert<br>Support</span>
+            <span data-i18n-html="hero.feature4">Expert<br>Support</span>
           </div>
         </div>
 
@@ -153,7 +175,7 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
           </div>
           <div class="hero-stat">
             <div class="hero-stat-top"><span class="hero-stars">★★★★★</span> <b>4.9</b></div>
-            <div class="hero-stat-label">From 500+ reviews</div>
+            <div class="hero-stat-label" data-i18n="hero.stat_label">From 500+ reviews</div>
           </div>
         </div>
       </div>
@@ -161,19 +183,19 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
 
     <a href="#membership" class="hero-scroll">
       <svg class="hero-scroll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      <span>Scroll to explore</span>
+      <span data-i18n="hero.scroll">Scroll to explore</span>
     </a>
 
-    <div class="hero-footnote">More than a workout - a better you</div>
+    <div class="hero-footnote" data-i18n="hero.footnote">More than a workout - a better you</div>
   </section>
 
   <!-- ============ MEMBERSHIP ============ -->
   <section class="section section-video section-membership" id="membership">
     <div class="video-section-bg"></div>
     <div class="section-inner">
-      <div class="eyebrow">Membership</div>
-      <h2 class="h2">Your Complete<br class="membership-title-break"><span class="showcase-accent">Weight-Loss Toolkit.</span></h2>
-      <p class="section-lead center">Training, nutrition, progress tracking, mindset &amp; online coach support - all in one place.</p>
+      <div class="eyebrow" data-i18n="membership.eyebrow">Membership</div>
+      <h2 class="h2" data-i18n-html="membership.heading">Your Complete<br class="membership-title-break"><span class="showcase-accent">Weight-Loss Toolkit.</span></h2>
+      <p class="section-lead center" data-i18n="membership.lead">Training, nutrition, progress tracking, mindset &amp; online coach support - all in one place.</p>
 
       <div class="membership-carousel">
         <div class="membership-viewport" id="membershipViewport" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Membership features">
@@ -181,27 +203,27 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
 
             <!-- Card 01 - Workouts -->
             <article class="membership-card">
-              <img src="images/card1.webp" class="membership-card-img" alt="Workouts - 20-Minute Results-Driven Training" loading="lazy">
+              <img src="images/card1.webp" data-src-ru="images/01rus.webp" class="membership-card-img" alt="Workouts - 20-Minute Results-Driven Training" loading="lazy">
             </article>
 
             <!-- Card 02 - Goals & Progress -->
             <article class="membership-card">
-              <img src="images/card02.webp" class="membership-card-img" alt="Goals &amp; Progress - Track Your Transformation" loading="lazy">
+              <img src="images/card02.webp" data-src-ru="images/02rus.webp" class="membership-card-img" alt="Goals &amp; Progress - Track Your Transformation" loading="lazy">
             </article>
 
             <!-- Card 03 - Nutrition -->
             <article class="membership-card">
-              <img src="images/card03.webp" class="membership-card-img" alt="Nutrition - Meal Plans + 500+ Healthy Recipes" loading="lazy">
+              <img src="images/card03.webp" data-src-ru="images/03rus.webp" class="membership-card-img" alt="Nutrition - Meal Plans + 500+ Healthy Recipes" loading="lazy">
             </article>
 
             <!-- Card 04 - Mindset -->
             <article class="membership-card">
-              <img src="images/card4.webp" class="membership-card-img" alt="Mindset - Stay Consistent, Feel Your Best" loading="lazy">
+              <img src="images/card4.webp" data-src-ru="images/04rus.webp" class="membership-card-img" alt="Mindset - Stay Consistent, Feel Your Best" loading="lazy">
             </article>
 
             <!-- Card 05 - Coach Support -->
             <article class="membership-card">
-              <img src="images/card5.webp" class="membership-card-img" alt="Coach Support - Guidance When You Need It" loading="lazy">
+              <img src="images/card5.webp" data-src-ru="images/05rus.webp" class="membership-card-img" alt="Coach Support - Guidance When You Need It" loading="lazy">
             </article>
 
           </div>
@@ -215,11 +237,11 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
         </div>
       </div>
 
-      <div class="membership-footnote">Stronger | Happier | You</div>
+      <div class="membership-footnote" data-i18n="membership.footnote">Stronger | Happier | You</div>
 
       <div class="video-cta-wrap">
         <a href="#signup" class="btn btn-pill btn-primary btn-lg">
-          Full Access for 10 Days &bull; €2.99
+          <span data-i18n-html="cta.main">Full Access for 10 Days &bull; €2.99</span>
           <svg class="hero-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -230,31 +252,31 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
   <section class="section section-video" id="afterHero">
     <div class="video-section-bg"></div>
     <div class="section-inner">
-      <div class="eyebrow">See it in action</div>
-      <h2 class="h2">Your Workout.<br><span class="showcase-accent">Step by Step.</span></h2>
-      <p class="section-lead center">Follow every exercise with guided video, timing, technique cues and target muscles.</p>
+      <div class="eyebrow" data-i18n="video.eyebrow">See it in action</div>
+      <h2 class="h2" data-i18n-html="video.heading">Your Workout.<br><span class="showcase-accent">Step by Step.</span></h2>
+      <p class="section-lead center" data-i18n="video.lead">Follow every exercise with guided video, timing, technique cues and target muscles.</p>
 
       <div class="video-showcase">
         <div class="video-nav">
           <div class="video-nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M10 8.5v7l6-3.5z" fill="currentColor" stroke="none"></path></svg>
-            <span>Workout Video</span>
+            <span data-i18n="video.nav1">Workout Video</span>
           </div>
           <div class="video-nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l3 2"></path><path d="M9 2h6"></path></svg>
-            <span>Timer &amp; Guidance</span>
+            <span data-i18n="video.nav2">Timer &amp; Guidance</span>
           </div>
           <div class="video-nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0 0 12 2z"></path></svg>
-            <span>Technique Tips</span>
+            <span data-i18n="video.nav3">Technique Tips</span>
           </div>
           <div class="video-nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"></circle></svg>
-            <span>Target Muscles</span>
+            <span data-i18n="video.nav4">Target Muscles</span>
           </div>
           <div class="video-nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.2"></circle><circle cx="6" cy="18" r="2.2"></circle><circle cx="18" cy="12" r="2.2"></circle><path d="M8 7l8 4"></path><path d="M8 17l8-4"></path></svg>
-            <span>Modifications<br>(for all levels)</span>
+            <span data-i18n-html="video.nav5">Modifications<br>(for all levels)</span>
           </div>
         </div>
 
@@ -269,7 +291,7 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
               <path d="M12 9v4l3 2"></path>
               <path d="M9 2h6"></path>
             </svg>
-            <span>20-30 Min<br>Effective Workouts</span>
+            <span data-i18n-html="video.feat1">20-30 Min<br>Effective Workouts</span>
           </div>
           <div class="hero-feature">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -278,7 +300,7 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
               <path d="M8 21h8"></path>
               <path d="M12 17v4"></path>
             </svg>
-            <span>Guided Technique<br>On Screen</span>
+            <span data-i18n-html="video.feat2">Guided Technique<br>On Screen</span>
           </div>
           <div class="hero-feature">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -286,7 +308,7 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
               <circle cx="12" cy="12" r="5"></circle>
               <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"></circle>
             </svg>
-            <span>Target Muscles<br>In Every Video</span>
+            <span data-i18n-html="video.feat3">Target Muscles<br>In Every Video</span>
           </div>
           <div class="hero-feature">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
@@ -294,30 +316,30 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
               <rect x="10" y="9" width="4" height="12"></rect>
               <rect x="17" y="4" width="4" height="17"></rect>
             </svg>
-            <span>For All Levels<br>Beginner To Advanced</span>
+            <span data-i18n-html="video.feat4">For All Levels<br>Beginner To Advanced</span>
           </div>
         </div>
 
         <div class="video-upnext">
-          <div class="video-upnext-label">Up Next</div>
+          <div class="video-upnext-label" data-i18n="video.upnext_label">Up Next</div>
           <button type="button" class="video-upnext-item active" data-video="mYxJkoTUhMoM1hVE2Mrfps" style="background-image:url(images/preview1.webp)">
             <span class="video-upnext-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
-            <span class="video-upnext-title">Workout 01</span>
+            <span class="video-upnext-title" data-i18n="video.workout1">Workout 01</span>
           </button>
           <button type="button" class="video-upnext-item" data-video="ipKZB8J8Q5spbmi125DXFe" style="background-image:url(images/preview2.webp)">
             <span class="video-upnext-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
-            <span class="video-upnext-title">Workout 02</span>
+            <span class="video-upnext-title" data-i18n="video.workout2">Workout 02</span>
           </button>
           <button type="button" class="video-upnext-item" data-video="sLoxYca7Wyr1qjnsKsKxDj" style="background-image:url(images/preview3.webp)">
             <span class="video-upnext-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
-            <span class="video-upnext-title">Workout 03</span>
+            <span class="video-upnext-title" data-i18n="video.workout3">Workout 03</span>
           </button>
         </div>
       </div>
 
       <div class="video-cta-wrap">
         <a href="#signup" class="btn btn-pill btn-primary btn-lg">
-          Full Access for 10 Days &bull; €2.99
+          <span data-i18n-html="cta.main">Full Access for 10 Days &bull; €2.99</span>
           <svg class="hero-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -330,38 +352,38 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
     <div class="section-inner">
       <div class="coach-layout">
         <div class="coach-header">
-          <div class="eyebrow">Meet your coach</div>
-          <h2 class="h2">I Took My Body to the Stage to Test What <span class="showcase-accent">Really Works.</span></h2>
+          <div class="eyebrow" data-i18n="coach.eyebrow">Meet your coach</div>
+          <h2 class="h2" data-i18n-html="coach.heading">I Took My Body to the Stage to Test What <span class="showcase-accent">Really Works.</span></h2>
         </div>
 
         <div class="coach-content">
-          <p class="coach-bio">I'm Maria - fitness coach, French Fitness Bikini Champion, and European Fitness Bikini Bronze Medalist.</p>
-          <p class="coach-bio">Competing taught me what it really takes to change a body. I turned that experience into Body Muse - science-based training and nutrition for real women with real, busy lives.</p>
+          <p class="coach-bio" data-i18n="coach.bio1">I'm Maria - fitness coach, French Fitness Bikini Champion, and European Fitness Bikini Bronze Medalist.</p>
+          <p class="coach-bio" data-i18n="coach.bio2">Competing taught me what it really takes to change a body. I turned that experience into Body Muse - science-based training and nutrition for real women with real, busy lives.</p>
 
           <div class="coach-credentials">
             <div class="coach-credential">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 3h10v2h3a1 1 0 0 1 1 1v1c0 2.76-2.24 5-5 5-.46 1.26-1.44 2.26-2.5 2.82V17h2a2 2 0 0 1 2 2v1H8v-1a2 2 0 0 1 2-2h2v-2.18C10.94 14.26 9.96 13.26 9.5 12 6.74 12 4.5 9.76 4.5 7V6a1 1 0 0 1 1-1h3V3zm10 4c1.1 0 2-.9 2-2h-2v2zM6.5 5c0 1.1.9 2 2 2V5h-2z"/><path d="M12 6.5l.9 1.85 2.04.3-1.47 1.44.35 2.03L12 11.1l-1.82 1.02.35-2.03-1.47-1.44 2.04-.3z" fill="var(--cream)"/></svg>
-              <span>15+ Years<br>In Fitness &amp; Nutrition</span>
+              <span data-i18n-html="coach.cred1">15+ Years<br>In Fitness &amp; Nutrition</span>
             </div>
             <div class="coach-credential">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 2h8l-3.2 6h-1.6L8 2z"/><circle cx="12" cy="15" r="6.5"/><path d="M12 11.5l1 2.1 2.3.3-1.65 1.6.4 2.3-2.05-1.1-2.05 1.1.4-2.3L8.7 13.9l2.3-.3z" fill="var(--cream)"/></svg>
-              <span>French Fitness Bikini<br>Champion</span>
+              <span data-i18n-html="coach.cred2">French Fitness Bikini<br>Champion</span>
             </div>
             <div class="coach-credential">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L12 16.4l-5.6 3.1 1.4-6.2-4.8-4.3 6.4-.6z"/></svg>
-              <span>European<br>Bronze Medalist</span>
+              <span data-i18n-html="coach.cred3">European<br>Bronze Medalist</span>
             </div>
           </div>
 
           <div class="coach-quote">
             <svg class="coach-quote-mark coach-quote-mark-open" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 6.4 4.8 1.2 12.8 0l1.6 4.4C9.2 5.6 6.8 8.4 6.8 12h6.4v12H0zm17.6 0V14.4c0-8 4.8-13.2 12.8-14.4L32 4.4C26.4 5.6 24 8.4 24 12h6.4v12H17.6z"/></svg>
-            <p class="coach-quote-text">I learned what it takes to transform a body.<br>Now I've built a system that fits into real life</p>
+            <p class="coach-quote-text" data-i18n-html="coach.quote">I learned what it takes to transform a body.<br>Now I've built a system that fits into real life</p>
             <svg class="coach-quote-mark coach-quote-mark-close" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 6.4 4.8 1.2 12.8 0l1.6 4.4C9.2 5.6 6.8 8.4 6.8 12h6.4v12H0zm17.6 0V14.4c0-8 4.8-13.2 12.8-14.4L32 4.4C26.4 5.6 24 8.4 24 12h6.4v12H17.6z"/></svg>
           </div>
 
           <div class="coach-cta-wrap">
             <a href="#signup" class="btn btn-pill btn-primary btn-lg">
-              Full Access for 10 Days &bull; €2.99
+              <span data-i18n-html="cta.main">Full Access for 10 Days &bull; €2.99</span>
               <svg class="hero-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
@@ -379,16 +401,16 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
           <path id="resultsBadgeCircle" d="M 60,60 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
         </defs>
         <text font-size="9.2" font-weight="700" letter-spacing="2.2" fill="currentColor">
-          <textPath href="#resultsBadgeCircle" startOffset="0%">REAL WOMEN &#8226; REAL RESULTS &#8226; </textPath>
+          <textPath href="#resultsBadgeCircle" startOffset="0%" data-i18n="results.badge">REAL WOMEN &#8226; REAL RESULTS &#8226; </textPath>
         </text>
       </svg>
       <span class="results-badge-heart">♡</span>
     </div>
 
     <div class="section-inner">
-      <div class="eyebrow">The Results Speak For Themselves</div>
-      <h2 class="h2">They Did It. <span class="showcase-accent">You Can Too.</span></h2>
-      <p class="section-lead center">Incredible transformations from women who followed the Body Muse system.</p>
+      <div class="eyebrow" data-i18n="results.eyebrow">The Results Speak For Themselves</div>
+      <h2 class="h2" data-i18n-html="results.heading">They Did It. <span class="showcase-accent">You Can Too.</span></h2>
+      <p class="section-lead center" data-i18n="results.lead">Incredible transformations from women who followed the Body Muse system.</p>
 
       <div class="membership-carousel results-cover-carousel">
         <div class="membership-viewport" id="resultsViewport" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Real transformations">
@@ -430,13 +452,13 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
         </div>
       </div>
 
-      <div class="eyebrow center results-stories-eyebrow">Real Women. Real Stories.</div>
+      <div class="eyebrow center results-stories-eyebrow" data-i18n="results.stories_eyebrow">Real Women. Real Stories.</div>
       <div class="results-testimonials">
         <div class="results-testimonial-card">
           <img src="images/girl1.webp" alt="" class="results-avatar" aria-hidden="true">
           <div class="results-testimonial-body">
             <div class="stars">★★★★★</div>
-            <p>"I've tried so many programs, but this is the first one that actually fits my life. The workouts are fun, the recipes are amazing, and I see real results!"</p>
+            <p data-i18n="results.testimonial1">"I've tried so many programs, but this is the first one that actually fits my life. The workouts are fun, the recipes are amazing, and I see real results!"</p>
             <div class="results-testimonial-name">Emma, 32 <span>Paris, France</span></div>
           </div>
         </div>
@@ -444,7 +466,7 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
           <img src="images/girl2.webp" alt="" class="results-avatar" aria-hidden="true">
           <div class="results-testimonial-body">
             <div class="stars">★★★★★</div>
-            <p>"Not just a physical transformation - I feel happier, more energetic and like the best version of myself. Thank you, Body Muse!"</p>
+            <p data-i18n="results.testimonial2">"Not just a physical transformation - I feel happier, more energetic and like the best version of myself. Thank you, Body Muse!"</p>
             <div class="results-testimonial-name">Isabella, 26 <span>Barcelona, Spain</span></div>
           </div>
         </div>
@@ -452,7 +474,7 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
           <img src="images/girl3.webp" alt="" class="results-avatar" aria-hidden="true">
           <div class="results-testimonial-body">
             <div class="stars">★★★★★</div>
-            <p>"Simple, effective and realistic. I lost 7 kg, my posture improved and I finally feel good in my own skin. Highly recommend!"</p>
+            <p data-i18n="results.testimonial3">"Simple, effective and realistic. I lost 7 kg, my posture improved and I finally feel good in my own skin. Highly recommend!"</p>
             <div class="results-testimonial-name">Anna, 30 <span>Dubai, UAE</span></div>
           </div>
         </div>
@@ -461,19 +483,19 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
       <div class="results-stats-row">
         <div class="results-stats-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"></path><circle cx="10" cy="7" r="3.2"></circle><path d="M21 20v-1a4 4 0 0 0-3-3.87"></path><path d="M15.2 3.2a3.2 3.2 0 0 1 0 6.1"></path></svg>
-          <div><strong>50,000+</strong><span>Women Transformed</span></div>
+          <div><strong>50,000+</strong><span data-i18n="results.stat1_label">Women Transformed</span></div>
         </div>
         <div class="results-stats-item">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.7 1.3 6.8L12 17.8 6 21l1.3-6.8-5-4.7 6.8-.8z"></path></svg>
-          <div><strong>4.9/5</strong><span>Average Rating</span></div>
+          <div><strong>4.9/5</strong><span data-i18n="results.stat2_label">Average Rating</span></div>
         </div>
         <div class="results-stats-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4C10 4 4 10 4 18c0 .7.6 1.3 1.3 1.3C13.3 19.3 20 13.3 20 4z"></path><path d="M9 19c0-5 2-9 6-11"></path></svg>
-          <div><strong>Real Results</strong><span>Not Fads</span></div>
+          <div><strong data-i18n="results.stat3_val">Real Results</strong><span data-i18n="results.stat3_label">Not Fads</span></div>
         </div>
         <div class="results-stats-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="9" width="3" height="6" rx="1"></rect><rect x="19" y="9" width="3" height="6" rx="1"></rect><rect x="6" y="7" width="2.5" height="10" rx="1"></rect><rect x="15.5" y="7" width="2.5" height="10" rx="1"></rect><line x1="8.5" y1="12" x2="15.5" y2="12"></line></svg>
-          <div><strong>A Stronger,<br>Happier You</strong><span>For Life</span></div>
+          <div><strong data-i18n-html="results.stat4_val">A Stronger,<br>Happier You</strong><span data-i18n="results.stat4_label">For Life</span></div>
         </div>
       </div>
 
@@ -481,13 +503,13 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
       <div class="results-banner-photo">
         <img src="images/banner6.webp" alt="Body Muse member" width="2520" height="528" loading="lazy">
       </div>
-      <div class="results-banner-caption">Discipline<br>Creates<br>Freedom</div>
+      <div class="results-banner-caption" data-i18n-html="results.banner_caption">Discipline<br>Creates<br>Freedom</div>
       <div class="results-banner-glass">
         <div class="results-banner-content">
-          <div class="eyebrow">This Is What Body Muse</div>
-          <h2 class="h2">Can Do for <span class="showcase-accent">You.</span></h2>
+          <div class="eyebrow" data-i18n="results.banner_eyebrow">This Is What Body Muse</div>
+          <h2 class="h2" data-i18n-html="results.banner_heading">Can Do for <span class="showcase-accent">You.</span></h2>
           <a href="#signup" class="btn btn-pill btn-primary btn-lg hero-cta">
-            Full Access for 10 Days &bull; €2.99
+            <span data-i18n-html="cta.main">Full Access for 10 Days &bull; €2.99</span>
             <svg class="hero-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -495,19 +517,19 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
         <div class="hero-features results-banner-features">
           <div class="hero-feature">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="9" width="3" height="6" rx="1"></rect><rect x="19" y="9" width="3" height="6" rx="1"></rect><rect x="6" y="7" width="2.5" height="10" rx="1"></rect><rect x="15.5" y="7" width="2.5" height="10" rx="1"></rect><line x1="8.5" y1="12" x2="15.5" y2="12"></line></svg>
-            <span>Stronger<br>Body</span>
+            <span data-i18n-html="results.banner_feat1">Stronger<br>Body</span>
           </div>
           <div class="hero-feature">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18a9 9 0 0 1-18 0Z"></path><path d="M8 11c0-2 1-4 3-5"></path><circle cx="12" cy="4.5" r="1.1" fill="currentColor" stroke="none"></circle></svg>
-            <span>Healthier<br>Habits</span>
+            <span data-i18n-html="results.banner_feat2">Healthier<br>Habits</span>
           </div>
           <div class="hero-feature">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-            <span>More<br>Confidence</span>
+            <span data-i18n-html="results.banner_feat3">More<br>Confidence</span>
           </div>
           <div class="hero-feature">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.3M12 19.2v2.3M4.5 12H2.2M21.8 12h-2.3M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6"></path></svg>
-            <span>A Happier<br>You</span>
+            <span data-i18n-html="results.banner_feat4">A Happier<br>You</span>
           </div>
         </div>
       </div>
@@ -519,8 +541,8 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
   <section class="section section-video section-pricing" id="pricing">
     <div class="video-section-bg"></div>
     <div class="section-inner">
-      <div class="eyebrow">Plans</div>
-      <h2 class="h2">Choose your plan,<br><span class="showcase-accent">Start Today.</span></h2>
+      <div class="eyebrow" data-i18n="pricing.eyebrow">Plans</div>
+      <h2 class="h2" data-i18n-html="pricing.heading">Choose your plan,<br><span class="showcase-accent">Start Today.</span></h2>
 
       <div class="membership-carousel">
         <div class="membership-viewport" id="pricingViewport" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Pricing plans">
@@ -556,8 +578,8 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
   <section class="section section-video section-faq" id="faq">
     <div class="video-section-bg"></div>
     <div class="section-inner">
-      <div class="eyebrow">Questions</div>
-      <h2 class="h2">Frequently asked <span class="showcase-accent">questions</span></h2>
+      <div class="eyebrow" data-i18n="faq.eyebrow">Questions</div>
+      <h2 class="h2" data-i18n-html="faq.heading">Frequently asked <span class="showcase-accent">questions</span></h2>
       <div class="faq-list" id="faqList">
         <div class="faq-col" id="faqColLeft"></div>
         <div class="faq-col" id="faqColRight"></div>
@@ -569,26 +591,26 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
   <section class="section section-video section-signup" id="signup">
     <div class="video-section-bg"></div>
     <div class="section-inner">
-      <div class="eyebrow">Get started</div>
-      <h2 class="h2">Don't wait, let's start <span class="showcase-accent">right now.</span></h2>
+      <div class="eyebrow" data-i18n="signup.eyebrow">Get started</div>
+      <h2 class="h2" data-i18n-html="signup.heading">Don't wait, let's start <span class="showcase-accent">right now.</span></h2>
       <div class="glass-card signup-card">
-        <label class="field-label" for="emailInput">Your email</label>
+        <label class="field-label" for="emailInput" data-i18n="signup.email_label">Your email</label>
         <input type="email" id="emailInput" class="field-input" placeholder="you@email.com" autocomplete="email">
-        <div class="field-hint">We'll create your account automatically - you'll choose a password right after checkout.</div>
+        <div class="field-hint" data-i18n="signup.field_hint">We'll create your account automatically - you'll choose a password right after checkout.</div>
 
         <div class="faq-item signup-info" id="signupInfoItem">
           <div class="faq-q">
-            <span>Important information</span>
+            <span data-i18n="signup.info_label">Important information</span>
             <span class="plus">+</span>
           </div>
-          <div class="faq-a"><div class="faq-a-inner">Just <strong>€2.99</strong> for your first 10 days, then <strong>€19.99/month</strong> - cancel anytime. Want to save more? Switch to a 6-month or annual plan whenever you like, right from your account.<br><br>Instant access. Cancel anytime. Covered by our 30-Day Results Guarantee.</div></div>
+          <div class="faq-a"><div class="faq-a-inner" data-i18n-html="signup.info_text">Just <strong>€2.99</strong> for your first 10 days, then <strong>€19.99/month</strong> - cancel anytime. Want to save more? Switch to a 6-month or annual plan whenever you like, right from your account.<br><br>Instant access. Cancel anytime. Covered by our 30-Day Results Guarantee.</div></div>
         </div>
 
         <button class="btn btn-pill btn-primary btn-lg btn-block" id="signupBtn" type="button">
-          Full Access for 10 Days &bull; €2.99
+          <span data-i18n-html="cta.main">Full Access for 10 Days &bull; €2.99</span>
           <svg class="hero-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
-        <div class="payment-note center">💳 Payment is collected securely on the next step</div>
+        <div class="payment-note center" data-i18n="signup.payment_note">💳 Payment is collected securely on the next step</div>
       </div>
     </div>
   </section>
@@ -600,9 +622,9 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
   <div class="footer-top">
     <div class="footer-brand-block">
       <div class="footer-brand">Body Muse</div>
-      <div class="footer-tagline">Strong. Beautiful. Confident.</div>
+      <div class="footer-tagline" data-i18n="footer.tagline">Strong. Beautiful. Confident.</div>
     </div>
-    <div class="footer-fine">© Body Muse. All rights reserved.</div>
+    <div class="footer-fine" data-i18n="footer.fine">© Body Muse. All rights reserved.</div>
   </div>
   <div class="footer-links">
     <a href="https://www.instagram.com/yegorova.maria" target="_blank" rel="noopener" class="btn btn-pill btn-outline btn-sm">
@@ -626,9 +648,9 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
 <div class="popup-overlay" id="popupOverlay">
   <div class="glass-card popup-card">
     <button class="popup-close" id="popupClose" aria-label="Close">✕</button>
-    <div class="eyebrow">Don't wait</div>
-    <div class="popup-title">Start your transformation and see results in 10 days</div>
-    <a href="#signup" class="btn btn-pill btn-primary btn-block" id="popupCta">Start My 10-Day Trial for €2.99</a>
+    <div class="eyebrow" data-i18n="popup.eyebrow">Don't wait</div>
+    <div class="popup-title" data-i18n="popup.title">Start your transformation and see results in 10 days</div>
+    <a href="#signup" class="btn btn-pill btn-primary btn-block" id="popupCta" data-i18n-html="popup.cta">Start My 10-Day Trial for €2.99</a>
   </div>
 </div>
 
@@ -637,26 +659,27 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
   <div class="glass-card popup-card auth-card">
     <button class="popup-close" id="accountPopupClose" aria-label="Close">✕</button>
     <div class="auth-tabs" role="tablist">
-      <button type="button" class="auth-tab active" data-tab="login" role="tab">Log In</button>
-      <button type="button" class="auth-tab" data-tab="signup" role="tab">Sign Up</button>
+      <button type="button" class="auth-tab active" data-tab="login" role="tab" data-i18n="auth.login_tab">Log In</button>
+      <button type="button" class="auth-tab" data-tab="signup" role="tab" data-i18n="auth.signup_tab">Sign Up</button>
     </div>
     <div class="auth-error" id="authError" hidden></div>
     <div class="auth-success" id="authSuccess" hidden>
-      <p>✅ You successfully made an account.</p>
-      <p>Check your email to confirm your registration, then log in.</p>
+      <p data-i18n="auth.success1">✅ You successfully made an account.</p>
+      <p data-i18n="auth.success2">Check your email to confirm your registration, then log in.</p>
     </div>
     <form class="auth-form" id="authForm" novalidate>
-      <label class="field-label" for="authEmail">Email address</label>
+      <label class="field-label" for="authEmail" data-i18n="auth.email_label">Email address</label>
       <input type="email" id="authEmail" class="field-input" placeholder="you@email.com" autocomplete="email" required>
-      <label class="field-label" for="authPassword">Password</label>
+      <label class="field-label" for="authPassword" data-i18n="auth.password_label">Password</label>
       <input type="password" id="authPassword" class="field-input" placeholder="••••••••" autocomplete="current-password" minlength="6" required>
-      <button class="btn btn-pill btn-primary btn-lg btn-block" id="authSubmit" type="submit">Log In</button>
+      <button class="btn btn-pill btn-primary btn-lg btn-block" id="authSubmit" type="submit" data-i18n="auth.login_tab">Log In</button>
     </form>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="supabase-client.js"></script>
+<script src="i18n.js"></script>
 <script src="nav.js"></script>
 <script src="script.js"></script>
 </body>

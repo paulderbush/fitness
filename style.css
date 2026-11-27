@@ -234,6 +234,40 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   gap:10px;
 }
 .mobile-menu-social .btn{ gap:8px; color:#111; }
+
+/* ============ language switcher (nav) ============ */
+.lang-switch{
+  display:flex;
+  gap:2px;
+  border:1px solid rgba(255,255,255,0.4);
+  border-radius:999px;
+  padding:2px;
+  flex-shrink:0;
+}
+.lang-switch-btn{
+  border:none;
+  background:transparent;
+  color:#fff;
+  font-family:'Inter', sans-serif;
+  font-weight:700;
+  font-size:11px;
+  letter-spacing:0.02em;
+  padding:5px 10px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:background 0.2s ease, color 0.2s ease;
+}
+.lang-switch-btn.active{ background:#fff; color:var(--ink); }
+.topbar.scrolled .lang-switch{ border-color:rgba(75,98,69,0.25); }
+.topbar.scrolled .lang-switch-btn{ color:var(--ink); }
+.topbar.scrolled .lang-switch-btn.active{ background:var(--ink); color:#fff; }
+.lang-switch-mobile{
+  border-color:rgba(75,98,69,0.25);
+  margin-top:6px;
+}
+.lang-switch-mobile .lang-switch-btn{ color:var(--ink); }
+.lang-switch-mobile .lang-switch-btn.active{ background:var(--ink); color:#fff; }
+
 @media (min-width:1024px){
   .hamburger-btn, .mobile-menu-overlay{ display:none; }
 }
@@ -378,6 +412,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   text-align:center;
 }
 .hero-accent{ color:var(--brand-pink); font-size:1.35em; }
+.hero-ru-break{ display:none; }
 .hero-lead{
   font-size:16px;
   line-height:1.6;
@@ -1176,6 +1211,24 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   margin:0;
 }
 
+/* ============ language choice modal ============ */
+.lang-modal-overlay{ z-index:90; }
+.lang-modal-card{ padding-top:36px; }
+.lang-modal-question{ margin-bottom:22px; }
+.lang-modal-question p{
+  font-family:'Inter', sans-serif;
+  font-weight:600;
+  font-size:19px;
+  color:var(--ink);
+  line-height:1.4;
+  margin:0 0 4px 0;
+}
+.lang-modal-actions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
 /* ============ account auth popup ============ */
 .auth-card{ text-align:left; }
 .auth-tabs{
@@ -1374,6 +1427,7 @@ body:has(#mobileMenuOverlay.visible) .topbar .topbar-link{ color:var(--ink-soft)
   }
   .hero-results{ color:#fff; font-size:clamp(62px,6.75vw,86px); text-align:left; }
   .hero-accent{ font-size:1em; }
+  .hero-ru-break{ display:inline; }
   .hero-lead{ color:rgba(255,255,255,0.85); font-size:16px; max-width:460px; margin-left:0; margin-right:0; text-align:left; }
   .hero-cta-wrap{ display:inline-block; text-align:left; width:auto; }
   .hero-signature-img{ display:none; }

@@ -40,17 +40,35 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
 </head>
 <body>
 
+<!-- ============ LANGUAGE MODAL (first visit only) ============ -->
+<div class="popup-overlay lang-modal-overlay" id="langModalOverlay">
+  <div class="glass-card popup-card lang-modal-card">
+    <div class="lang-modal-question">
+      <p data-i18n="lang.modal_q1">Choose your language</p>
+      <p data-i18n="lang.modal_q2">Выберите язык</p>
+    </div>
+    <div class="lang-modal-actions">
+      <button type="button" class="btn btn-pill btn-primary btn-lg" data-lang-choice="ru">Русский</button>
+      <button type="button" class="btn btn-pill btn-outline btn-lg" data-lang-choice="en">English</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ TOP BAR ============ -->
 <header class="topbar scrolled" id="topbar">
   <a href="index.html" class="topbar-brand">Body Muse</a>
   <nav class="topbar-nav">
-    <a href="index.html#program" class="topbar-link">Programs</a>
-    <a href="index.html#program" class="topbar-link">Nutrition</a>
-    <a href="index.html#about" class="topbar-link">Coach</a>
-    <a href="index.html#pricing" class="topbar-link">Pricing</a>
+    <a href="index.html#program" class="topbar-link" data-i18n="nav.programs">Programs</a>
+    <a href="index.html#program" class="topbar-link" data-i18n="nav.nutrition">Nutrition</a>
+    <a href="index.html#about" class="topbar-link" data-i18n="nav.coach">Coach</a>
+    <a href="index.html#pricing" class="topbar-link" data-i18n="nav.pricing">Pricing</a>
   </nav>
   <div class="topbar-actions">
-    <a href="account.html" class="btn btn-pill btn-sm btn-outline-light account-btn-topbar">My Account</a>
+    <div class="lang-switch" role="group">
+      <button type="button" class="lang-switch-btn" data-lang-switch="ru">RU</button>
+      <button type="button" class="lang-switch-btn" data-lang-switch="en">EN</button>
+    </div>
+    <a href="account.html" class="btn btn-pill btn-sm btn-outline-light account-btn-topbar" data-i18n="nav.account">My Account</a>
     <button type="button" class="hamburger-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -60,27 +78,31 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
 <!-- ============ MOBILE MENU ============ -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay">
   <nav class="mobile-menu-nav">
-    <a href="index.html#program" class="mobile-menu-link">Programs</a>
-    <a href="index.html#program" class="mobile-menu-link">Nutrition</a>
-    <a href="index.html#about" class="mobile-menu-link">Coach</a>
-    <a href="index.html#pricing" class="mobile-menu-link">Pricing</a>
-    <a href="account.html" class="btn btn-pill btn-outline btn-lg mobile-menu-account">My Account</a>
+    <a href="index.html#program" class="mobile-menu-link" data-i18n="nav.programs">Programs</a>
+    <a href="index.html#program" class="mobile-menu-link" data-i18n="nav.nutrition">Nutrition</a>
+    <a href="index.html#about" class="mobile-menu-link" data-i18n="nav.coach">Coach</a>
+    <a href="index.html#pricing" class="mobile-menu-link" data-i18n="nav.pricing">Pricing</a>
+    <div class="lang-switch lang-switch-mobile" role="group">
+      <button type="button" class="lang-switch-btn" data-lang-switch="ru">RU</button>
+      <button type="button" class="lang-switch-btn" data-lang-switch="en">EN</button>
+    </div>
+    <a href="account.html" class="btn btn-pill btn-outline btn-lg mobile-menu-account" data-i18n="nav.account">My Account</a>
   </nav>
 </div>
 
 <main>
   <section class="section" id="gateLoading">
     <div class="section-inner narrow">
-      <p class="program-gate-checking">Checking access…</p>
+      <p class="program-gate-checking" data-i18n="prog.checking">Checking access…</p>
     </div>
   </section>
 
   <section class="section" id="gateContent" hidden>
     <div class="section-inner narrow">
-      <div class="eyebrow">Your Program</div>
-      <h2 class="h2">Body Muse Program</h2>
+      <div class="eyebrow" data-i18n="prog.eyebrow">Your Program</div>
+      <h2 class="h2" data-i18n="acct.program_name">Body Muse Program</h2>
       <div class="glass-card dashboard-card">
-        <p class="dashboard-placeholder">Your video courses will appear here soon. 🎬</p>
+        <p class="dashboard-placeholder" data-i18n="prog.placeholder">Your video courses will appear here soon. 🎬</p>
       </div>
     </div>
   </section>
@@ -91,14 +113,15 @@ src="https://www.facebook.com/tr?id=694270511068425&ev=PageView&noscript=1"
   <div class="footer-top">
     <div class="footer-brand-block">
       <div class="footer-brand">Body Muse</div>
-      <div class="footer-tagline">Strong. Beautiful. Confident.</div>
+      <div class="footer-tagline" data-i18n="footer.tagline">Strong. Beautiful. Confident.</div>
     </div>
-    <div class="footer-fine">© Body Muse. All rights reserved.</div>
+    <div class="footer-fine" data-i18n="footer.fine">© Body Muse. All rights reserved.</div>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="supabase-client.js"></script>
+<script src="i18n.js"></script>
 <script src="nav.js"></script>
 <script src="program-guard.js"></script>
 </body>
